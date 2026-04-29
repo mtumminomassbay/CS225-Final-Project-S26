@@ -1,8 +1,16 @@
 //Joey Barton
 
 /*
-How to use:
-    Navigator.getInstance().navigateTo(Screen.Dashboard)
+    Navigator is a Singleton design that manages screen transitions.
+
+    It holds a reference to the background AnchorPane and swaps the 
+    foreground with navigateTo(). This ensures only one screen is shown
+    at a time, and navigation is consistent.
+*/
+
+/*
+HOW TO USE:
+    navigateTo(Screen.Dashboard)
 */
 
 import java.io.IOException;

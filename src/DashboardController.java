@@ -1,17 +1,28 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class DashboardController {
+/*
+    Controller for dashboard.fxml
+*/
 
-    @FXML private Button Test_Button;
+public class DashboardController extends BaseController{
 
-    private void initialize() {
+    @FXML private Button GroupStage_Button;
+    @FXML private Button KnockoutPhase_Button;
+
+    @Override
+    protected void onLoad() {
 
     }
 
     @FXML
-    private void TestButton_clicked() {
-        Navigator.getInstance().navigateTo(Screen.TEST);
+    private void GroupStageButton_clicked() {
+        navigateTo(Screen.GROUP_STAGE);
+    }
+
+    @FXML
+    private void KnockoutPhaseButton_clicked() {
+        navigateTo(Screen.KNOCKOUT);
     }
     
 }
