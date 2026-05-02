@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="cardPane" onMousePressed="#cardClicked" prefHeight="156.0" prefWidth="190.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TeamInfoCard">
+<AnchorPane fx:id="cardPane" onMousePressed="#cardClicked" prefHeight="156.0" prefWidth="190.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TeamInfoCardController">
    <children>
       <Pane fx:id="backgroundPane" prefHeight="89.0" prefWidth="191.0" style="-fx-background-color: lightblue;">
          <children>

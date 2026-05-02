@@ -23,7 +23,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-public class TeamInfoCard extends BaseController {
+public class TeamInfoCardController extends BaseController {
 
     //ATTRIUBTES 
     @FXML
@@ -44,7 +44,7 @@ public class TeamInfoCard extends BaseController {
     @FXML
     private Pane backgroundPane;
 
-    private TeamInfoAdditional additionalInfo; //Additional team info object to update 
+    private TeamInfoAdditionalController additionalInfo; //Additional team info object to update 
 
     //INITIALIZE
     @Override
@@ -90,7 +90,7 @@ public class TeamInfoCard extends BaseController {
     }
 
     //GETTERS
-    public TeamInfoAdditional getAdditionalInfo() {
+    public TeamInfoAdditionalController getAdditionalInfo() {
         return additionalInfo;
     }
 
@@ -99,8 +99,13 @@ public class TeamInfoCard extends BaseController {
     }
 
     //SETTERS
+    public void setCountry(String name) {
+        countryName.setText(name);       //Set country name for both Team Card and additional window
+        additionalInfo.setCountryName(name);
+    }
     public void setFlagImage(Image flag) {
-        flagImage.setImage(flag);        //Set flag image for the Team Card
+        flagImage.setImage(flag);        //Set flag image for both Team Card and additional window
+        additionalInfo.setFlagImage(flag);
     }
 
     public void setBackgroundColor(Color color) {
@@ -116,10 +121,5 @@ public class TeamInfoCard extends BaseController {
 
     public void setConfederation(String confedName) {
         confederationName.setText(confedName);
-    }
-
-    public void setCountry(String name) {
-        countryName.setText(name);
-        additionalInfo.setCountryName(name);
     }
 }

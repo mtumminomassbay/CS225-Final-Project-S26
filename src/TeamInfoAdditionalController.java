@@ -1,15 +1,17 @@
 //package FinalProject.CS225-Final-Project-S26.src;
 
 //Andrew Larrazabal
-//Additional information whenever a user clicks on the team info card
+//Additional information whenever a user clicks on the team
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-public class TeamInfoAdditional extends BaseController {
+public class TeamInfoAdditionalController extends BaseController {
+    
     //ATTRIBUTES
-
     @FXML
     private Text countryNameAdditional;
     
@@ -30,6 +32,9 @@ public class TeamInfoAdditional extends BaseController {
 
     @FXML
     private TableView roster;
+
+    @FXML
+    private ImageView flagImage;
 
     private int wins;
 
@@ -63,6 +68,10 @@ public class TeamInfoAdditional extends BaseController {
         countryNameAdditional.setText(country);
     }
 
+    public void setFlagImage(Image flag) {
+        flagImage.setImage(flag);
+    }
+
     public void setRank(String rank) {
         rankNumber.setText(rank);
     }
@@ -73,5 +82,9 @@ public class TeamInfoAdditional extends BaseController {
 
     public void setCoach(String name) {
         coachName.setText(name);
+    }
+
+    public void setRoster(TableView roster) {
+        this.roster = roster;
     }
 }
