@@ -2,9 +2,8 @@
  * The penaltyShootout class represents the penalty kick portion of a match
  *
  * A penalty shootout only happens when:
- * - the match does not allow ties,
- * - the teams are still tied after regulation time,
- * - and the teams are still tied after overtime
+ * - the match does not allow ties, and
+ * - the teams remain tied after regulation time and overtime
  *
  *  This class stores both teams and the number of penalty goals scored by each team.
  *  Placeholder results used for now. Weighted/random simulation logic to be added later.
