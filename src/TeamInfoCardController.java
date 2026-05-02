@@ -66,9 +66,8 @@ public class TeamInfoCardController extends BaseController {
 
     //METHODS
 
-    //When the Team Card gets clicked, open a new window with additional info about the team
     @FXML
-    public void cardClicked() {
+    public void cardClicked() {    //When the Team Card gets clicked, open a new window with additional info about the team
         try {
             FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/TeamInfoAdditional.fxml")
