@@ -19,6 +19,10 @@ public class GroupPhaseController extends BaseController{
     @FXML private Button group10;
     @FXML private Button group11;
     @FXML private Button group12;
+    @FXML private SimulationController simulationControlsController;
+
+    // 0 means no group has been selected yet.
+    private int selectedGroupNumber = 0;
 
     @Override
     protected void onLoad(){
@@ -35,11 +39,15 @@ public class GroupPhaseController extends BaseController{
         group11.setOnAction(e -> showGroup(11));
         group12.setOnAction(e -> showGroup(12));
 
+        // Start with no group selected, so group-specific buttons stay disabled.
+        simulationControlsController.configureForGroupStage(selectedGroupNumber);
     }
     
     @FXML
     private void showGroup(int i) {
-        System.out.println(i);
+        selectedGroupNumber = i;
+        simulationControlsController.configureForGroupStage(selectedGroupNumber);
+        System.out.println("Selected Group " + i);
         //TODO: open single group view for corresponding group
     }
 }
