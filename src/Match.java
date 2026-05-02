@@ -61,7 +61,14 @@ public class Match {
         }
 
         // If ties are not allowed and the score is tied,
-        // the match must go into overtime
+        // the match must go into overtime first
+        if (isTied()) {
+            overtime = new MatchSection(team1, team2, 30);
+            overtime.simulate();
+        }
+
+        // if the match is still tied after overtime,
+        // then it must be decided by penalty kicks
         if (isTied()) {
             penalties = new PenaltyShootout(team1, team2);
             penalties.simulate();
@@ -97,7 +104,19 @@ public class Match {
     }
 
     public boolean isFinished() {
-        return firstHalf.isFinished() && secondHalf.isFinished();
+        if (!firstHalf.isFinished() || !secondHalf.isFinished()) {
+            return false;
+        }
+
+        if (overtime != null && !overtime.isFinished()) {
+            return false;
+        }
+
+        if (penalties != null && !penalties.isFinished()) {
+            return false;
+        }
+
+        return true;
     }
 
     public MatchSection getFirstHalf() {
@@ -123,6 +142,7 @@ public class Match {
      * so this method returns null
      */
     public Team getWinner() {
+        // If one team has a higher score after regulation/overtime
         if (getFirstTeamScore() > getSecondTeamScore()) {
             return team1;
         }
@@ -131,15 +151,12 @@ public class Match {
             return team2;
         }
 
+        // If still tied, use penalty shootout
         if (penalties != null) {
-            if (penalties.getFirstTeamGoals() > penalties.getSecondTeamGoals()) {
-                return team1;
-            } else {
-                return team2;
-            }
+            return penalties.getWinner();
         }
 
-        //GroupStage tie
+        // Group stage tie
         return null;
     }
 

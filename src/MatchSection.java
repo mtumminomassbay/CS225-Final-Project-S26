@@ -19,6 +19,7 @@ public class MatchSection {
 
     private int team1Score;
     private int team2Score;
+    private boolean finished;
 
     /**
      * Creates one section of a match
@@ -35,6 +36,8 @@ public class MatchSection {
         // Scores start at 0 before the section is simulated
         this.team1Score = 0;
         this.team2Score = 0;
+
+        this.finished = false;
     }
 
     /**
@@ -48,6 +51,8 @@ public class MatchSection {
         // Team 1 scores 1 goal and Team 2 scores 0 goals
         this.team1Score = 1;
         this.team2Score = 0;
+
+        this.finished = true;
     }
 
     public Team getFirstTeam() {
@@ -71,13 +76,12 @@ public class MatchSection {
     }
 
     /**
-     * A section is finished once it has been simulated
+     * A section is finished once simulate() has been called.
      *
-     * Since this placeholder version does not track a separate boolean,
-     * this method simply returns true after simulate() has been called
-     * only if either team has a score
+     * This uses a boolean so even a 0-0 section can still count
+     * as completed.
      */
     public boolean isFinished() {
-        return team1Score > 0 || team2Score > 0;
+        return finished;
     }
 }
