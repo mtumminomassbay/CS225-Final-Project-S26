@@ -7,6 +7,9 @@ plugins {
 repositories {
     mavenCentral()
 }
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
+}
 
 javafx.version = "22"
 javafx.modules = ["javafx.fxml", "javafx.controls"]

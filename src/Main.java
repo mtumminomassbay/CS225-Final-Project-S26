@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+//Test Class
+
 public class Main extends Application {
 
     public static void main(String[] args) {
@@ -15,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage){
 
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/WorldCup.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/Background.fxml"));
             AnchorPane root = loader.load();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
