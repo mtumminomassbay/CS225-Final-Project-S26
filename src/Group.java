@@ -1,6 +1,9 @@
 import java.util.Map;
 import java.util.List;
 
+/**
+ * @author Jonathan
+ */
 public class Group
 {
 

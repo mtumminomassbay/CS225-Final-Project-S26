@@ -1,3 +1,7 @@
+/**
+ * @author Jonathan
+ */
+
 public class GroupResults {
     private Team team;
     private int wins;
