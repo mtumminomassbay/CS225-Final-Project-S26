@@ -13,7 +13,7 @@ public class Match {
 
     private PenaltyShootout penalties;
 
-    public Match() {
+    public Match(Team team1, Team team2, boolean allowTies) {
 
     }
 }
