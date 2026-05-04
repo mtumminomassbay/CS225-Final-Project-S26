@@ -37,8 +37,8 @@ public class Group
         return teams;
     }
 
-    public Map<Team, GroupResults> getGroupResults() {
-        return groupResults;
+    public GroupResult getGroupResults(Team team) {
+        return groupResults.get(team);
     }
 
 
