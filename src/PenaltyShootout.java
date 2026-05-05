@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * The penaltyShootout class represents the penalty kick portion of a match
  *
@@ -6,7 +8,6 @@
  * - the teams remain tied after regulation time and overtime
  *
  *  This class stores both teams and the number of penalty goals scored by each team.
- *  Placeholder results used for now. Weighted/random simulation logic to be added later.
  *  Author: Jasper Carr
  *
  */
@@ -21,8 +22,7 @@ public class PenaltyShootout {
     private boolean finished;
 
     /**
-     * Creates a penalty shootout between two teams.
-     *
+     * Creates a penalty shootout between two teams
      * @param team1 the first team in the shootout
      * @param team2 the second team in the shootout
      */
@@ -40,20 +40,64 @@ public class PenaltyShootout {
 
     /**
      * Simulates the penalty shootout
-     *
-     * Placeholder logic
+     * The Random object is passed in from Match
+     * This keeps the match simulation connected to the same seed
+     * Each team first takes 5 penalty kicks
+     * If still tied, the shootout continues one kick at a time
+     * until one team wins
+     * @param random the seeded Random object used for simulation
      */
-    public void simulate() {
-        this.team1Goals = 5;
-        this.team2Goals = 4;
-        this.finished = true;
+    public void simulate(Random random) {
+        // Prevent the same penalty shootout from being simulated more than once
+        if (isFinished()) {
+            return;
+        }
+
+        // Standard penalty shootout: each team gets 5 kicks
+        for (int i = 0; i < 5; i++) {
+            if (penaltyScored(team1, random)) {
+                team1Goals++;
+            }
+
+            if (penaltyScored(team2, random)) {
+                team2Goals++;
+            }
+        }
+
+        // Sudden death: continue until one team wins
+        while (team1Goals == team2Goals) {
+            boolean team1Scored = penaltyScored(team1, random);
+            boolean team2Scored = penaltyScored(team2, random);
+
+            if (team1Scored) {
+                team1Goals++;
+            }
+
+            if (team2Scored) {
+                team2Goals++;
+            }
+        }
+
+        finished = true;
     }
 
     /**
-     * Returns true if the penalty shootout has been simulated
-     *
-     * @return true if finished, false otherwise
+     * Determines whether a team scores a penalty
+     * Better-ranked teams get a slightly higher chance to score
+     * @param team the team taking the penalty
+     * @param random the seeded Random object used for simulation
+     * @return true if the penalty is scored, false otherwise
      */
+    private boolean penaltyScored(Team team, Random random) {
+        // Ranking bonus is higher for better-ranked teams
+        double rankingBonus = (211.0 - team.getRanking()) / 211.0;
+
+        // Base chance is 65%, with up to 25% added based on ranking
+        double scoreChance = 0.65 + (rankingBonus * 0.25);
+
+        return random.nextDouble() < scoreChance;
+    }
+
     public boolean isFinished() {
         return finished;
     }
@@ -76,9 +120,7 @@ public class PenaltyShootout {
 
     /**
      * Returns the winner of the penalty shootout
-     *
      * If the shootout has not been simulated yet, this returns null
-     *
      * @return the winning team, or null if the shootout is not finished
      */
     public Team getWinner() {
