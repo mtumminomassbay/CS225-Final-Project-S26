@@ -1,5 +1,9 @@
+import java.io.IOException;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.layout.GridPane;
 
 /*
     Controller for group-stage.fxml
@@ -7,18 +11,7 @@ import javafx.scene.control.Button;
 
 public class GroupPhaseController extends BaseController{
 
-    @FXML private Button group1;
-    @FXML private Button group2;
-    @FXML private Button group3;
-    @FXML private Button group4;
-    @FXML private Button group5;
-    @FXML private Button group6;
-    @FXML private Button group7;
-    @FXML private Button group8;
-    @FXML private Button group9;
-    @FXML private Button group10;
-    @FXML private Button group11;
-    @FXML private Button group12;
+    @FXML private GridPane buttonGrid;
     private static int groupInFocus;
 
     public GroupPhaseController() {
@@ -26,19 +19,33 @@ public class GroupPhaseController extends BaseController{
 
     @Override
     protected void onLoad(){
-        if (group1 != null) {
-            group1.setOnAction(e -> showGroup(1));
-            group2.setOnAction(e -> showGroup(2));
-            group3.setOnAction(e -> showGroup(3));
-            group4.setOnAction(e -> showGroup(4));
-            group5.setOnAction(e -> showGroup(5));
-            group6.setOnAction(e -> showGroup(6));
-            group7.setOnAction(e -> showGroup(7));
-            group8.setOnAction(e -> showGroup(8));
-            group9.setOnAction(e -> showGroup(9));
-            group10.setOnAction(e -> showGroup(10));
-            group11.setOnAction(e -> showGroup(11));
-            group12.setOnAction(e -> showGroup(12));
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 0; j < 3; ++j) {
+                addGroupButton(i, j);
+            }
+        }
+    }
+
+    public void addGroupButton(int x, int y) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("GroupButton.fxml")
+            );
+            
+            Node buttonNode = loader.load();
+
+
+            buttonGrid.add(buttonNode, x, y);
+
+            // FIXME
+            //
+            // TeamInfoCardController card = loader.getController();
+
+            // listTeamCards.add(card);                      //Add team in array list
+            
+            // cardContainer.getChildren().add(cardNode);    //<--- MAYBE MOVE TO DIFFERENT METHOD (Load card to Team View Menu)
+        } catch (IOException e) {
+            System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
         }
     }
     

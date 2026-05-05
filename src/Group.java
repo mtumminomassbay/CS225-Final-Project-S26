@@ -37,7 +37,7 @@ public class Group
         return teams;
     }
 
-    public GroupResult getGroupResults(Team team) {
+    public GroupResults getGroupResults(Team team) {
         return groupResults.get(team);
     }
 
