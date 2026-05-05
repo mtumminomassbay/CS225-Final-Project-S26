@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/22"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="GroupPhaseController">
+
+   <children>
+      <Label layoutX="172.0" layoutY="10.0" text="Group Stage">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+
+      <Button fx:id="backButton"
+              layoutX="20.0"
+              layoutY="20.0"
+              mnemonicParsing="false"
+              onAction="#backButton_clicked"
+              text="Back" />
+
+      <Label layoutX="20.0" layoutY="62.0" text="Select Group:" />
+
+      <ComboBox fx:id="groupComboBox"
+                layoutX="105.0"
+                layoutY="58.0"
+                prefWidth="120.0"
+                onAction="#groupSelected" />
+
+      <Button fx:id="simulateButton"
+              layoutX="380.0"
+              layoutY="58.0"
+              mnemonicParsing="false"
+              onAction="#simulateButton_clicked"
+              prefWidth="190.0"
+              text="Simulate Group Stage" />
+
+      <TableView fx:id="standingsTable"
+                 layoutX="20.0"
+                 layoutY="95.0"
+                 prefHeight="160.0"
+                 prefWidth="560.0">
+
+         <columns>
+            <TableColumn fx:id="teamColumn" text="Team" prefWidth="130.0" />
+            <TableColumn fx:id="rankingColumn" text="Rank" prefWidth="50.0" />
+            <TableColumn fx:id="winsColumn" text="W" prefWidth="40.0" />
+            <TableColumn fx:id="tiesColumn" text="T" prefWidth="40.0" />
+            <TableColumn fx:id="lossesColumn" text="L" prefWidth="40.0" />
+            <TableColumn fx:id="goalsForColumn" text="GF" prefWidth="45.0" />
+            <TableColumn fx:id="goalsAgainstColumn" text="GA" prefWidth="45.0" />
+            <TableColumn fx:id="goalDifferenceColumn" text="GD" prefWidth="45.0" />
+            <TableColumn fx:id="pointsColumn" text="Pts" prefWidth="50.0" />
+         </columns>
+      </TableView>
+
+      <Label layoutX="20.0" layoutY="265.0" text="Matches" />
+      <ListView fx:id="matchListView"
+                layoutX="20.0"
+                layoutY="285.0"
+                prefHeight="95.0"
+                prefWidth="270.0" />
+
+      <Label layoutX="315.0" layoutY="265.0" text="Summary" />
+      <TextArea fx:id="summaryText"
+                layoutX="315.0"
+                layoutY="285.0"
+                prefHeight="95.0"
+                prefWidth="265.0"
+                editable="false"
+                wrapText="true" />
+      </children>
+   </AnchorPane>
