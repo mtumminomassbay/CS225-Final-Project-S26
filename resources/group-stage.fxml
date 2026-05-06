@@ -8,32 +8,76 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GroupPhaseController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/22"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="GroupPhaseController">
+
    <children>
-      <GridPane fx:id="buttonGrid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="0.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" />
-          <ColumnConstraints hgrow="SOMETIMES" />
-            <ColumnConstraints hgrow="SOMETIMES" />
-            <ColumnConstraints hgrow="SOMETIMES" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
-      <VBox layoutX="447.0" layoutY="35.0" prefHeight="400.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label prefWidth="150.0" text="Label" />
-            <Label prefWidth="150.0" text="Label" />
-            <Label prefWidth="150.0" text="Label" />
-         </children>
-      </VBox>
-   </children>
-</AnchorPane>
+      <Label layoutX="172.0" layoutY="10.0" text="Group Stage">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+
+      <Button fx:id="backButton"
+              layoutX="20.0"
+              layoutY="20.0"
+              mnemonicParsing="false"
+              onAction="#backButton_clicked"
+              text="Back" />
+
+      <Label layoutX="20.0" layoutY="62.0" text="Select Group:" />
+
+      <ComboBox fx:id="groupComboBox"
+                layoutX="105.0"
+                layoutY="58.0"
+                prefWidth="120.0"
+                onAction="#groupSelected" />
+
+      <Button fx:id="simulateButton"
+              layoutX="380.0"
+              layoutY="58.0"
+              mnemonicParsing="false"
+              onAction="#simulateButton_clicked"
+              prefWidth="190.0"
+              text="Simulate Group Stage" />
+
+      <TableView fx:id="standingsTable"
+                 layoutX="20.0"
+                 layoutY="95.0"
+                 prefHeight="160.0"
+                 prefWidth="560.0">
+
+         <columns>
+            <TableColumn fx:id="teamColumn" text="Team" prefWidth="130.0" />
+            <TableColumn fx:id="rankingColumn" text="Rank" prefWidth="50.0" />
+            <TableColumn fx:id="winsColumn" text="W" prefWidth="40.0" />
+            <TableColumn fx:id="tiesColumn" text="T" prefWidth="40.0" />
+            <TableColumn fx:id="lossesColumn" text="L" prefWidth="40.0" />
+            <TableColumn fx:id="goalsForColumn" text="GF" prefWidth="45.0" />
+            <TableColumn fx:id="goalsAgainstColumn" text="GA" prefWidth="45.0" />
+            <TableColumn fx:id="goalDifferenceColumn" text="GD" prefWidth="45.0" />
+            <TableColumn fx:id="pointsColumn" text="Pts" prefWidth="50.0" />
+         </columns>
+      </TableView>
+
+      <Label layoutX="20.0" layoutY="265.0" text="Matches" />
+      <ListView fx:id="matchListView"
+                layoutX="20.0"
+                layoutY="285.0"
+                prefHeight="95.0"
+                prefWidth="270.0" />
+
+      <Label layoutX="315.0" layoutY="265.0" text="Summary" />
+      <TextArea fx:id="summaryText"
+                layoutX="315.0"
+                layoutY="285.0"
+                prefHeight="95.0"
+                prefWidth="265.0"
+                editable="false"
+                wrapText="true" />
+      </children>
+   </AnchorPane>
