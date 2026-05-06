@@ -36,7 +36,6 @@ public class TeamParser {
                 String iso2 = n.get("iso2").asText();
                 String homeStadium = n.get("homeStadium").asText();
                 String headCoach = n.get("headCoach").asText();
-                System.out.println(n.get("flagPath").asText());
                 String flagPath = n.get("flagPath").asText();
 
                 Team team = new Team(name,ranking,region,code,iso2,homeStadium,headCoach,flagPath);
