@@ -204,4 +204,7 @@ public class Match {
         return team1.toString() + " (" + getFirstTeamScore() + ") vs "
                 + team2.toString() + "(" + getSecondTeamScore() + ")";
     }
+    public void simulate() {
+
+    }
 }
