@@ -20,6 +20,24 @@ public class Group
         this.teams = teams;
         this.matchesPerTeamPair = matchesPerTeamPair;
     }
+    public void simulate() {
+
+        while(teams.size() > 1) {
+
+            int length = teams.size() / 2;
+
+            for (int i = 0; i < length; i += 2) {
+                Team first = teams.get(i);
+                Team second = teams.get(i + 1);
+
+
+                Match match = new Match(first, second, false);
+                match.simulate();
+                matches.add(match);
+
+            }
+        }
+    }
 
     public int getMatchesPerTeamPair() {
         return matchesPerTeamPair;
