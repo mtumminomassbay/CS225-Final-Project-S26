@@ -1,5 +1,6 @@
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.scene.image.Image;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,8 +32,13 @@ public class TeamParser {
                 String name = n.get("name").asText();
                 int ranking = n.get("ranking").asInt();
                 String region = n.get("region").asText();
+                String code = n.get("code").asText();
+                String iso2 = n.get("iso2").asText();
+                String homeStadium = n.get("homeStadium").asText();
+                String headCoach = n.get("headCoach").asText();
+                String flagPath = n.get("flagPath").asText();
 
-                Team team = new Team(name,ranking,region);
+                Team team = new Team(name,ranking,region,code,iso2,homeStadium,headCoach,flagPath);
                 teams.add(team);
             }
         } catch (Exception e) {
