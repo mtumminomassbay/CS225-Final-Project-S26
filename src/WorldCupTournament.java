@@ -1,17 +1,13 @@
-/* Author: Chrsi Rabanales */
+/* Author: Chris Rabanales */
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 
 public class WorldCupTournament {
 
-    private static final int GROUP_COUNT = 12;
-    private static final int TEAMS_PER_GROUP = 4;
     private static final int THIRD_PLACE_ADVANCE = 8;
 
-    private List<Team> teams;
     private List<Group> groups;
 
     // group stage matches
@@ -30,10 +26,7 @@ public class WorldCupTournament {
 
     // constructor:
     public WorldCupTournament() {
-        TeamParser parser = new TeamParser();
-
-        teams = new ArrayList<>(parser.getTeams());
-        groups = new ArrayList<>();
+        this.groups = groups;
 
         groupMatches = new ArrayList<>();
         groupForMatch = new ArrayList<>();
@@ -45,14 +38,25 @@ public class WorldCupTournament {
         knockoutMatchIndex = 0;
         champion = null;
 
-        createGroups();
         createGroupMatches();
     }
+
     // getter methods:
-    public Team getChampion() {return champion;}
-    public List<Group> getGroups() {return groups;}
-    public List<Match> getGroupMatches() {return groupMatches;}
-    public List<Match> getKnockoutMatches() {return knockoutMatches;}
+    public Team getChampion() {
+        return champion;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public List<Match> getGroupMatches() {
+        return groupMatches;
+    }
+
+    public List<Match> getKnockoutMatches() {
+        return knockoutMatches;
+    }
 
     private int getTotalPoints(Team team) {
         for (Group group : groups) {
@@ -117,35 +121,6 @@ public class WorldCupTournament {
         return advancingTeams;
     }
 
-    private void createGroups() {
-        teams.sort(Comparator.comparingInt(Team::getRanking));
-
-        List<Team> selectedTeams = new ArrayList<>(
-                teams.subList(0, GROUP_COUNT * TEAMS_PER_GROUP)
-        );
-
-        for (int i = 0; i < GROUP_COUNT; i++) {
-            List<Team> groupTeams = new ArrayList<>();
-            groupTeams.add(selectedTeams.get(i));
-
-            String groupName = "Group " + (char) ('A' + i);
-            groups.add(new Group(groupName, groupTeams, 1));
-        }
-
-        List<Team> remainingTeams = new ArrayList<>(
-                selectedTeams.subList(GROUP_COUNT, selectedTeams.size())
-        );
-
-        Collections.shuffle(remainingTeams, new Random(2026));
-
-        int groupIndex = 0;
-
-        for (Team team : remainingTeams) {
-            groups.get(groupIndex).getTeams().add(team);
-            groupIndex = (groupIndex + 1) % GROUP_COUNT;
-        }
-    }
-
     private void createGroupMatches() {
         for (Group group : groups) {
             List<Team> groupTeams = group.getTeams();
@@ -167,10 +142,8 @@ public class WorldCupTournament {
             return null;
         }
 
-        // Simnulates all of the group stage matches.
-        // checks the status of if the group stage matches are complete.
-        // if the group stage matches are complete it will start the next stage of matches.
-        // then simulates the knockout stage matches.
+        // Simulates group stage matches first.
+        // Once group stage is complete, starts knockout stage.
         if (!isGroupStageFinished()) {
             Match match = groupMatches.get(groupMatchIndex);
             match.simulate();
@@ -184,6 +157,7 @@ public class WorldCupTournament {
             return match;
         }
 
+        // Simulates knockout stage matches.
         Match match = knockoutMatches.get(knockoutMatchIndex);
         match.simulate();
 
@@ -248,12 +222,12 @@ public class WorldCupTournament {
         return Integer.compare(team1.getRanking(), team2.getRanking());
     }
 
-    // when there is a winner, it will return 'true'.
+    // when there is a winner, it will return true
     public boolean isFinished() {
         return champion != null;
     }
 
-    // returns 'true' when the group stage matches are all complete.
+    // returns true when the group stage matches are all complete
     public boolean isGroupStageFinished() {
         return groupMatchIndex >= groupMatches.size();
     }
