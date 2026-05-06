@@ -9,7 +9,6 @@ import javafx.scene.layout.GridPane;
     Controller for group-stage.fxml
 */
 public class GroupPhaseController extends BaseController {
-
     @FXML private GridPane buttonGrid;
     private static int groupInFocus;
 
