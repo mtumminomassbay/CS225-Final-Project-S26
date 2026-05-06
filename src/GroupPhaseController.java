@@ -9,27 +9,7 @@ import javafx.scene.layout.GridPane;
     Controller for group-stage.fxml
 */
 public class GroupPhaseController extends BaseController {
-    @FXML private ComboBox<String> groupComboBox;
-
-    @FXML private TableView<GroupResults> standingsTable;
-    @FXML private TableColumn<GroupResults, String> teamColumn;
-    @FXML private TableColumn<GroupResults, Integer> rankingColumn;
-    @FXML private TableColumn<GroupResults, Integer> winsColumn;
-    @FXML private TableColumn<GroupResults, Integer> tiesColumn;
-    @FXML private TableColumn<GroupResults, Integer> lossesColumn;
-    @FXML private TableColumn<GroupResults, Integer> goalsForColumn;
-    @FXML private TableColumn<GroupResults, Integer> goalsAgainstColumn;
-    @FXML private TableColumn<GroupResults, Integer> goalDifferenceColumn;
-    @FXML private TableColumn<GroupResults, Integer> pointsColumn;
-
-    @FXML private ListView<String> matchListView;
-    @FXML private TextArea summaryText;
-
-    @FXML private Button simulateButton;
-    @FXML private Button backButton;
-
-    private GroupStage groupStage;
-
+    
     @FXML private GridPane buttonGrid;
     private static int groupInFocus;
 
