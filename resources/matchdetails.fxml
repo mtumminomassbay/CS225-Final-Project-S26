@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="644.0" style="-fx-background-color: #0d3d2b; -fx-border-color: gold;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchDetailsController">
+   <children>
+      <VBox alignment="CENTER" layoutX="60.0" layoutY="10.0" prefHeight="495.0" prefWidth="644.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="roundLabel" alignment="CENTER" style="-fx-text-fill: #00e676; -fx-font-weight: bold;" text="Group Stage">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateTimeLabel" style="-fx-text-fill: #aaaaaa;" text=" June 11, 2026  |  2:00 PM">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0a2e1f; -fx-background-radius: 16; -fx-border-color: #00e676; -fx-border-radius: 16; -fx-border-width: 1.5;">
+               <padding>
+                  <Insets bottom="24.0" left="32.0" right="32.0" top="24.0" />
+               </padding>
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="160.0" spacing="6.0">
+                     <children>
+                        <Label fx:id="teamANameLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="Brazil">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="2.0" prefWidth="28.0" style="-fx-text-fill: #00e676; -fx-font-weight: bold;" text="Home">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="140.0" spacing="4.0">
+                     <children>
+                        <Label fx:id="scoreLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="2-1">
+                           <font>
+                              <Font size="42.0" />
+                           </font>
+                        </Label>
+                        <Label style="-fx-text-fill: #f5a623; -fx-font-weight: bold;" text="FULL TIME" textFill="#f5a623">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="160.0" spacing="6.0">
+                     <children>
+                        <Label fx:id="teamBNameLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="Argentina">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label style="-fx-text-fill: #f5a623; -fx-font-weight: bold;" text="Away">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Label fx:id="winnerLabel" style="-fx-background-color: #f5a623; -fx-text-fill: #0d3d2b; -fx-font-weight: bold; -fx-background-radius: 8;" text="Winner : Brazil">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="6.0" left="20.0" right="20.0" top="6.0" />
+               </padding>
+            </Label>
+            <Separator prefWidth="200.0" style="-fx-background-color: #1a6b45;" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0a2e1f; -fx-background-radius: 10; -fx-border-color: #00e676; -fx-border-radius: 10; -fx-border-width: 1;">
+               <padding>
+                  <Insets bottom="14.0" left="20.0" right="20.0" top="14.0" />
+               </padding>
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="120.0" spacing="4.0">
+                     <children>
+                        <Label style="-fx-text-fill: #00e676; -fx-font-weight: bold;" text="1st Half">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="firstHalfLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="1-0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="40.0" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="120.0" spacing="4.0">
+                     <children>
+                        <Label style="-fx-text-fill: #00e676; -fx-font-weight: bold;" text="2nd Half">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="secondHalfLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="1-1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="40.0" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="120.0" spacing="4.0">
+                     <children>
+                        <Label style="-fx-text-fill: #f5a623; -fx-font-weight: bold;" text="OT">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="extraTimeLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="--">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="40.0" />
+                  <VBox fx:id="penaltiesBox" alignment="CENTER" prefHeight="200.0" prefWidth="120.0">
+                     <children>
+                        <Label style="-fx-text-fill: #f5a623;; -fx-font-weight: bold;" text="PK">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="penaltiesLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="- -">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <VBox alignment="CENTER" prefHeight="125.0" prefWidth="644.0" spacing="2.0">
+               <children>
+                  <Label style="-fx-text-fill: #f5a623; -fx-font-weight: bold;" text="Venue" />
+                  <Label fx:id="venueLabel" style="-fx-text-fill: #cccccc;; -fx-font-weight: bold;" text="Gillete Stadium - Foxborough,MA,USA " />
+               </children>
+            </VBox>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton_clicked" style="-fx-background-color: transparent; -fx-text-fill: #00e676;" text="Back">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
