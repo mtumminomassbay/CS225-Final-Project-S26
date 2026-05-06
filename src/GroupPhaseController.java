@@ -26,7 +26,7 @@ public class GroupPhaseController extends BaseController{
         }
     }
 
-    public void addGroupButton(int x, int y) {
+    private void addGroupButton(int x, int y) {
         try {
             FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("GroupButton.fxml")
