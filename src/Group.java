@@ -55,8 +55,8 @@ public class Group
         return teams;
     }
 
-    public Map<Team, GroupResults> getGroupResults() {
-        return groupResults;
+    public GroupResults getGroupResults(Team team) {
+        return groupResults.get(team);
     }
 
 
