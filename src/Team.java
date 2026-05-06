@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-/**
- * @author Jonathan(soon to be Tristen)
- */
-
-/**
- * Tristan had implemented this already since he handled the json serialization. This file will be replaced by his.
- */
-
-public class Team {
-    public Team() {
-
-=======
 import java.util.Objects;
 
 public class Team {
@@ -48,6 +35,5 @@ public class Team {
     @Override
     public int hashCode() {
         return Objects.hash(name, ranking, region);
->>>>>>> 9b7f746aa13faee1da645a8c0a618452e70535f7
     }
 }

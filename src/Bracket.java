@@ -3,14 +3,14 @@ import java.util.List;
 
 public class Bracket {
     private List<Team> teams;
-    private BracketBranch bracketRoot;
+    private BracketBranch bracketRoot; // Final Match is the root of the bracket tree
     private Match thirdPlace;
 
 
     public Bracket(List<Team> teams) {
-        this.teams = getTeamsSorted(teams);
-        this.bracketRoot = buildBracket(this.teams);
-        this.thirdPlace = null;
+        this.teams = getTeamsSorted(teams);  // seed teams 
+        this.bracketRoot = buildBracket(this.teams); // build the bracket from seeded list
+        this.thirdPlace = null; // no third place match untill semifinals have been completed
     }
 
     private BracketBranch buildBracket(List<Team> seededTeams) {
@@ -33,15 +33,15 @@ public class Bracket {
     public List<Team> getTeamsSorted(List<Team> qualifiedTeams) {
         List<Team> sorted = new ArrayList<>();
         for (int i = 0; i < qualifiedTeams.size(); i += 4) {
-            Team groupAWinner = qualifiedTeams.get(i);
-            Team groupARunnerUp = qualifiedTeams.get(i + 1);
-            Team groupBWinner = qualifiedTeams.get(i + 2);
-            Team groupBRunnerUp = qualifiedTeams.get(i + 3);
+            Team group1Winner = qualifiedTeams.get(i);
+            Team group1RunnerUp = qualifiedTeams.get(i + 1);
+            Team group2Winner = qualifiedTeams.get(i + 2);
+            Team group2RunnerUp = qualifiedTeams.get(i + 3);
 
-            sorted.add(groupAWinner);
-            sorted.add(groupBRunnerUp);
-            sorted.add(groupBWinner);
-            sorted.add(groupARunnerUp);
+            sorted.add(group1Winner);
+            sorted.add(group1RunnerUp);
+            sorted.add(group2Winner);
+            sorted.add(group2RunnerUp);
         }
         return sorted;
     }
