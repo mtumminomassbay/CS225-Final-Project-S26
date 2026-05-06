@@ -2,21 +2,27 @@ import java.util.List;
 
 public class BracketTester {
     public static void main(String[] args) {
+        // Load teams and simulate group stage to get proper 32 advancing teams
         TeamParser parser = new TeamParser();
-        List<Team> teams = parser.getTeams();
+        GroupStage groupStage = new GroupStage(parser.getTeams());
+        groupStage.simulateGroupStage();
 
-        teams = teams.subList(0, 32);
-        Bracket bracket = new Bracket(teams);
+        List<Team> advancing = groupStage.getAdvancingTeams();
+        System.out.println("Advancing teams: " + advancing.size());
 
+        Bracket bracket = new Bracket(advancing);
+
+        // Simulate one match at a time
         while (!bracket.isFinished()) {
-            System.out.println(bracket.simulateOneMatch().toString());
+            Match match = bracket.simulateOneMatch();
+            if (match != null) {
+                System.out.println(match);
+            }
         }
 
-        System.out.println("-----");
-        for (Match match : bracket.getMatches()) {
-            System.out.println(match.toString());
-        }
-
-        System.out.println("\n\n");
+        // Print final results
+        System.out.println("\n--- RESULTS ---");
+        System.out.println("3rd Place: " + bracket.getThirdPlace().getWinner().getName());
+        System.out.println("Champion:  " + bracket.getFinal().getWinner().getName());
     }
 }
