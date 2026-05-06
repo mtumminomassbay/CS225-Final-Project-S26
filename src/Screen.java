@@ -23,7 +23,7 @@ public enum Screen {
     GROUP_STAGE ("group-stage.fxml", "Group Stage"),
     KNOCKOUT ("knockout.fxml", "Knockout Rounds"),
     MATCH_DETAILS ("match-details.fxml", "Match Details"),
-    TEAM_INFO ("team-info.fxml", "Team Info");
+    TEAM_INFO ("TeamInfoView.fxml", "Team Info");
 
     private String fxmlFile;
     private String displayName;
