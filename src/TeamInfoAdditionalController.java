@@ -8,21 +8,20 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.scene.text.Font;
+import javafx.scene.control.Label;
 
 public class TeamInfoAdditionalController extends BaseController {
     
     //ATTRIBUTES
     @FXML
-    private Text countryNameAdditional;
+    private Label countryNameAdditional;
     
     @FXML
     private Text rankNumber;
 
     @FXML
-    private Text recordWins;
-
-    @FXML
-    private Text recordLosses;
+    private Text record;
 
     @FXML
     private Text stadiumName;
@@ -30,15 +29,19 @@ public class TeamInfoAdditionalController extends BaseController {
     @FXML
     private Text coachName;
 
-    @FXML
-    private TableView roster;
+    // @FXML
+    // private TableView roster;  //Future project to display roster in additional info
 
     @FXML
-    private ImageView flagImage;
+    private ImageView flagImageView;
+
+    private Image flagImage;
 
     private int wins;
 
     private int losses;
+
+    private int ties;
 
     //INITIALIZE
     @Override
@@ -46,30 +49,31 @@ public class TeamInfoAdditionalController extends BaseController {
 
     //METHODS
 
-    //2 methods to update records
-    //accumulated wins
-    public void addWin() {
-        wins++;
-        recordWins.setText(Integer.toString(wins));
-    }
-    //accumulated losses
-    public void addLoss() {
-        losses++;
-        recordLosses.setText(Integer.toString(losses));
+    //All methods to update record
+    public void updateRecord() {
+        record.setText(String.valueOf(wins) + " - " + String.valueOf(ties) + " - " + String.valueOf(losses));
     }
 
+    public void addWin() {wins++;}
+    public void addLoss() {losses++;}
+    public void addTie() {ties++;}
+
     //GETTERS
-    public TableView getRoster() {
-        return roster;
-    }
+    // public TableView getRoster() {return roster;}
+    public ImageView getFlag() {return flagImageView;}
 
     //SETTERS
     public void setCountryName(String country) {
+        if (country.length() >= 20) {
+            countryNameAdditional.setFont(new Font(15));
+            countryNameAdditional.setStyle("-fx-font-weight: bold;");
+        }
+
         countryNameAdditional.setText(country);
     }
 
     public void setFlagImage(Image flag) {
-        flagImage.setImage(flag);
+        flagImageView.setImage(flag);
     }
 
     public void setRank(String rank) {
@@ -77,6 +81,9 @@ public class TeamInfoAdditionalController extends BaseController {
     }
 
     public void setStadiumName(String name) {
+        if (name.length() >= 30) {
+            stadiumName.setFont(new Font(10));
+        }
         stadiumName.setText(name);
     }
 
@@ -84,7 +91,7 @@ public class TeamInfoAdditionalController extends BaseController {
         coachName.setText(name);
     }
 
-    public void setRoster(TableView roster) {
-        this.roster = roster;
-    }
+    // public void setRoster(TableView roster) {
+    //     this.roster = roster;
+    // }
 }
