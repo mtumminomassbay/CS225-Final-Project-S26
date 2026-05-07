@@ -163,7 +163,4 @@ public class Match {
     public boolean isTied() {
         return getFirstTeamScore() == getSecondTeamScore();
     }
-    public void simulate() {
-
-    }
 }
