@@ -31,9 +31,9 @@ public class Group
                 Team second = teams.get(i + 1);
 
 
-                Match match = new Match(first, second, false);
-                match.simulate();
-                matches.add(match);
+                Match match1 = new Match(first, second, true);
+                match1.simulate();
+                matches.add(match1);
 
             }
         }
