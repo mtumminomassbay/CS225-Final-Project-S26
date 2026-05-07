@@ -7,7 +7,7 @@ public class GroupStage {
     private static final int GROUP_COUNT = 12;
     private static final int TEAMS_PER_GROUP = 4;
     private static final int TOTAL_GROUP_STAGE_TEAMS = GROUP_COUNT * TEAMS_PER_GROUP;
-    private static final int ADVANCING_PER_GROUP = 2;
+    private static final int ADVANCING_PER_GROUP = 3;
 
     private List<Team> teams;
     private List<Group> groups;
