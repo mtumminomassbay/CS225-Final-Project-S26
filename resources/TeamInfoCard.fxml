@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -12,12 +14,12 @@
    <children>
       <Pane fx:id="backgroundPane" prefHeight="89.0" prefWidth="191.0" style="-fx-background-color: lightblue;">
          <children>
-            <Label fx:id="countryName" layoutX="13.0" layoutY="29.0" prefHeight="54.0" prefWidth="166.0" text="Country Name">
+            <Label fx:id="countryName" layoutX="13.0" layoutY="29.0" prefHeight="54.0" prefWidth="166.0" text="Country Name" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ImageView fx:id="flagImage" fitHeight="19.0" fitWidth="37.0" layoutX="146.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="flagImageView" fitHeight="19.0" fitWidth="37.0" layoutX="146.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@flags/test%20flag.png" />
                </image>
@@ -26,26 +28,43 @@
       </Pane>
       <Pane layoutY="89.0" prefHeight="67.0" prefWidth="191.0" style="-fx-background-color: white;">
          <children>
-            <Text fx:id="GROUP_STAGE_TEXT" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stage">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <Text fx:id="groupAssignment" layoutX="94.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="current group" wrappingWidth="88.3134765625">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <Text fx:id="CONFEDERATION_TEXT" layoutX="13.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confederation">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <Text fx:id="confederationName" layoutX="141.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
+            <VBox prefHeight="67.0" prefWidth="103.0">
+               <children>
+                  <Text fx:id="GROUP_STAGE_TEXT" strokeType="OUTSIDE" strokeWidth="0.0" text="Stage">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="13.0" left="8.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="CONFEDERATION_TEXT" strokeType="OUTSIDE" strokeWidth="0.0" text="Confederation">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="8.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="94.0" prefHeight="75.0" prefWidth="97.0">
+               <children>
+                  <Text fx:id="groupAssignment" strokeType="OUTSIDE" strokeWidth="0.0" text="group Z" wrappingWidth="51.64679718017578">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="13.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="confederationName" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
          </children>
       </Pane>
    </children>

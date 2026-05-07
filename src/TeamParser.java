@@ -1,11 +1,9 @@
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.scene.image.Image;
-
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class TeamParser {
     private ArrayList<Team> teams;
@@ -38,8 +36,9 @@ public class TeamParser {
                 String headCoach = n.get("headCoach").asText();
                 System.out.println(n.get("flagPath").asText());
                 String flagPath = n.get("flagPath").asText();
+                String color = n.get("color").asText();
 
-                Team team = new Team(name,ranking,region,code,iso2,homeStadium,headCoach,flagPath);
+                Team team = new Team(name,ranking,region,code,iso2,homeStadium,headCoach,flagPath,color);
                 teams.add(team);
             }
         } catch (Exception e) {

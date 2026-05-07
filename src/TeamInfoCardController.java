@@ -20,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
@@ -36,7 +37,7 @@ public class TeamInfoCardController extends BaseController {
     private Label countryName;
 
     @FXML
-    private ImageView flagImage;
+    private ImageView flagImageView;
 
     @FXML
     private AnchorPane cardPane;
@@ -44,19 +45,17 @@ public class TeamInfoCardController extends BaseController {
     @FXML
     private Pane backgroundPane;
 
-    private TeamInfoAdditionalController additionalInfo; //Additional team info object to update 
+    private Team team;          //Team object for each individual card
 
     //INITIALIZE
     @Override
     protected void onLoad() {
         try {
             FXMLLoader loader = new FXMLLoader(
-            getClass().getResource("/TeamInfoAdditional.fxml")
+                getClass().getResource("/TeamInfoAdditional.fxml")
             );
 
             loader.load();
-
-            additionalInfo = loader.getController();
             
         } catch (Exception e) {
             System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
@@ -75,7 +74,14 @@ public class TeamInfoCardController extends BaseController {
 
             VBox root = loader.load();
 
-            additionalInfo = loader.getController();
+            TeamInfoAdditionalController add_info_controller = loader.getController();
+            
+            //Add team info into additional controller class
+            add_info_controller.setCountryName(team.getName());
+            add_info_controller.setFlagImage(new Image(team.getFlagPath()));
+            add_info_controller.setRank(team.getRanking());
+            add_info_controller.setStadiumName(team.getHomeStadium());
+            add_info_controller.setCoach(team.getHeadCoach());
 
             //Create a new window
             Stage stage = new Stage();
@@ -89,36 +95,38 @@ public class TeamInfoCardController extends BaseController {
     }
 
     //GETTERS
-    public TeamInfoAdditionalController getAdditionalInfo() {
-        return additionalInfo;
-    }
-
-    public String getCountryName() {
-        return countryName.getText();
-    }
+    public ImageView getFlag() {return flagImageView;}
+    public String getCountryName() {return countryName.getText();}
 
     //SETTERS
-    public void setCountry(String name) {
-        countryName.setText(name);       //Set country name for both Team Card and additional window
-        additionalInfo.setCountryName(name);
+    public void setTeam(Team team) {
+        this.team = team;
+
+        if (team.getName().length() >= 20) {
+            countryName.setFont(new Font(15));
+        }
+
+        countryName.setText(team.getName());
+        confederationName.setText(team.getRegion());
+        flagImageView.setImage(new Image(team.getFlagPath()));
+
+        setBackgroundColor(team.getColor());
+    }
+
+    public void setCountryName(String name) {
+        countryName.setText(name);           //Set country name for both Team Card and additional window
     }
     public void setFlagImage(Image flag) {
-        flagImage.setImage(flag);        //Set flag image for both Team Card and additional window
-        additionalInfo.setFlagImage(flag);
+        flagImageView.setImage(flag);        //Set flag image for both Team Card and additional window
     }
 
-    public void setBackgroundColor(Color color) {
-        backgroundPane.setBackground(    //Set background color for team cards
-            new Background( 
-                new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)
-            ));
-    }
-
-    public void setGroupAssignment(String group) {
-        groupAssignment.setText(group);
-    }
-
-    public void setConfederation(String confedName) {
-        confederationName.setText(confedName);
+    public void setBackgroundColor(String color) {
+        String country = team.getName();
+        if ( //Change Text color to white for darker backgrounds (Could be improved)
+            country.equals("England")
+        ) {   //Change color of text with dark backgrounds
+            countryName.setTextFill(Color.BLACK);
+        }
+        backgroundPane.setStyle("-fx-background-color: " + color + ";");
     }
 }

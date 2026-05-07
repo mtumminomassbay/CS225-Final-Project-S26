@@ -1,5 +1,3 @@
-import javafx.scene.image.Image;
-
 import java.util.Objects;
 
 public class Team {
@@ -11,8 +9,9 @@ public class Team {
     private final String homeStadium;
     private final String headCoach;
     private final String flagPath;
+    private final String color;
 
-    public Team(String team, int ranking, String region, String code, String iso2, String homeStadium, String headCoach, String flagPath) {
+    public Team(String team, int ranking, String region, String code, String iso2, String homeStadium, String headCoach, String flagPath, String color) {
         this.name = team;
         this.ranking = ranking;
         this.region = region;
@@ -21,16 +20,18 @@ public class Team {
         this.homeStadium = homeStadium;
         this.headCoach = headCoach;
         this.flagPath = flagPath;
+        this.color = color;
     }
 
     public String getName() {return name;}
-    public int getRanking() {return ranking;}
+    public String getRanking() {return String.valueOf(ranking);}
     public String getRegion() {return region;}
     public String getCode() {return code;}
     public String getIso2() {return iso2;}
     public String getHomeStadium() {return homeStadium;}
     public String getHeadCoach() {return headCoach;}
     public String getFlagPath() {return flagPath;}
+    public String getColor() {return color;}
 
 
     @Override
@@ -44,6 +45,7 @@ public class Team {
                 ", homeStadium='" + homeStadium + '\'' +
                 ", headCoach='" + headCoach + '\'' +
                 ", flagPath=" + flagPath +
+                ", color=" + color +
                 '}';
     }
 
