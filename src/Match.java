@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * The Match class represents one soccer game between two teams.
  *
@@ -24,8 +26,27 @@ public class Match {
     private PenaltyShootout penalties;
 
     /**
-     * Creates a match between two teams.
-     *
+     * Default seed used for reproducible simulation
+     * This value can be changed by calling setSimulationSeed()
+     */
+    private static final long DEFAULT_SEED = 2026L;
+
+    /**
+     * One shared Random object is used for all matches
+     * This helps the full tournament stay reproducible
+     */
+    private static Random random = new Random(DEFAULT_SEED);
+
+    /**
+     * Sets the seed used for match simulation
+     * @param seed the seed value used for reproducible random results
+     */
+    public static void setSimulationSeed(long seed) {
+        random = new Random(seed);
+    }
+
+    /**
+     * Creates a match between two teams
      * @param team1 the first team in the match
      * @param team2 the second team in the match
      * @param allowTies true if the match can end tied, false for knockout
@@ -46,14 +67,20 @@ public class Match {
 
     /**
      * Simulates the match
-     *
-     * Uses placeholder results through MatchSection
-     * Can be randomized later
+     * Regulation is simulated first
+     * If ties are allowed, the match can end after regulation
+     * If ties are not allowed, the match goes to overtime if tied
+     * If still tied after overtime, the match goes to penalties
      */
     public void simulate() {
-        // Simulate the two regulation halves
-        firstHalf.simulate();
-        secondHalf.simulate();
+        // Prevent the same match from being simulated more than once
+        if (isFinished()) {
+            return;
+        }
+
+        // Simulate the two regulation halves using the shared seeded Random
+        firstHalf.simulate(random);
+        secondHalf.simulate(random);
 
         // If ties are allowed, the match can end after regulation
         if (allowTies) {
@@ -64,14 +91,14 @@ public class Match {
         // the match must go into overtime first
         if (isTied()) {
             overtime = new MatchSection(team1, team2, 30);
-            overtime.simulate();
+            overtime.simulate(random);
         }
 
-        // if the match is still tied after overtime,
+        // If the match is still tied after overtime,
         // then it must be decided by penalty kicks
         if (isTied()) {
             penalties = new PenaltyShootout(team1, team2);
-            penalties.simulate();
+            penalties.simulate(random);
         }
     }
 
@@ -137,7 +164,6 @@ public class Match {
 
     /**
      * Returns the winner of the match
-     *
      * If the match is tied and ties are allowed, there is no winner,
      * so this method returns null
      */

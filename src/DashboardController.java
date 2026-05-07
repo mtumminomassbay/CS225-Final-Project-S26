@@ -36,5 +36,4 @@ public class DashboardController extends BaseController{
     private void MatchDetailsButton_clicked() {
         navigateTo(Screen.MATCH_DETAILS);
     }
-
 }
