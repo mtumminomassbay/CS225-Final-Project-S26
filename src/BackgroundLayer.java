@@ -21,4 +21,8 @@ public class BackgroundLayer {
         Navigator.getInstance().navigateTo(Screen.DASHBOARD);
     }
     
+    @FXML
+    private void home() {
+        Navigator.getInstance().navigateTo(Screen.DASHBOARD);
+    }
 }
