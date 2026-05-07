@@ -3,11 +3,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DashboardController">
-   <children>
-      <Button fx:id="GroupStage_Button" layoutX="478.0" layoutY="100.0" mnemonicParsing="false" onAction="#GroupStageButton_clicked" text="Group Stage" AnchorPane.rightAnchor="39.5" AnchorPane.topAnchor="30.0" />
-      <Label alignment="CENTER" layoutY="83.0" prefHeight="17.0" prefWidth="600.0" text="Dashboard" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
-      <Button fx:id="KnockoutPhase_Button" layoutX="469.0" layoutY="135.0" mnemonicParsing="false" onAction="#KnockoutPhaseButton_clicked" text="Knockout Phase" AnchorPane.rightAnchor="39.5" AnchorPane.topAnchor="65.0" />
-   </children>
+<AnchorPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DashboardController">
+    <children>
+        <Label layoutX="80.0" layoutY="14.0" text="FIFA World Cup 2026">
+            <font>
+                <Font size="47.0" />
+            </font>
+        </Label>
+        <Label layoutX="271.0" layoutY="83.0" text="Dashboard" />
+        <Label layoutX="50.0" layoutY="130.0" text="Tournament Status" style="-fx-font-size: 16; -fx-font-weight: bold;" />
+        <Label fx:id="statusLabel" layoutX="50.0" layoutY="160.0" text="Status: Not Started" />
+        <Label fx:id="currentStageLabel" layoutX="50.0" layoutY="185.0" text="Current Stage: Group Stage" />
+        <Label fx:id="groupsCompletedLabel" layoutX="50.0" layoutY="210.0" text="Groups Completed: 0/8" />
+        <Label layoutX="400.0" layoutY="130.0" text="Navigation" style="-fx-font-size: 16; -fx-font-weight: bold;" />
+        <Button fx:id="GroupStage_Button" layoutX="400.0" layoutY="160.0" mnemonicParsing="false" onAction="#GroupStageButton_clicked" text="Group Stage" prefWidth="150.0" />
+        <Button fx:id="KnockoutPhase_Button" layoutX="400.0" layoutY="195.0" mnemonicParsing="false" onAction="#KnockoutPhaseButton_clicked" text="Knockout Rounds" prefWidth="150.0" />
+        <Button fx:id="TeamInfo_Button" layoutX="400.0" layoutY="230.0" mnemonicParsing="false" onAction="#TeamInfoButton_clicked" text="Team Info" prefWidth="150.0" />
+        <Button fx:id="MatchDetails_Button" layoutX="400.0" layoutY="265.0" mnemonicParsing="false" onAction="#MatchDetailsButton_clicked" text="Match Details" prefWidth="150.0" />
+    </children>
 </AnchorPane>

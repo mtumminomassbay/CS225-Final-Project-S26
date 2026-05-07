@@ -24,7 +24,7 @@ public enum Screen {
     SINGLE_GROUP ("single-group.fxml", "Single Group"),
     KNOCKOUT ("knockout.fxml", "Knockout Rounds"),
     MATCH_DETAILS ("matchdetails.fxml", "Match Details"),
-    TEAM_INFO ("team-info.fxml", "Team Info");
+    TEAM_INFO ("TeamInfoView.fxml", "Team Info");
 
     private String fxmlFile;
     private String displayName;
