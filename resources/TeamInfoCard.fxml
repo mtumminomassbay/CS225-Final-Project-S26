@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="cardPane" onMousePressed="#cardClicked" prefHeight="156.0" prefWidth="190.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TeamInfoCardController">
+   <children>
+      <Pane fx:id="backgroundPane" prefHeight="89.0" prefWidth="191.0" style="-fx-background-color: lightblue;">
+         <children>
+            <Label fx:id="countryName" layoutX="13.0" layoutY="29.0" prefHeight="54.0" prefWidth="166.0" text="Country Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="flagImage" fitHeight="19.0" fitWidth="37.0" layoutX="146.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@flags/test%20flag.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="89.0" prefHeight="67.0" prefWidth="191.0" style="-fx-background-color: white;">
+         <children>
+            <Text fx:id="GROUP_STAGE_TEXT" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stage">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="groupAssignment" layoutX="94.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="current group" wrappingWidth="88.3134765625">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="CONFEDERATION_TEXT" layoutX="13.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confederation">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="confederationName" layoutX="141.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
