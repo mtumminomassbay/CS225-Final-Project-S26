@@ -1,10 +1,13 @@
 /*
     Controller for knockout.fxml
 */
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 import javafx.fxml.FXML;
 
 public class KnockoutPhaseController extends BaseController{
+    private Button Dashboard_button;
 
     @FXML private SimulationController simulationControlsController;
 
@@ -16,4 +19,9 @@ public class KnockoutPhaseController extends BaseController{
         simulationControlsController.configureForKnockoutStage(bracketReady);
     }
     
+
+    @FXML
+    private void Dashboard_button_clicked() {
+        navigateTo(Screen.DASHBOARD);
+    }
 }

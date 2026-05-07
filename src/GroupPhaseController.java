@@ -1,10 +1,19 @@
+import java.io.IOException;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.layout.GridPane;
 
 /*
     Controller for group-stage.fxml
 */
+public class GroupPhaseController extends BaseController {
 
+    @FXML private GridPane buttonGrid;
+    private static int groupInFocus;
+
+<<<<<<< Gabe-FrontEnd
 public class GroupPhaseController extends BaseController{
 
     @FXML private Button group1;
@@ -23,31 +32,62 @@ public class GroupPhaseController extends BaseController{
 
     // 0 means no group has been selected yet.
     private int selectedGroupNumber = 0;
+=======
+    public GroupPhaseController() {
+    }
+>>>>>>> main
 
     @Override
     protected void onLoad(){
-        group1.setOnAction(e -> showGroup(1));
-        group2.setOnAction(e -> showGroup(2));
-        group3.setOnAction(e -> showGroup(3));
-        group4.setOnAction(e -> showGroup(4));
-        group5.setOnAction(e -> showGroup(5));
-        group6.setOnAction(e -> showGroup(6));
-        group7.setOnAction(e -> showGroup(7));
-        group8.setOnAction(e -> showGroup(8));
-        group9.setOnAction(e -> showGroup(9));
-        group10.setOnAction(e -> showGroup(10));
-        group11.setOnAction(e -> showGroup(11));
-        group12.setOnAction(e -> showGroup(12));
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 0; j < 3; ++j) {
+                addGroupButton(i, j);
+            }
+        }
+    }
 
+    private void addGroupButton(int x, int y) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("GroupButton.fxml")
+            );
+            
+            Node buttonNode = loader.load();
+
+<<<<<<< Gabe-FrontEnd
         // Start with no group selected, so group-specific buttons stay disabled.
         simulationControlsController.configureForGroupStage(selectedGroupNumber);
+=======
+
+            buttonGrid.add(buttonNode, x, y);
+
+            // FIXME
+            //
+            // TeamInfoCardController card = loader.getController();
+
+            // listTeamCards.add(card);                      //Add team in array list
+            
+            // cardContainer.getChildren().add(cardNode);    //<--- MAYBE MOVE TO DIFFERENT METHOD (Load card to Team View Menu)
+        } catch (IOException e) {
+            System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
+        }
+>>>>>>> main
     }
     
     @FXML
     private void showGroup(int i) {
+<<<<<<< Gabe-FrontEnd
         selectedGroupNumber = i;
         simulationControlsController.configureForGroupStage(selectedGroupNumber);
         System.out.println("Selected Group " + i);
         //TODO: open single group view for corresponding group
+=======
+        groupInFocus = i;
+        navigateTo(Screen.SINGLE_GROUP);
+    }
+
+    public static int getGroupInFocus() {
+        return groupInFocus;
+>>>>>>> main
     }
 }
