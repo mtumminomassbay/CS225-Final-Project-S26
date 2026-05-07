@@ -15,7 +15,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GroupPhaseController">
    <children>
+<<<<<<< Gabe-FrontEnd
+      <GridPane prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
+=======
       <GridPane fx:id="buttonGrid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="0.0">
+>>>>>>> main
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" />
           <ColumnConstraints hgrow="SOMETIMES" />
@@ -34,6 +38,11 @@
             <Label prefWidth="150.0" text="Label" />
             <Label prefWidth="150.0" text="Label" />
          </children>
+<<<<<<< Gabe-FrontEnd
+      </GridPane>
+      <fx:include fx:id="simulationControls" source="simulation-controls.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+=======
       </VBox>
+>>>>>>> main
    </children>
 </AnchorPane>
