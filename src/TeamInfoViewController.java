@@ -10,8 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Color;
-import javafx.scene.image.Image;
 
 public class TeamInfoViewController extends BaseController {
 
@@ -21,17 +19,12 @@ public class TeamInfoViewController extends BaseController {
 
     private ArrayList<TeamInfoCardController> listTeamCards = new ArrayList<>();
 
-    TeamParser parser = new TeamParser();
-    ArrayList<Team> teams = parser.getTeams();
-
     //INITIALIZE
     @Override
     protected void onLoad() {
-
-        //TEST: teams object
-
-        for (Team team: teams) {
-            addTeamCard(team);
+        // load cards
+        for (int i = 0; i < 48; i++) {
+            addTeamCard();
         }
 
         //TODO: a bit lost on how to sort the list alphabetically from an object
@@ -48,20 +41,19 @@ public class TeamInfoViewController extends BaseController {
     }
 
     //METHODS
-    public void addTeamCard(Team team) {
+    public void addTeamCard() {
         try {
             FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/TeamInfoCard.fxml")
+                getClass().getResource("TeamInfoCard.fxml")
             );
             
             Node cardNode = loader.load();
-        
+
             TeamInfoCardController card = loader.getController();
 
-            card.setTeam(team);                           //Set up team in each card
             listTeamCards.add(card);                      //Add team in array list
+            
             cardContainer.getChildren().add(cardNode);    //<--- MAYBE MOVE TO DIFFERENT METHOD (Load card to Team View Menu)
-
         } catch (IOException e) {
             System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
         }
@@ -69,7 +61,11 @@ public class TeamInfoViewController extends BaseController {
 
     //FIXME: add method to set up the team view if needed
 
-    public ArrayList<TeamInfoCardController> getTeamList() {return listTeamCards;}
+    public ArrayList<TeamInfoCardController> getTeamList() {
+        return listTeamCards;
+    }
 
-    public void setTeamList(ArrayList<TeamInfoCardController> list) {listTeamCards = list;}
+    public void setTeamList(ArrayList<TeamInfoCardController> list) {
+        listTeamCards = list;
+    }
 }
