@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 public class SingleGroupController extends BaseController {
 
     @FXML private VBox teamsList;
+    @FXML private Label groupLabel;
 
     @Override
     protected void onLoad() {
@@ -40,5 +41,7 @@ public class SingleGroupController extends BaseController {
         }
     }
 
-    
+    public void setGroupLabelText(String text) {
+        groupLabel.setText(text);
+    }
 }

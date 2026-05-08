@@ -26,7 +26,7 @@
             <Label text="Team 4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-insets: 1; -fx-border-color: black;" GridPane.columnSpan="2">
                <children>
-                  <Label text="Group X" />
+                  <Label fx:id="groupNameLabel" text="Group X" />
                </children>
             </StackPane>
          </children>

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Iterator;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,27 +11,32 @@ import javafx.scene.layout.GridPane;
 */
 public class GroupPhaseController extends BaseController {
     @FXML private GridPane buttonGrid;
-    private static int groupInFocus;
 
-    public GroupPhaseController() {
-    }
+    private static GroupStage groupStage;
 
     @Override
     protected void onLoad(){
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 3; ++j) {
-                addGroupButton(i, j);
+        if (groupStage == null) {
+            groupStage = new GroupStage(new TeamParser().getTeams());
+        }
+
+        Iterator<Group> groups = groupStage.getGroups().iterator();
+
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 4; ++j) {
+                addGroupButton(j, i, groups.next().getGroupName());
             }
         }
     }
 
-    private void addGroupButton(int x, int y) {
+    private void addGroupButton(int x, int y, String groupName) {
         try {
             FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("GroupButton.fxml")
             );
             
             Node buttonNode = loader.load();
+           ((GroupButtonController)loader.getController()).setGroupLabelText(groupName);
 
 
             buttonGrid.add(buttonNode, x, y);
@@ -48,12 +54,9 @@ public class GroupPhaseController extends BaseController {
     }
     
     @FXML
-    private void showGroup(int i) {
-        groupInFocus = i;
+    private void showGroup() {
         navigateTo(Screen.SINGLE_GROUP);
     }
 
-    public static int getGroupInFocus() {
-        return groupInFocus;
-    }
+
 }
