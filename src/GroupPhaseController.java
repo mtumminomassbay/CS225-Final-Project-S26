@@ -25,30 +25,21 @@ public class GroupPhaseController extends BaseController {
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 4; ++j) {
-                addGroupButton(j, i, groups.next().getGroupName());
+                addGroupButton(j, i, groups.next());
             }
         }
     }
 
-    private void addGroupButton(int x, int y, String groupName) {
+    private void addGroupButton(int x, int y, Group group) {
         try {
             FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("GroupButton.fxml")
             );
             
             Node buttonNode = loader.load();
-           ((GroupButtonController)loader.getController()).setGroupLabelText(groupName);
-
+           ((GroupButtonController)loader.getController()).setGroup(group);
 
             buttonGrid.add(buttonNode, x, y);
-
-            // FIXME
-            //
-            // TeamInfoCardController card = loader.getController();
-
-            // listTeamCards.add(card);                      //Add team in array list
-            
-            // cardContainer.getChildren().add(cardNode);    //<--- MAYBE MOVE TO DIFFERENT METHOD (Load card to Team View Menu)
         } catch (IOException e) {
             System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
         }
@@ -58,6 +49,4 @@ public class GroupPhaseController extends BaseController {
     private void showGroup() {
         navigateTo(Screen.SINGLE_GROUP);
     }
-
-
 }

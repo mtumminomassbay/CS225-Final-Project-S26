@@ -11,8 +11,12 @@ public class SingleGroupController extends BaseController {
     @FXML private VBox teamsList;
     @FXML private Label groupLabel;
 
+    private static Group currentGroup;
+
     @Override
     protected void onLoad() {
+        groupLabel.setText(currentGroup.getGroupName());
+        
         for (int i = 0; i < 4; ++i) {
             addTeamPane();
         }
@@ -41,7 +45,7 @@ public class SingleGroupController extends BaseController {
         }
     }
 
-    public void setGroupLabelText(String text) {
-        groupLabel.setText(text);
+    public static void setGroup(Group group) {
+        currentGroup = group;
     }
 }
