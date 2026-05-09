@@ -4,12 +4,11 @@
 //Additional information whenever a user clicks on the team
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
 import javafx.scene.text.Font;
-import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 public class TeamInfoAdditionalController extends BaseController {
     
@@ -35,8 +34,6 @@ public class TeamInfoAdditionalController extends BaseController {
     @FXML
     private ImageView flagImageView;
 
-    private Image flagImage;
-
     private int wins;
 
     private int losses;
@@ -54,9 +51,18 @@ public class TeamInfoAdditionalController extends BaseController {
         record.setText(String.valueOf(wins) + " - " + String.valueOf(ties) + " - " + String.valueOf(losses));
     }
 
-    public void addWin() {wins++;}
-    public void addLoss() {losses++;}
-    public void addTie() {ties++;}
+    public void addWin() {
+        wins++;
+        updateRecord();
+    }
+    public void addLoss() {
+        losses++;
+        updateRecord();
+    }
+    public void addTie() {
+        ties++;
+        updateRecord();
+    }
 
     //GETTERS
     // public TableView getRoster() {return roster;}
