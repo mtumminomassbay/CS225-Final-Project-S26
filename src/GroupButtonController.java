@@ -8,18 +8,22 @@ Controller for the buttons to access a single group view for a group
 public class GroupButtonController extends BaseController {
 
     @FXML private Label groupNameLabel;
+    
+    private Group group;
 
     @Override
     protected void onLoad() {
-
     }
 
     @FXML
     private void buttonClicked() {
+        SingleGroupController.setGroup(group);
         navigateTo(Screen.SINGLE_GROUP);
+        
     }
 
-    public void setGroupLabelText(String text) {
-        groupNameLabel.setText(text);
+    public void setGroup(Group group) {
+        this.group = group;
+        groupNameLabel.setText(group.getGroupName());
     }
 }
