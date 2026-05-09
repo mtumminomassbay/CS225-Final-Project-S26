@@ -1,234 +1,195 @@
-/* Author: Chris Rabanales */
-
+// Author: Chris Rabanales
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class WorldCupTournament {
 
-    private static final int THIRD_PLACE_ADVANCE = 8;
+    // Singleton instance
+    public static final WorldCupTournament instance = new WorldCupTournament();
 
-    private List<Group> groups;
+    // Stage names + status
+    private static final String GROUP_STAGE = "Group Stage";
+    private static final String KNOCKOUT_STAGE = "Knockout Stage";
+    private static final String COMPLETE = "Complete";
 
-    // group stage matches
-    private List<Match> groupMatches;
-    private List<Group> groupForMatch;
+    private GroupStage groupStage;
+    private Bracket bracket;
 
-    // knockout stage matches
-    private List<Match> knockoutMatches;
-    private List<Team> roundWinners;
-
-    // tracks the current match
-    private int groupMatchIndex;
-    private int knockoutMatchIndex;
-
+    private String currentStage;
     private Team champion;
 
-    // constructor:
-    public WorldCupTournament() {
-        this.groups = groups;
-
-        groupMatches = new ArrayList<>();
-        groupForMatch = new ArrayList<>();
-
-        knockoutMatches = new ArrayList<>();
-        roundWinners = new ArrayList<>();
-
-        groupMatchIndex = 0;
-        knockoutMatchIndex = 0;
-        champion = null;
-
-        createGroupMatches();
+    // Private constructor because this class is a singleton
+    private WorldCupTournament() {
+        resetTournament();
     }
 
-    // getter methods:
+    public static WorldCupTournament getInstance() {
+        return instance;
+    }
+
+    // Getter methods
+    public GroupStage getGroupStage() {
+        return groupStage;
+    }
+
+    public Bracket getBracket() {
+        return bracket;
+    }
+
+    public Bracket getKnockoutStage() {
+        return bracket;
+    }
+
+    public List<Group> getGroups() {
+        return groupStage.getGroups();
+    }
+
+    public List<Match> getGroupMatches() {
+        List<Match> matches = new ArrayList<>();
+
+        for (Group group : groupStage.getGroups()) {
+            matches.addAll(group.getMatches());
+        }
+
+        return matches;
+    }
+
+    public List<Match> getKnockoutMatches() {
+        if (bracket == null) {
+            return new ArrayList<>();
+        }
+
+        return bracket.getMatches();
+    }
+
     public Team getChampion() {
         return champion;
     }
 
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public List<Match> getGroupMatches() {
-        return groupMatches;
-    }
-
-    public List<Match> getKnockoutMatches() {
-        return knockoutMatches;
-    }
-
-    private int getTotalPoints(Team team) {
-        for (Group group : groups) {
-            if (group.getTeams().contains(team)) {
-                return getPoints(group, team);
-            }
+    public Team getChampionIfComplete() {
+        if (isTournamentComplete()) {
+            return champion;
         }
 
-        return 0;
+        return null;
     }
 
-    private int getPoints(Group group, Team team) {
-        int points = 0;
-
-        for (int i = 0; i < groupMatches.size(); i++) {
-            Match match = groupMatches.get(i);
-
-            if (groupForMatch.get(i) != group || !match.isFinished()) {
-                continue;
-            }
-
-            boolean teamPlayed =
-                    match.getFirstTeam().equals(team) ||
-                            match.getSecondTeam().equals(team);
-
-            if (!teamPlayed) {
-                continue;
-            }
-
-            if (match.isTied()) {
-                points += 1;
-            } else if (team.equals(match.getWinner())) {
-                points += 3;
-            }
-        }
-
-        return points;
+    public String getCurrentStage() {
+        return currentStage;
     }
 
-    private List<Team> getAdvancingTeams() {
-        List<Team> advancingTeams = new ArrayList<>();
-        List<Team> thirdPlaceTeams = new ArrayList<>();
-
-        for (Group group : groups) {
-            List<Team> sortedTeams = new ArrayList<>(group.getTeams());
-
-            sortedTeams.sort((team1, team2) -> compareTeams(group, team1, team2));
-
-            advancingTeams.add(sortedTeams.get(0));
-            advancingTeams.add(sortedTeams.get(1));
-            thirdPlaceTeams.add(sortedTeams.get(2));
+    public String getCurrentRound() {
+        if (currentStage.equals(GROUP_STAGE)) {
+            return "Group Stage";
         }
 
-        thirdPlaceTeams.sort(this::compareThirdPlaceTeams);
-
-        for (int i = 0; i < THIRD_PLACE_ADVANCE; i++) {
-            advancingTeams.add(thirdPlaceTeams.get(i));
+        if (currentStage.equals(COMPLETE)) {
+            return "Tournament Complete";
         }
 
-        advancingTeams.sort(Comparator.comparingInt(Team::getRanking));
-
-        return advancingTeams;
+        return "Knockout Stage";
+    }
+    // following methods check if certain aspects of the program are completed before moving on.
+    public boolean isGroupStageComplete() {
+        return groupStage.isSimulated();
     }
 
-    private void createGroupMatches() {
-        for (Group group : groups) {
-            List<Team> groupTeams = group.getTeams();
-
-            for (int i = 0; i < groupTeams.size(); i++) {
-                for (int j = i + 1; j < groupTeams.size(); j++) {
-                    Match match = new Match(groupTeams.get(i), groupTeams.get(j), true);
-
-                    groupMatches.add(match);
-                    groupForMatch.add(group);
-                }
-            }
-        }
+    public boolean isKnockoutBracketCreated() {
+        return bracket != null;
     }
 
-    // simulates the next match in the schedule
+    public boolean isTournamentComplete() {
+        return currentStage.equals(COMPLETE);
+    }
+
+    public boolean isFinished() {
+        return isTournamentComplete();
+    }
+
+    // Simulates the next available match
     public Match simulateOneMatch() {
-        if (champion != null) {
+        if (currentStage.equals(COMPLETE)) {
             return null;
         }
 
-        // Simulates group stage matches first.
-        // Once group stage is complete, starts knockout stage.
-        if (!isGroupStageFinished()) {
-            Match match = groupMatches.get(groupMatchIndex);
-            match.simulate();
-
-            groupMatchIndex++;
-
-            if (isGroupStageFinished()) {
-                startKnockoutStage();
-            }
-
-            return match;
+        if (currentStage.equals(GROUP_STAGE)) {
+            groupStage.simulateGroupStage();
+            createKnockoutStage();
+            return null;
         }
 
-        // Simulates knockout stage matches.
-        Match match = knockoutMatches.get(knockoutMatchIndex);
-        match.simulate();
+        Match match = bracket.simulateOneMatch();
 
-        roundWinners.add(match.getWinner());
-        knockoutMatchIndex++;
-
-        if (knockoutMatchIndex >= knockoutMatches.size()) {
-            if (roundWinners.size() == 1) {
-                champion = roundWinners.get(0);
-            } else {
-                createKnockoutRound(roundWinners);
-            }
+        if (bracket.isFinished()) {
+            champion = bracket.getFinal().getWinner();
+            currentStage = COMPLETE;
         }
 
         return match;
     }
 
-    private void startKnockoutStage() {
-        List<Team> advancingTeams = getAdvancingTeams();
-        createKnockoutRound(advancingTeams);
+    public Match simulateNextAvailableMatch() {
+        return simulateOneMatch();
     }
 
-    private void createKnockoutRound(List<Team> roundTeams) {
-        List<Team> teamsForRound = new ArrayList<>(roundTeams);
+    // Simulates the rest of the current round
+    public void simulateRemainingCurrentRound() {
+        if (currentStage.equals(COMPLETE)) {
+            return;
+        }
 
-        knockoutMatches.clear();
-        roundWinners.clear();
+        if (currentStage.equals(GROUP_STAGE)) {
+            groupStage.simulateGroupStage();
+            createKnockoutStage();
+            return;
+        }
 
-        knockoutMatchIndex = 0;
+        while (!bracket.isFinished()) {
+            bracket.simulateOneMatch();
+        }
 
-        for (int i = 0; i < teamsForRound.size() / 2; i++) {
-            Team team1 = teamsForRound.get(i);
-            Team team2 = teamsForRound.get(teamsForRound.size() - 1 - i);
+        champion = bracket.getFinal().getWinner();
+        currentStage = COMPLETE;
+    }
 
-            knockoutMatches.add(new Match(team1, team2, false));
+    // Simulates the rest of the tournament
+    public void simulateRestOfTournament() {
+        while (!isTournamentComplete()) {
+            simulateOneMatch();
         }
     }
 
-    private int compareTeams(Group group, Team team1, Team team2) {
-        int pointsCompare = Integer.compare(
-                getPoints(group, team2),
-                getPoints(group, team1)
-        );
+    // Creates the knockout bracket after the group stage
+    private void createKnockoutStage() {
+        List<Team> advancingTeams = groupStage.getAdvancingTeams();
 
-        if (pointsCompare != 0) {
-            return pointsCompare;
+        if (advancingTeams.size() != 32) {
+            throw new IllegalStateException
+                ("Bracket needs 32 teams, but GroupStage returned " 
+                 + advancingTeams.size());
         }
 
-        return Integer.compare(team1.getRanking(), team2.getRanking());
+        bracket = new Bracket(advancingTeams);
+        currentStage = KNOCKOUT_STAGE;
     }
 
-    private int compareThirdPlaceTeams(Team team1, Team team2) {
-        int pointsCompare = Integer.compare(
-                getTotalPoints(team2),
-                getTotalPoints(team1)
-        );
+    // The following methods reset the entire tournnament,
+    // the current group, and the current round.
+    public void resetTournament() {
+        TeamParser parser = new TeamParser();
 
-        if (pointsCompare != 0) {
-            return pointsCompare;
-        }
+        groupStage = new GroupStage(parser.getTeams());
+        bracket = null;
 
-        return Integer.compare(team1.getRanking(), team2.getRanking());
+        currentStage = GROUP_STAGE;
+        champion = null;
+    }
+    
+    public void resetCurrentGroup(int groupNumber) {
+        resetTournament();
     }
 
-    // when there is a winner, it will return true
-    public boolean isFinished() {
-        return champion != null;
-    }
-
-    // returns true when the group stage matches are all complete
-    public boolean isGroupStageFinished() {
-        return groupMatchIndex >= groupMatches.size();
+    public void resetCurrentRound() {
+        resetTournament();
     }
 }
