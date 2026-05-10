@@ -30,152 +30,152 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="230.0" minHeight="70.0" minWidth="230.0" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="17.0" layoutY="7.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="7.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="29.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="29.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="13.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="13.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="230.0" minHeight="70.0" minWidth="230.0" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="9.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="7.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="29.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="29.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="140.0" layoutY="14.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="13.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="230.0" minHeight="70.0" minWidth="230.0" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="7.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="29.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="13.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="230.0" minHeight="70.0" minWidth="230.0" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="7.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="29.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="13.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="230.0" minHeight="70.0" minWidth="230.0" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="7.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="29.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="13.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="230.0" minHeight="70.0" minWidth="230.0" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="7.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="29.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="13.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="230.0" minHeight="70.0" minWidth="230.0" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="7.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="29.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="13.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="230.0" minHeight="70.0" minWidth="230.0" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="7.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="29.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="13.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -191,78 +191,78 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
-                                                <Font name="System Bold" size="14.0" />
+                                                <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
-                                                <Font size="14.0" />
+                                                <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="16.0" maxHeight="27.0" maxWidth="47.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font name="Bell MT" size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
-                                                <Font name="System Bold" size="14.0" />
+                                                <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
-                                                <Font size="14.0" />
+                                                <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="16.0" maxHeight="27.0" maxWidth="47.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font name="Bell MT" size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
-                                                <Font name="System Bold" size="14.0" />
+                                                <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
-                                                <Font size="14.0" />
+                                                <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="16.0" maxHeight="27.0" maxWidth="47.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font name="Bell MT" size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
-                                                <Font name="System Bold" size="14.0" />
+                                                <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
-                                                <Font size="14.0" />
+                                                <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="16.0" maxHeight="27.0" maxWidth="47.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font name="Bell MT" size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
@@ -279,38 +279,38 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="240.0" minHeight="70.0" minWidth="240.0" prefHeight="70.0" prefWidth="240.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="30.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="16.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="240.0" minHeight="70.0" minWidth="240.0" prefHeight="70.0" prefWidth="240.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="30.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="16.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -329,19 +329,19 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="70.0" maxWidth="240.0" minHeight="70.0" minWidth="240.0" prefHeight="70.0" prefWidth="240.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" text="Country A" textFill="WHITE">
+                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="17.0" layoutY="30.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
+                                          <Label layoutX="17.0" layoutY="30.0" maxHeight="20.0" maxWidth="67.0" minHeight="20.0" minWidth="67.0" prefHeight="20.0" prefWidth="67.0" style="-fx-font-weight: Bold;" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="139.0" layoutY="16.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
+                                          <Label layoutX="139.0" layoutY="16.0" maxHeight="27.0" maxWidth="47.0" minHeight="27.0" minWidth="47.0" prefHeight="27.0" prefWidth="47.0" style="-fx-text-fill: #E5A94D; -fx-font-weight: Bold;" text="Score">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -360,7 +360,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="100.0" maxWidth="356.0" minHeight="100.0" minWidth="356.0" prefHeight="100.0" prefWidth="356.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
                                           <Label layoutX="18.0" layoutY="17.0" text="Country A" textFill="WHITE">
                                              <font>
@@ -389,7 +389,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane maxHeight="100.0" maxWidth="356.0" minHeight="100.0" minWidth="356.0" prefHeight="100.0" prefWidth="356.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
                                           <Label layoutX="18.0" layoutY="17.0" text="Country A" textFill="WHITE">
                                              <font>
@@ -757,17 +757,6 @@
          <top>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" text="Simlate Round">
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" text="Simulate Tournament" />
-                  <Button mnemonicParsing="false" text="Reset">
-                     <HBox.margin>
-                        <Insets left="20.0" right="-20.0" />
-                     </HBox.margin>
-                  </Button>
                   <Label alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1920.0" prefWidth="1920.0" text="FIFA WORLD CUP 2026 — KNOCKOUT STAGE" textAlignment="CENTER" textFill="WHITE" translateX="150.0">
                      <font>
                         <Font name="System Bold" size="26.0" />
