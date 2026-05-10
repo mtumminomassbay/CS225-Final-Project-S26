@@ -189,4 +189,10 @@ public class Match {
     public boolean isTied() {
         return getFirstTeamScore() == getSecondTeamScore();
     }
+
+    @Override
+    public String toString() {
+        return team1.toString() + " (" + getFirstTeamScore() + ") vs "
+                + team2.toString() + "(" + getSecondTeamScore() + ")";
+    }
 }
