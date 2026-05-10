@@ -47,7 +47,7 @@ public class TeamInfoAdditionalController extends BaseController {
     //METHODS
 
     //All methods to update record
-    public void updateRecord() {
+    private void updateRecord() {
         record.setText(String.valueOf(wins) + " - " + String.valueOf(ties) + " - " + String.valueOf(losses));
     }
 
@@ -66,6 +66,10 @@ public class TeamInfoAdditionalController extends BaseController {
 
     //GETTERS
     // public TableView getRoster() {return roster;}
+    public String getCountryName() {return countryNameAdditional.getText();}
+    public String getRank() {return rankNumber.getText();}
+    public String getStadiumName() {return stadiumName.getText();}
+    public String getCoach() {return coachName.getText();}
     public ImageView getFlag() {return flagImageView;}
 
     //SETTERS
@@ -95,6 +99,26 @@ public class TeamInfoAdditionalController extends BaseController {
 
     public void setCoach(String name) {
         coachName.setText(name);
+    }
+
+    public boolean equals(TeamInfoAdditionalController other) {
+
+        return (countryNameAdditional.getText().equals(other.getCountryName()) &&
+            rankNumber.getText().equals(other.getRank()) &&
+            stadiumName.getText().equals(other.getStadiumName()) &&
+            coachName.getText().equals(other.getCoach())
+        );
+    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        s += "Country: " + countryNameAdditional.getText() +
+             "\nRank: #" + rankNumber.getText() +
+             "\nHome Stadium: " + stadiumName.getText() + 
+             "\nCoach: " + coachName.getText() +
+             "\nRecord: " + record.getText();
+        return s;
     }
 
     // public void setRoster(TableView roster) {

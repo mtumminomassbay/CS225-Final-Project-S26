@@ -7,20 +7,16 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -95,8 +91,11 @@ public class TeamInfoCardController extends BaseController {
     }
 
     //GETTERS
-    public ImageView getFlag() {return flagImageView;}
     public String getCountryName() {return countryName.getText();}
+    public String getConfederation() {return confederationName.getText();}
+    public String getGroup() {return groupAssignment.getText();}
+    public ImageView getFlag() {return flagImageView;}
+
 
     //SETTERS
     public void setTeam(Team team) {
@@ -128,5 +127,23 @@ public class TeamInfoCardController extends BaseController {
             countryName.setTextFill(Color.BLACK);
         }
         backgroundPane.setStyle("-fx-background-color: " + color + ";");
+    }
+
+    public boolean equals(TeamInfoCardController other) {
+        return ( countryName.getText().equals(other.getCountryName()) &&
+            groupAssignment.getText().equals(other.getGroup()) &&
+            confederationName.getText().equals(other.getConfederation())
+        );
+    }
+
+    @Override
+    public String toString() {
+        String s = "";
+
+        s += "Country: " + countryName.getText() +
+             "\nConfederation: " + confederationName.getText() +
+             "\nGroup Assignment: " + groupAssignment.getText();
+
+        return s;
     }
 }
