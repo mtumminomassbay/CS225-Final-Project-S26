@@ -75,7 +75,7 @@ public class TeamInfoCardController extends BaseController {
             //Add team info into additional controller class
             add_info_controller.setCountryName(team.getName());
             add_info_controller.setFlagImage(new Image(team.getFlagPath()));
-            add_info_controller.setRank(team.getRanking());
+            add_info_controller.setRank(String.valueOf(team.getRanking()));
             add_info_controller.setStadiumName(team.getHomeStadium());
             add_info_controller.setCoach(team.getHeadCoach());
 
