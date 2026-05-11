@@ -18,6 +18,7 @@ public class WorldCupTournament {
 
     private String currentStage;
     private Team champion;
+    private Match currentlyViewedMatch;
 
     // Private constructor because this class is a singleton
     private WorldCupTournament() {
@@ -64,6 +65,14 @@ public class WorldCupTournament {
         }
 
         return bracket.getMatches();
+    }
+
+    public Match getCurrentlyViewedMatch() {
+        return currentlyViewedMatch;
+    }
+
+    public void setCurrentlyViewedMatch(Match currentlyViewedMatch) {
+        this.currentlyViewedMatch = currentlyViewedMatch;
     }
 
     public Team getChampion() {
