@@ -26,9 +26,4 @@ public class GroupButtonController extends BaseController {
         this.group = group;
         groupNameLabel.setText(group.getGroupName());
     }
-
-    public void setGroup(Group group) {
-        this.group = group;
-        groupNameLabel.setText(group.getGroupName());
-    }
 }
