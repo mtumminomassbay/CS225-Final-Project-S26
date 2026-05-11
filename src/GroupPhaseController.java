@@ -12,18 +12,12 @@ import javafx.scene.layout.GridPane;
 public class GroupPhaseController extends BaseController {
     @FXML private GridPane buttonGrid;
 
-    private static GroupStage groupStage;
-
     @Override
     protected void onLoad(){
-        if (groupStage == null) {
-            groupStage = new GroupStage(new TeamParser().getTeams());
-        }
+        Iterator<Group> groups = worldCup.getGroupStage().getGroups().iterator();
 
-        Iterator<Group> groups = groupStage.getGroups().iterator();
-
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 4; ++j) {
+        for (int i = 0; i < buttonGrid.getRowCount(); ++i) {
+            for (int j = 0; j < buttonGrid.getColumnCount(); ++j) {
                 addGroupButton(j, i, groups.next());
             }
         }
