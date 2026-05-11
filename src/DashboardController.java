@@ -21,6 +21,8 @@ public class DashboardController extends BaseController{
     @FXML private ImageView AllStar_ImageView;
 
     private List<File> AllStarsList = new ArrayList<>();
+
+    private int lastIndex = -1;
     
     private Random rand = new Random();
 
@@ -66,10 +68,18 @@ public class DashboardController extends BaseController{
 
     private void displayRandomAllStar() {
         if(!AllStarsList.isEmpty()) {
-            File randomFile = AllStarsList.get(rand.nextInt(AllStarsList.size()));
+            int index;
+            do {
+                index = rand.nextInt(AllStarsList.size());
+            } while(index == lastIndex);
+
+            lastIndex = index;
+            File randomFile = AllStarsList.get(index);
             Image img = new Image(randomFile.toURI().toString(), true);
 
             AllStar_ImageView.setImage(img);
+            
+            
         }
     }
 }
