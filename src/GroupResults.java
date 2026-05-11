@@ -89,7 +89,7 @@ public class GroupResults implements Comparable<GroupResults> {
             return goalsForCompare;
         }
 
-        int rankingCompare = Integer.compare(this.team.getIntRanking(), other.team.getIntRanking());
+        int rankingCompare = Integer.compare(this.team.getRanking(), other.team.getRanking());
         if (rankingCompare != 0) {
             return rankingCompare;
         }

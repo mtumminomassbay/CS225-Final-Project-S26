@@ -100,7 +100,7 @@ public class MatchSection {
      * higher-ranked teams a larger strength value
      */
     private double getStrengthFromRanking(Team team) {
-        return 212.0 - team.getIntRanking();
+        return 212.0 - team.getRanking();
     }
 
     public Team getFirstTeam() {

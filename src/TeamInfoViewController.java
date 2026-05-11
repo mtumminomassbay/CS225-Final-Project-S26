@@ -3,8 +3,11 @@
 //Andrew Larrazabal
 //Menu for the Team Info view
 
+
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,15 +24,18 @@ public class TeamInfoViewController extends BaseController {
 
     private ArrayList<TeamInfoCardController> listTeamCards = new ArrayList<>();
 
-    TeamParser parser = new TeamParser();
-    ArrayList<Team> teams = parser.getTeams();
+    //TeamParser parser = new TeamParser(); //Use world cup tournament one
+    List<Team> teams = WorldCupTournament.getInstance().getGroupStage().getTeams();
 
     //INITIALIZE
     @Override
     protected void onLoad() {
+        cardContainer.setMaxWidth(Double.MAX_VALUE); //For making the view screen resize with the window
+        cardContainer.setMaxHeight(Double.MAX_VALUE);
 
         //TEST: teams object
 
+        System.out.println("Loading Team Cards");
         for (Team team: teams) {
             addTeamCard(team);
         }
@@ -66,6 +72,18 @@ public class TeamInfoViewController extends BaseController {
             System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
         }
     }
+
+
+    /*//Tristan refresh with groups
+    public void refresh() {
+        cardContainer.getChildren().clear();
+        listTeamCards.clear();
+
+        for (Team team : teams) {
+            addTeamCard(team);
+        }
+    }
+     */
 
     //FIXME: add method to set up the team view if needed
 

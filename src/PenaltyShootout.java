@@ -90,7 +90,7 @@ public class PenaltyShootout {
      */
     private boolean penaltyScored(Team team, Random random) {
         // Ranking bonus is higher for better-ranked teams
-        double rankingBonus = (211.0 - team.getIntRanking()) / 211.0;
+        double rankingBonus = (211.0 - team.getRanking()) / 211.0;
 
         // Base chance is 65%, with up to 25% added based on ranking
         double scoreChance = 0.65 + (rankingBonus * 0.25);

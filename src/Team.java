@@ -1,3 +1,12 @@
+/**
+ * Team class.
+ *
+ * Stores information regarding about a Team
+ * Holds information for other classes to call from
+ *
+ * @author Tristan Burchard
+ */
+
 import java.util.Objects;
 
 public class Team {
@@ -10,6 +19,10 @@ public class Team {
     private final String headCoach;
     private final String flagPath;
     private final String color;
+
+    private String group = "Unset";
+    private String stage;
+    private String record;
 
     public Team(String team, int ranking, String region, String code, String iso2, String homeStadium, String headCoach, String flagPath, String color) {
         this.name = team;
@@ -33,6 +46,21 @@ public class Team {
     public String getFlagPath() {return flagPath;}
     public String getColor() {return color;}
 
+    public String getGroup() {return group;}
+    public String getStage() {return stage;}
+    public String getRecord() {return record;}
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
+    public void setRecord(String record) {
+        this.record = record;
+    }
 
     @Override
     public String toString() {
@@ -44,8 +72,11 @@ public class Team {
                 ", iso2='" + iso2 + '\'' +
                 ", homeStadium='" + homeStadium + '\'' +
                 ", headCoach='" + headCoach + '\'' +
-                ", flagPath=" + flagPath +
-                ", color=" + color +
+                ", flagPath=" + flagPath + '\''+
+                ", color=" + color + '\'' +
+                ", group='" + group + '\'' +
+                ", stage=" + stage + '\''+
+                ", record=" + record + '\'' +
                 '}';
     }
 
