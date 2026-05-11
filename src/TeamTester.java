@@ -1,3 +1,11 @@
+/**
+ * TeamTester class.
+ *
+ * A lightweight class to test the output of the Team, and TeamParser classes
+ *
+ * @author Tristan Burchard
+ */
+
 import java.util.ArrayList;
 
 public class TeamTester {

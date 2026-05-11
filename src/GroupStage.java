@@ -24,7 +24,7 @@ public class GroupStage {
 
         this.teams = new ArrayList<>(allTeams);
 
-        this.teams.sort(Comparator.comparingInt(Team::getIntRanking));
+        this.teams.sort(Comparator.comparingInt(Team::getRanking));
 
 
         this.teams = new ArrayList<>(this.teams.subList(0, TOTAL_GROUP_STAGE_TEAMS));
@@ -44,8 +44,14 @@ public class GroupStage {
         }
 
         for (int i = 0; i < teams.size(); i++) {
+            Team t = teams.get(i);
             int groupIndex = i % GROUP_COUNT;
-            groupBuckets.get(groupIndex).add(teams.get(i));
+            groupBuckets.get(groupIndex).add(t);
+
+            //Tristan to set group letter to Team
+            char groupLetter = (char) ('A' + groupIndex);
+            t.setGroup("Group " + groupLetter);
+            //System.out.println("Setting group for: " + t.getName() + " " + t.getGroup());
         }
 
         for (int i = 0; i < GROUP_COUNT; i++) {

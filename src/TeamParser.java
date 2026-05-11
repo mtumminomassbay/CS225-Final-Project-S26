@@ -1,3 +1,13 @@
+/**
+ * TeamParser class.
+ *
+ * This class reads in from a JSON file and parses it
+ * to return a list of (Team)s that are filled out with
+ * all of their required information
+ *
+ * @author Tristan Burchard
+ */
+
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
