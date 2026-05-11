@@ -4,25 +4,23 @@
 //Additional information whenever a user clicks on the team
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class TeamInfoAdditionalController extends BaseController {
     
     //ATTRIBUTES
     @FXML
-    private Text countryNameAdditional;
+    private Label countryNameAdditional;
     
     @FXML
     private Text rankNumber;
 
     @FXML
-    private Text recordWins;
-
-    @FXML
-    private Text recordLosses;
+    private Text record;
 
     @FXML
     private Text stadiumName;
@@ -30,15 +28,17 @@ public class TeamInfoAdditionalController extends BaseController {
     @FXML
     private Text coachName;
 
-    @FXML
-    private TableView roster;
+    // @FXML
+    // private TableView roster;  //Future project to display roster in additional info
 
     @FXML
-    private ImageView flagImage;
+    private ImageView flagImageView;
 
     private int wins;
 
     private int losses;
+
+    private int ties;
 
     //INITIALIZE
     @Override
@@ -46,30 +46,44 @@ public class TeamInfoAdditionalController extends BaseController {
 
     //METHODS
 
-    //2 methods to update records
-    //accumulated wins
+    //All methods to update record
+    private void updateRecord() {
+        record.setText(String.valueOf(wins) + " - " + String.valueOf(ties) + " - " + String.valueOf(losses));
+    }
+
     public void addWin() {
         wins++;
-        recordWins.setText(Integer.toString(wins));
+        updateRecord();
     }
-    //accumulated losses
     public void addLoss() {
         losses++;
-        recordLosses.setText(Integer.toString(losses));
+        updateRecord();
+    }
+    public void addTie() {
+        ties++;
+        updateRecord();
     }
 
     //GETTERS
-    public TableView getRoster() {
-        return roster;
-    }
+    // public TableView getRoster() {return roster;}
+    public String getCountryName() {return countryNameAdditional.getText();}
+    public String getRank() {return rankNumber.getText();}
+    public String getStadiumName() {return stadiumName.getText();}
+    public String getCoach() {return coachName.getText();}
+    public ImageView getFlag() {return flagImageView;}
 
     //SETTERS
     public void setCountryName(String country) {
+        if (country.length() >= 20) {
+            countryNameAdditional.setFont(new Font(15));
+            countryNameAdditional.setStyle("-fx-font-weight: bold;");
+        }
+
         countryNameAdditional.setText(country);
     }
 
     public void setFlagImage(Image flag) {
-        flagImage.setImage(flag);
+        flagImageView.setImage(flag);
     }
 
     public void setRank(String rank) {
@@ -77,6 +91,9 @@ public class TeamInfoAdditionalController extends BaseController {
     }
 
     public void setStadiumName(String name) {
+        if (name.length() >= 30) {
+            stadiumName.setFont(new Font(10));
+        }
         stadiumName.setText(name);
     }
 
@@ -84,7 +101,27 @@ public class TeamInfoAdditionalController extends BaseController {
         coachName.setText(name);
     }
 
-    public void setRoster(TableView roster) {
-        this.roster = roster;
+    public boolean equals(TeamInfoAdditionalController other) {
+
+        return (countryNameAdditional.getText().equals(other.getCountryName()) &&
+            rankNumber.getText().equals(other.getRank()) &&
+            stadiumName.getText().equals(other.getStadiumName()) &&
+            coachName.getText().equals(other.getCoach())
+        );
     }
+
+    @Override
+    public String toString() {
+        String s = "";
+        s += "Country: " + countryNameAdditional.getText() +
+             "\nRank: #" + rankNumber.getText() +
+             "\nHome Stadium: " + stadiumName.getText() + 
+             "\nCoach: " + coachName.getText() +
+             "\nRecord: " + record.getText();
+        return s;
+    }
+
+    // public void setRoster(TableView roster) {
+    //     this.roster = roster;
+    // }
 }
