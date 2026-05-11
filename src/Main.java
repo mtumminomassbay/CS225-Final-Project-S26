@@ -23,6 +23,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/Background.fxml"));
             AnchorPane root = loader.load();
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style-guide.css").toExternalForm());
             primaryStage.setScene(scene);
 
             primaryStage.show();
