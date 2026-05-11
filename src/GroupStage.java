@@ -24,7 +24,7 @@ public class GroupStage {
 
         this.teams = new ArrayList<>(allTeams);
 
-        this.teams.sort(Comparator.comparingInt(Team::getRanking));
+        this.teams.sort(Comparator.comparingInt(Team::getIntRanking));
 
 
         this.teams = new ArrayList<>(this.teams.subList(0, TOTAL_GROUP_STAGE_TEAMS));

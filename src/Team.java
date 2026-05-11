@@ -25,6 +25,10 @@ public class Team {
 
     public String getName() {return name;}
     public String getRanking() {return String.valueOf(ranking);}
+
+    //Joey fix
+    public int getIntRanking() { return this.ranking;}
+    
     public String getRegion() {return region;}
     public String getCode() {return code;}
     public String getIso2() {return iso2;}
