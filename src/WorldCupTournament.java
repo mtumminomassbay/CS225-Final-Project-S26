@@ -1,17 +1,18 @@
 // Author: Chris Rabanales
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class WorldCupTournament {
-
     // Singleton instance
     public static final WorldCupTournament instance = new WorldCupTournament();
 
     // Stage names + status
-    private static final String GROUP_STAGE = "Group Stage";
-    private static final String KNOCKOUT_STAGE = "Knockout Stage";
-    private static final String COMPLETE = "Complete";
+    public static final String GROUP_STAGE = "Group Stage";
+    public static final String KNOCKOUT_STAGE = "Knockout Stage";
+    public static final String COMPLETE = "Complete";
 
+    private final List<Team> allTeams;
     private GroupStage groupStage;
     private Bracket bracket;
 
@@ -20,6 +21,9 @@ public class WorldCupTournament {
 
     // Private constructor because this class is a singleton
     private WorldCupTournament() {
+        TeamParser teamParser = new TeamParser();
+        allTeams = teamParser.getTeams();
+
         resetTournament();
     }
 
@@ -113,6 +117,14 @@ public class WorldCupTournament {
         }
 
         if (currentStage.equals(GROUP_STAGE)) {
+            //FIXME: waiting for implementation in GroupStage
+            /*
+            Match match = groupStage.simulateOneMatch();
+            if (groupStage.isSimulated()) {
+                createKnockoutStage();
+            }
+            return match;
+            */
             groupStage.simulateGroupStage();
             createKnockoutStage();
             return null;
@@ -175,10 +187,9 @@ public class WorldCupTournament {
 
     // The following methods reset the entire tournnament,
     // the current group, and the current round.
+    //TODO: these reset methods need testing against the frontend to make sure that old copies of groupStage/bracket don't stick around
     public void resetTournament() {
-        TeamParser parser = new TeamParser();
-
-        groupStage = new GroupStage(parser.getTeams());
+        groupStage = new GroupStage(allTeams);
         bracket = null;
 
         currentStage = GROUP_STAGE;
@@ -186,10 +197,20 @@ public class WorldCupTournament {
     }
     
     public void resetCurrentGroup(int groupNumber) {
-        resetTournament();
+        //FIXME: waiting for implementation in GroupStage
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public void resetCurrentRound() {
-        resetTournament();
+        if (currentStage.equals(GROUP_STAGE)) {
+            groupStage = new GroupStage(allTeams);
+        } else {
+            createKnockoutStage();
+            champion = null;
+        }
+    }
+
+    public List<Team> getAllTeams() {
+        return Collections.unmodifiableList(allTeams);
     }
 }
