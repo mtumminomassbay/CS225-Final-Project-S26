@@ -6,21 +6,13 @@
 
 }
 
-AnchorPane {
-    -fx-background-color: radial-gradient(center 60% 30%, radius 80%, #01362e 0%, #0a0f0d 100%);
-}
-
-ScrollPane {
-    -fx-background-color: radial-gradient(center 60% 30%, radius 80%, #01362e 0%, #0a0f0d 100%);
-}
-
-FlowPane {
-    -fx-background-color: radial-gradient(center 60% 30%, radius 80%, #01362e 0%, #0a0f0d 100%);
-}
-
+AnchorPane,
+ScrollPane,
+FlowPane,
 Pane {
     -fx-background-color: radial-gradient(center 60% 30%, radius 80%, #01362e 0%, #0a0f0d 100%);
 }
+
 
 
 .header-label {
@@ -54,15 +46,25 @@ Pane {
     -fx-font-weight: bold;
     -fx-cursor: hand;
     -fx-padding: 8px 16px;
-    -fx-effect: dropshadow(gaussian, #00000066, 6, 0.2, 0, 3);
+    -fx-effect: dropshadow(gaussian, #00000077, 8, 0.25, 0, 3),
+                innershadow(gaussian, #ffffff66, 1, 1.0, 0, 1);
 }
 
 .group-pane {
-    -fx-background-color: #0f4d10;
+    -fx-background-color: linear-gradient(to bottom right, #0f4d10, #082e09);
+    -fx-background-radius: 8px;
+    -fx-border-color: #04e87933;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, #00000066, 8, 0.2, 0, 2),
+                innershadow(gaussian, #04e87918, 1, 1.0, 0, 1);
 }
 
 .team-label {
     -fx-text-fill: #ffad43;
     -fx-font-family: "Georgia";
     -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-effect: dropshadow(one-pass-box, #00000099, 2, 0.5, 0, 1);
+    -fx-padding: 2px 4px;
 }
