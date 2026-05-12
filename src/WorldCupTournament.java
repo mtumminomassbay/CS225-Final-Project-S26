@@ -7,11 +7,16 @@ public class WorldCupTournament {
     // Singleton instance
     public static final WorldCupTournament instance = new WorldCupTournament();
 
+    // Stage names + status
+    public static final String GROUP_STAGE = "Group Stage";
+    public static final String KNOCKOUT_STAGE = "Knockout Stage";
+    public static final String COMPLETE = "Complete";
+
     private final List<Team> allTeams;
     private GroupStage groupStage;
     private Bracket bracket;
 
-    private StageMode currentStage;
+    private String currentStage;
     private Team champion;
     private Match currentlyViewedMatch;
 
@@ -82,10 +87,79 @@ public class WorldCupTournament {
         return null;
     }
 
-    public StageMode getCurrentStage() {
+    public String getCurrentStage() {
         return currentStage;
     }
 
+    public String getCurrentRound() {
+        if (currentStage.equals(GROUP_STAGE)) {
+            return "Group Stage";
+        }
+
+        if (currentStage.equals(COMPLETE)) {
+            return "Tournament Complete";
+        }
+
+        return "Knockout Stage";
+    }
+
+    // Returns how many matches have been completed
+    public int getCompletedMatches() {
+        return getCompletedGroupMatches() + getCompletedKnockoutMatches();
+    }
+
+    // Returns the total number of matches in the tournament
+    public int getTotalMatches() {
+        return getTotalGroupMatches() + getTotalKnockoutMatches();
+    }
+
+    // returns remaining matches
+    public int getRemainingMatches() {
+        return getTotalMatches() - getCompletedMatches();
+    }
+
+    // displays progress as text
+    public String getProgressText() {
+        return getCompletedMatches() + " / " + getTotalMatches()
+                + " matches completed";
+    }
+
+    // Counts completed group-stage matches
+    private int getCompletedGroupMatches() {
+        int completed = 0;
+
+        for (Match match : getGroupMatches()) {
+            if (match.isFinished()) {
+                completed++;
+            }
+        }
+
+        return completed;
+    }
+
+    private int getTotalGroupMatches() {
+        return getGroupMatches().size();
+    }
+
+    private int getCompletedKnockoutMatches() {
+        if (bracket == null) {
+            return 0;
+        }
+
+        int completed = 0;
+
+        for (Match match : bracket.getMatches()) {
+            if (match.isFinished()) {
+                completed++;
+            }
+        }
+
+        return completed;
+    }
+
+    private int getTotalKnockoutMatches() {
+        return 32;
+    }
     // following methods check if certain aspects of the program are completed before moving on.
     public boolean isGroupStageComplete() {
         return groupStage.isSimulated();
@@ -96,7 +170,7 @@ public class WorldCupTournament {
     }
 
     public boolean isTournamentComplete() {
-        return currentStage == StageMode.COMPLETE;
+        return currentStage.equals(COMPLETE);
     }
 
     public boolean isFinished() {
@@ -105,47 +179,42 @@ public class WorldCupTournament {
 
     // Simulates the next available match
     public Match simulateOneMatch() {
-        if (isTournamentComplete()) {
+        if (currentStage.equals(COMPLETE)) {
             return null;
         }
 
-        if (currentStage == StageMode.GROUP_STAGE) {
-            Match match = groupStage.simulateOneMatch();
-            if (groupStage.isSimulated()) {
-                createKnockoutStage();
-            }
-            return match;
+        if (currentStage.equals(GROUP_STAGE)) {
+            groupStage.simulateGroupStage();
+            createKnockoutStage();
+            currentlyViewedMatch = null;
+            return null;
         }
 
         Match match = bracket.simulateOneMatch();
 
+        if (match != null) {
+            currentlyViewedMatch = match;
+        }
+
         if (bracket.isFinished()) {
             champion = bracket.getFinal().getWinner();
-            currentStage = StageMode.COMPLETE;
+            currentStage = COMPLETE;
         }
 
         return match;
     }
 
-    public Group simulateNextGroup() {
-        if (isGroupStageComplete()) {
-            return null;
-        }
-
-        Group group = groupStage.simulateNextGroup();
-        if (groupStage.isSimulated()) {
-            createKnockoutStage();
-        }
-        return group;
+    public Match simulateNextAvailableMatch() {
+        return simulateOneMatch();
     }
 
     // Simulates the rest of the current round
     public void simulateRemainingCurrentRound() {
-        if (isTournamentComplete()) {
+        if (currentStage.equals(COMPLETE)) {
             return;
         }
 
-        if (currentStage ==  StageMode.GROUP_STAGE) {
+        if (currentStage.equals(GROUP_STAGE)) {
             groupStage.simulateGroupStage();
             createKnockoutStage();
             return;
@@ -156,7 +225,7 @@ public class WorldCupTournament {
         }
 
         champion = bracket.getFinal().getWinner();
-        currentStage = StageMode.COMPLETE;
+        currentStage = COMPLETE;
     }
 
     // Simulates the rest of the tournament
@@ -177,7 +246,7 @@ public class WorldCupTournament {
         }
 
         bracket = new Bracket(advancingTeams);
-        currentStage = StageMode.KNOCKOUT_STAGE;
+        currentStage = KNOCKOUT_STAGE;
     }
 
     // The following methods reset the entire tournnament,
@@ -187,8 +256,22 @@ public class WorldCupTournament {
         groupStage = new GroupStage(allTeams);
         bracket = null;
 
-        currentStage = StageMode.GROUP_STAGE;
+        currentStage = GROUP_STAGE;
         champion = null;
+    }
+    
+    public void resetCurrentGroup(int groupNumber) {
+        //FIXME: waiting for implementation in GroupStage
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void resetCurrentRound() {
+        if (currentStage.equals(GROUP_STAGE)) {
+            groupStage = new GroupStage(allTeams);
+        } else {
+            createKnockoutStage();
+            champion = null;
+        }
     }
 
     public List<Team> getAllTeams() {
