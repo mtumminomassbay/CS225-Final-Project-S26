@@ -3,8 +3,6 @@
 //Andrew Larrazabal
 //Menu for the Team Info view
 
-
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +11,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Color;
-import javafx.scene.image.Image;
 
 public class TeamInfoViewController extends BaseController {
-
     //ATTRIBUTES
     @FXML
     private FlowPane cardContainer;
 
     private ArrayList<TeamInfoCardController> listTeamCards = new ArrayList<>();
 
-    //TeamParser parser = new TeamParser(); //Use world cup tournament one
-    List<Team> teams = WorldCupTournament.getInstance().getGroupStage().getTeams();
+    List<Team> teams;
 
     //INITIALIZE
     @Override
@@ -34,7 +28,7 @@ public class TeamInfoViewController extends BaseController {
         cardContainer.setMaxHeight(Double.MAX_VALUE);
 
         //TEST: teams object
-
+        teams = worldCup.getAllTeams();
         System.out.println("Loading Team Cards");
         for (Team team: teams) {
             addTeamCard(team);
