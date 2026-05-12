@@ -52,7 +52,6 @@ public class SimulationController {
         worldCup = WorldCupTournament.getInstance();
         lastStage = worldCup.getCurrentStage();
 
-        // TODO: These speeds are placeholder UI choices until we finalize settings.
         speedComboBox.getItems().addAll("Slow (2 sec)", "Normal (1 sec)", "Fast (0.5 sec)");
         speedComboBox.setValue("Normal (1 sec)");
         speedComboBox.setOnAction(event -> restartAutoPlayWithNewSpeed());
@@ -155,7 +154,6 @@ public class SimulationController {
     }
 
     private Timeline buildAutoPlayTimeline() {
-        // Each Timeline tick simulates one placeholder match.
         Timeline timeline = new Timeline(new KeyFrame(getSelectedDelay(), event -> autoPlayNextMatch()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         return timeline;
@@ -219,8 +217,15 @@ public class SimulationController {
     private void refreshLabels() {
         currentStageLabel.setText("Stage: " + worldCup.getCurrentStage());
         currentRoundLabel.setText(getRoundLabel());
-        nextMatchLabel.setText("Next match: " + "TODO"); //TODO
-        progressLabel.setText("Progress: " + "TODO"); //TODO
+
+        Match nextMatch = worldCup.getNextMatch();
+        if (nextMatch != null) {
+            nextMatchLabel.setText("Next match: " + nextMatch.getFirstTeam().getName() + " vs " + nextMatch.getSecondTeam().getName());
+        } else {
+            nextMatchLabel.setText("");
+        }
+
+        progressLabel.setText("Progress: " + worldCup.getCompletedMatches() + " / " + worldCup.getTotalMatches() + " matches");
     }
 
     private void refreshButtonStates() {
@@ -238,7 +243,6 @@ public class SimulationController {
     }
 
     private Duration getSelectedDelay() {
-        // TODO: If speed settings become user preferences, load them from storage.
         String speed = speedComboBox.getValue();
 
         if ("Slow (2 sec)".equals(speed)) {
@@ -257,7 +261,6 @@ public class SimulationController {
             return "Current Group: " + worldCup.getGroupStage().getCurrentGroup().getGroupName();
         }
 
-        //TODO: round of 32, of 16, etc
-        return "Knockout Bracket";
+        return "Current Round: " + worldCup.getBracket().getCurrentRound();
     }
 }

@@ -29,7 +29,6 @@ public class TeamInfoViewController extends BaseController {
 
         //TEST: teams object
         teams = worldCup.getAllTeams();
-        System.out.println("Loading Team Cards");
         for (Team team: teams) {
             addTeamCard(team);
         }

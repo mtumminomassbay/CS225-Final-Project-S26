@@ -44,7 +44,6 @@ public class GroupStage {
     }
 
     private void createGroups() {
-
         ArrayList<Team> tempTeams = new ArrayList<>();
 
         for (int i = 0; i < teams.size(); i++) {
@@ -56,12 +55,8 @@ public class GroupStage {
 
                 groups.add(new Group("Group " + groupLetter, tempTeams, 1));
                 tempTeams = new ArrayList<>();
-
             }
-
         }
-
-
     }
 
     private void finalizeGroupStage() {
@@ -97,6 +92,15 @@ public class GroupStage {
             }
         }
         return match;
+    }
+
+    public Match getNextMatch() {
+        if (simulated) {
+            return null;
+        }
+
+        Group group = groups.get(currentGroup);
+        return group.getNextMatch();
     }
 
     public void simulateGroupStage() {
