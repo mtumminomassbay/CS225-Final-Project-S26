@@ -86,18 +86,6 @@ public class WorldCupTournament {
         return currentStage;
     }
 
-    public String getCurrentRound() {
-        if (currentStage.equals(GROUP_STAGE)) {
-            return "Group Stage";
-        }
-
-        if (currentStage.equals(COMPLETE)) {
-            return "Tournament Complete";
-        }
-
-        return "Knockout Stage";
-    }
-
     // Returns how many matches have been completed
     public int getCompletedMatches() {
         return getCompletedGroupMatches() + getCompletedKnockoutMatches();
