@@ -36,7 +36,7 @@ public class KnockoutPhaseController extends BaseController{
     }
 
     private void refreshKnockoutView() {
-        if (!worldCup.isKnockoutBracketCreated()) {
+        if (!worldCup.isGroupStageComplete()) {
             return;
         }
     }

@@ -55,7 +55,6 @@ public class SimulationController {
         worldCup = WorldCupTournament.getInstance();
         lastStage = worldCup.getCurrentStage();
 
-        // TODO: These speeds are placeholder UI choices until we finalize settings.
         speedComboBox.getItems().addAll("Slow (2 sec)", "Normal (1 sec)", "Fast (0.5 sec)");
         speedComboBox.setValue("Normal (1 sec)");
         speedComboBox.setOnAction(event -> restartAutoPlayWithNewSpeed());
@@ -174,7 +173,6 @@ public class SimulationController {
     }
 
     private Timeline buildAutoPlayTimeline() {
-        // Each Timeline tick simulates one placeholder match.
         Timeline timeline = new Timeline(new KeyFrame(getSelectedDelay(), event -> autoPlayNextMatch()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         return timeline;
@@ -228,12 +226,7 @@ public class SimulationController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             worldCup.resetTournament();
-            lastStage = worldCup.getCurrentStage();
-            if (knockoutMode) {
-                configureForKnockoutStage();
-            } else {
-                configureForGroupStage();
-            }
+            refreshLabels();
             statusLabel.setText("Tournament reset.");
             notifySimulationChanged();
         }
@@ -242,8 +235,15 @@ public class SimulationController {
     private void refreshLabels() {
         currentStageLabel.setText("Stage: " + worldCup.getCurrentStage());
         currentRoundLabel.setText(getRoundLabel());
-        nextMatchLabel.setText(getNextMatchText());
-        progressLabel.setText(getProgressText());
+
+        Match nextMatch = worldCup.getNextMatch();
+        if (nextMatch != null) {
+            nextMatchLabel.setText("Next match: " + nextMatch.getFirstTeam().getName() + " vs " + nextMatch.getSecondTeam().getName());
+        } else {
+            nextMatchLabel.setText("");
+        }
+
+        progressLabel.setText("Progress: " + worldCup.getCompletedMatches() + " / " + worldCup.getTotalMatches() + " matches");
     }
 
     private void refreshButtonStates() {
@@ -258,15 +258,9 @@ public class SimulationController {
         pauseButton.setDisable(actionRunning || !autoPlayRunning);
         resetTournamentButton.setDisable(actionRunning);
         speedComboBox.setDisable(actionRunning);
-
-        if (knockoutMode) {
-            simulateCurrentGroupButton.setVisible(false);
-            simulateCurrentGroupButton.setManaged(false);
-        }
     }
 
     private Duration getSelectedDelay() {
-        // TODO: If speed settings become user preferences, load them from storage.
         String speed = speedComboBox.getValue();
 
         if ("Slow (2 sec)".equals(speed)) {
@@ -282,89 +276,10 @@ public class SimulationController {
 
     private String getRoundLabel() {
         if (worldCup.getCurrentStage() == StageMode.GROUP_STAGE) {
-            GroupStage groupStage = worldCup.getGroupStage();
-            Group group = groupStage == null ? null : groupStage.getCurrentGroup();
-            if (group == null) {
-                return "Current Group: None";
-            }
-
-            return "Current Group: " + group.getGroupName();
+            return "Current Group: " + worldCup.getGroupStage().getCurrentGroup().getGroupName();
         }
 
-        if (worldCup.getCurrentStage() == StageMode.KNOCKOUT_STAGE) {
-            return "Current Round: Knockout Bracket";
-        }
-
-        return "Tournament Complete";
-    }
-
-    private String getNextMatchText() {
-        if (worldCup.isTournamentComplete()) {
-            return "Next match: None";
-        }
-
-        if (worldCup.getCurrentStage() == StageMode.GROUP_STAGE) {
-            GroupStage groupStage = worldCup.getGroupStage();
-            Group group = groupStage == null ? null : groupStage.getCurrentGroup();
-            if (group == null) {
-                return "Next match: TBD";
-            }
-
-            for (Match match : group.getMatches()) {
-                if (!match.isFinished()) {
-                    return "Next match: " + getMatchTeamsText(match);
-                }
-            }
-
-            return "Next match: TBD";
-        }
-
-        if (worldCup.getCurrentStage() == StageMode.KNOCKOUT_STAGE) {
-            for (Match match : worldCup.getKnockoutMatches()) {
-                if (!match.isFinished()) {
-                    return "Next match: " + getMatchTeamsText(match);
-                }
-            }
-        }
-
-        return "Next match: TBD";
-    }
-
-    private String getProgressText() {
-        if (worldCup.getCurrentStage() == StageMode.GROUP_STAGE) {
-            List<Match> matches = worldCup.getGroupMatches();
-            return "Progress: " + countFinishedMatches(matches) + " / "
-                    + matches.size() + " group matches simulated";
-        }
-
-        if (worldCup.getCurrentStage() == StageMode.KNOCKOUT_STAGE) {
-            List<Match> matches = worldCup.getKnockoutMatches();
-            return "Progress: " + countFinishedMatches(matches) + " / "
-                    + matches.size() + " knockout matches simulated";
-        }
-
-        Team champion = worldCup.getChampionIfComplete();
-        if (champion != null) {
-            return "Progress: Tournament complete. Champion: " + champion.getName();
-        }
-
-        return "Progress: Tournament complete.";
-    }
-
-    private int countFinishedMatches(List<Match> matches) {
-        int finishedMatches = 0;
-
-        for (Match match : matches) {
-            if (match.isFinished()) {
-                finishedMatches++;
-            }
-        }
-
-        return finishedMatches;
-    }
-
-    private String getMatchTeamsText(Match match) {
-        return match.getFirstTeam().getName() + " vs " + match.getSecondTeam().getName();
+        return "Current Round: " + worldCup.getBracket().getCurrentRound();
     }
 
     private void notifySimulationChanged() {

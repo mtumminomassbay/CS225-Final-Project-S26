@@ -51,19 +51,22 @@ public class BracketBranch {
         return matchesSimulated;
     }
 
-    public Match simulateOneMatch() {
+    public Match simulateOneMatch(boolean dryRun) {
         if (match != null) {
             if (match.isFinished()) {
                 return null;
             }
 
-            matchesSimulated++;
-            match.simulate();
-            match.getWinner().setStage(bracketStageToLabel(bracketStage / 2));
+            if (!dryRun) {
+                matchesSimulated++;
+                match.simulate();
+                match.getWinner().setStage(bracketStageToLabel(bracketStage / 2));
 
-            if (bracketStage == 4) {
-                match.getLoser().setStage(bracketStageToLabel(3));
+                if (bracketStage == 4) {
+                    match.getLoser().setStage(bracketStageToLabel(3));
+                }
             }
+
             return match;
         }
 
@@ -71,16 +74,19 @@ public class BracketBranch {
         // Keep track of the total number of matches simulated in this branch, then simulate the child branch with the smaller
         // number of finished matches. This ensures that each round (round of 32, of 16, etc) is fully completed before moving
         // on to the next.
-        matchesSimulated++;
+        if (!dryRun) {
+            matchesSimulated++;
+        }
+
         if (leftBranch != null && rightBranch != null) {
             if (!leftBranch.isFinished() && leftBranch.matchesSimulated <= rightBranch.matchesSimulated) {
-                result = leftBranch.simulateOneMatch();
+                result = leftBranch.simulateOneMatch(dryRun);
             } else if (!rightBranch.isFinished()) {
-                result = rightBranch.simulateOneMatch();
+                result = rightBranch.simulateOneMatch(dryRun);
             }
         }
 
-        if (leftBranch.isFinished() && rightBranch.isFinished()) {
+        if (!dryRun && leftBranch.isFinished() && rightBranch.isFinished()) {
             match = new Match(leftBranch.getWinner(), rightBranch.getWinner(), false);
         }
 
