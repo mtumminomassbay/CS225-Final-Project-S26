@@ -15,7 +15,7 @@
 	<children>
 		<Label text="Simulation Controls" style="-fx-font-size: 16px; -fx-font-weight: bold;" wrapText="true" />
 		<Label fx:id="currentStageLabel" text="Stage: Group Stage" wrapText="true" />
-		<Label fx:id="selectedContextLabel" text="Selected: No group selected" wrapText="true" />
+		<Label fx:id="currentRoundLabel" text="Group: Group A" wrapText="true" />
 		<Label fx:id="nextMatchLabel" text="Next match: Placeholder" wrapText="true" />
 		<Label fx:id="progressLabel" text="Progress: 0 placeholder matches simulated" wrapText="true" />
 		<Separator />
@@ -25,7 +25,6 @@
 		<Button fx:id="simulateRestOfTournamentButton" maxWidth="Infinity" mnemonicParsing="false" text="Simulate Rest of Tournament" wrapText="true" />
 		<Button fx:id="autoPlayButton" maxWidth="Infinity" mnemonicParsing="false" text="Auto Play" />
 		<Button fx:id="pauseButton" maxWidth="Infinity" mnemonicParsing="false" text="Pause" />
-		<Button fx:id="resetCurrentContextButton" maxWidth="Infinity" mnemonicParsing="false" text="Reset Current Group" wrapText="true" />
 		<Button fx:id="resetTournamentButton" maxWidth="Infinity" mnemonicParsing="false" text="Reset Tournament" wrapText="true" />
 		<Label text="Speed" />
 		<ComboBox fx:id="speedComboBox" maxWidth="Infinity" />

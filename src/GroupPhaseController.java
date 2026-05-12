@@ -14,8 +14,6 @@ public class GroupPhaseController extends BaseController {
     @FXML private GridPane buttonGrid;
     @FXML private SimulationController simulationControlsController;
 
-    // 0 means no group has been selected yet.
-    private String selectedGroup = null;
     @Override
     protected void onLoad(){
         Iterator<Group> groups = worldCup.getGroupStage().getGroups().iterator();
@@ -43,9 +41,8 @@ public class GroupPhaseController extends BaseController {
     }
     
     @FXML
-    private void showGroup(String groupName) {
-        selectedGroup = groupName;
-        simulationControlsController.configureForGroupStage(selectedGroup);
+    private void showGroup() {
+        simulationControlsController.configureForGroupStage();
         navigateTo(Screen.SINGLE_GROUP);
     }
 }

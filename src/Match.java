@@ -201,7 +201,7 @@ public class Match {
 
     @Override
     public String toString() {
-        return team1.toString() + " (" + getFirstTeamScore() + ") vs "
-                + team2.toString() + "(" + getSecondTeamScore() + ")";
+        return team1.getName() + " (" + getFirstTeamScore() + ") vs "
+                + team2.getName() + " (" + getSecondTeamScore() + ")";
     }
 }
