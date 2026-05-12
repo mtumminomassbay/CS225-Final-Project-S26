@@ -1,7 +1,13 @@
 //Joey Barton
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /*
     Controller for Background.fxml
@@ -24,5 +30,22 @@ public class BackgroundLayer {
     @FXML
     private void home() {
         Navigator.getInstance().navigateTo(Screen.DASHBOARD);
+    }
+
+    @FXML
+    private void openHelp() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Help-Screen.fxml"));
+            Parent root = loader.load();
+            
+            Stage helpStage = new Stage();
+            helpStage.setTitle("Help");
+            helpStage.setScene(new Scene(root));
+            helpStage.show();
+
+
+        } catch(IOException e) {
+            System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
+        }
     }
 }
