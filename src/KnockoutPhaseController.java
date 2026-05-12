@@ -7,11 +7,14 @@ import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -19,6 +22,24 @@ public class KnockoutPhaseController extends BaseController{
     private List<AnchorPane> matchCards;
     @FXML
     private Button Dashboard_button;
+    
+    @FXML
+    private Button simulateRound_Button;
+
+    @FXML
+    private Button simulateTournament_Button;
+
+
+    // TODO: maybe use vboxes and just get the children
+    @FXML private VBox roundof32Left;
+    @FXML private VBox roundof32Right;
+    @FXML private VBox roundof16Left;
+    @FXML private VBox roundof16Right;
+    @FXML private VBox quarterfinalsLeft;
+    @FXML private VBox quarterfinalsRight;
+    @FXML private VBox semifinalsLeft;
+    @FXML private VBox semifinalsRight;
+    @FXML private VBox finals;
 
     //match boxes for round of 32 (top to bottom, left then right)
     @FXML private AnchorPane r32match1;
@@ -63,8 +84,7 @@ public class KnockoutPhaseController extends BaseController{
     @FXML private AnchorPane thirdplacematch;
 
 
-    @FXML
-    private ImageView trophyImage;
+    @FXML private ImageView trophyImage;
 
     @Override
     protected void onLoad() {
@@ -89,6 +109,7 @@ public class KnockoutPhaseController extends BaseController{
         );
 
         connectMatchCards();
+        loadKnockoutMatches();
         }
     
     private void connectMatchCards() {
@@ -128,4 +149,95 @@ public class KnockoutPhaseController extends BaseController{
     private void Dashboard_button_clicked() {
         navigateTo(Screen.DASHBOARD);
     }
+
+    
+    @FXML
+    private void simulateRoundClicked() {
+    WorldCupTournament.getInstance().simulateRemainingCurrentRound();
+    loadKnockoutMatches();
+}
+
+    @FXML
+    private void simulateTournamentClicked() {
+    WorldCupTournament.getInstance().simulateRestOfTournament();
+    loadKnockoutMatches();
+}
+
+private void loadKnockoutMatches() {
+    List<Match> matches = WorldCupTournament.getInstance().getKnockoutMatches();
+
+    System.out.println("Knockout matches found: " + matches.size());
+
+    if (matches.isEmpty()) {
+        return;
+    }
+
+    loadMatchesIntoVBox(roundof32Left, matches, 0, 8);
+    loadMatchesIntoVBox(roundof32Right, matches, 8, 16);
+
+    loadMatchesIntoVBox(roundof16Left, matches, 16, 20);
+    loadMatchesIntoVBox(roundof16Right, matches, 20, 24);
+
+    loadMatchesIntoVBox(quarterfinalsLeft, matches, 24, 26);
+    loadMatchesIntoVBox(quarterfinalsRight, matches, 26, 28);
+
+    loadMatchesIntoVBox(semifinalsLeft, matches, 28, 29);
+    loadMatchesIntoVBox(semifinalsRight, matches, 29, 30);
+
+    loadMatchesIntoVBox(finals, matches, 30, matches.size());
+}
+
+private void loadMatchesIntoVBox(VBox roundBox, List<Match> matches, int start, int end) {
+    int matchIndex = start;
+
+    for (Node node : roundBox.getChildren()) {
+        if (node instanceof AnchorPane card && matchIndex < end && matchIndex < matches.size()) {
+            Match match = matches.get(matchIndex);
+
+            updateMatchCard(card, match);
+
+            card.setCursor(Cursor.HAND);
+            card.setOnMouseClicked(event -> matchClicked(match));
+
+            matchIndex++;
+        }
+    }
+}
+
+private void updateMatchCard(AnchorPane card, Match match) {
+    Label team1 = getCardLabel(card, 0);
+    Label team2 = getCardLabel(card, 1);
+    Label score = getCardLabel(card, 2);
+
+    if (team1 != null) {
+        team1.setText(match.getFirstTeam().getCode());
+    }
+
+    if (team2 != null) {
+        team2.setText(match.getSecondTeam().getCode());
+    }
+
+    if (score != null) {
+        score.setText(match.isFinished()
+            ? match.getFirstTeamScore() + " - " + match.getSecondTeamScore()
+            : "vs");
+    }
+
+    System.out.println("Loaded match: " + match.getFirstTeam().getCode() + " vs " + match.getSecondTeam().getCode());
+}
+
+private Label getCardLabel(AnchorPane card, int index) {
+    int current = 0;
+
+    for (Node child : card.getChildren()) {
+        if (child instanceof Label label) {
+            if (current == index) {
+                return label;
+            }
+            current++;
+        }
+    }
+
+    return null;
+}
 }

@@ -23,7 +23,7 @@
                      <children>
                         <HBox fx:id="bracketContainer" alignment="CENTER_LEFT" layoutY="45.0" prefHeight="850.0" prefWidth="3500.0" spacing="150.0" style="-fx-background-color: #0D3B2E;">
                            <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="736.0" prefWidth="230.0" spacing="20.0" style="-fx-background-color: transparent;">
+                              <VBox fx:id="roundof32Left" alignment="TOP_CENTER" prefHeight="736.0" prefWidth="230.0" spacing="20.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" maxHeight="35.0" maxWidth="148.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #8CEB7A;" text="Round of 32" textFill="WHITE">
                                        <font>
@@ -32,328 +32,376 @@
                                     </Label>
                                     <AnchorPane fx:id="r32match1" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match2" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match3" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match4" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match5" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match6" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match7" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match8" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                  </children>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="736.0" prefWidth="250.0" spacing="65.0" style="-fx-background-color: transparent;">
+                              <VBox fx:id="roundof16Left" alignment="TOP_CENTER" prefHeight="696.0" prefWidth="250.0" spacing="65.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" maxHeight="35.0" maxWidth="148.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #8CEB7A;" text="Round of 16" textFill="WHITE">
                                        <font>
                                           <Font name="Bell MT Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane fx:id="r16match1" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="r16match1" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="-30.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="r16match2" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="r16match2" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="10.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="r16match3" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="r16match3" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="55.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="r16match4" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="r16match4" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="100.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                  </children>
                                  <padding>
                                     <Insets top="40.0" />
                                  </padding>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="110.0" style="-fx-background-color: transparent;">
+                              <VBox fx:id="quarterfinalsLeft" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="110.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" maxHeight="35.0" maxWidth="148.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #8CEB7A;" text="Quarterfinals" textFill="WHITE">
                                        <font>
                                           <Font name="Bell MT Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane fx:id="qfmatch1" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="qfmatch1" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="-60.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="qfmatch2" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="qfmatch2" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="120.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                  </children>
                                  <padding>
                                     <Insets top="115.0" />
                                  </padding>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="110.0" style="-fx-background-color: transparent;">
+                              <VBox fx:id="semifinalsLeft" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="110.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" maxHeight="35.0" maxWidth="148.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #8CEB7A;" text="Semifinals" textFill="WHITE">
                                        <font>
                                           <Font name="Bell MT Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane fx:id="sfmatch1" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="sfmatch1" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="25.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                  </children>
                                  <padding>
                                     <Insets top="215.0" />
                                  </padding>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="657.0" prefWidth="356.0" spacing="25.0" style="-fx-background-color: transparent;">
+                              <VBox fx:id="finals" alignment="TOP_CENTER" prefHeight="657.0" prefWidth="356.0" spacing="25.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" maxHeight="35.0" maxWidth="148.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #8CEB7A;" text="Final" textFill="WHITE">
                                        <font>
@@ -362,228 +410,251 @@
                                     </Label>
                                     <AnchorPane fx:id="finalmatch" maxHeight="100.0" maxWidth="356.0" minHeight="100.0" minWidth="356.0" prefHeight="100.0" prefWidth="356.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="14.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="14.0" maxHeight="40.0" maxWidth="107.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="91.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="53.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="53.0" maxHeight="47.0" maxWidth="107.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="95.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="231.0" layoutY="33.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="231.0" layoutY="33.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <ImageView fx:id="trophyImage" fitHeight="179.0" fitWidth="341.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="trophyImage" fitHeight="524.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true" translateY="15.0">
                                        <image>
                                           <Image url="@images/trophy.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" maxHeight="35.0" maxWidth="227.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="227.0" style="-fx-text-fill: #8CEB7A;" text="Third Place Match" textFill="WHITE">
+                                    <Label alignment="CENTER" maxHeight="35.0" maxWidth="227.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="227.0" style="-fx-text-fill: #8CEB7A;" text="Third Place Match" textFill="WHITE" translateY="25.0">
                                        <font>
                                           <Font name="Bell MT Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane fx:id="thirdplacematch" maxHeight="100.0" maxWidth="356.0" minHeight="100.0" minWidth="356.0" prefHeight="100.0" prefWidth="356.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="thirdplacematch" maxHeight="100.0" maxWidth="356.0" minHeight="100.0" minWidth="356.0" prefHeight="100.0" prefWidth="356.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="25.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="14.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="17.0" layoutY="9.0" maxHeight="43.0" maxWidth="104.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="79.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="53.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="53.0" maxHeight="51.0" maxWidth="116.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="100.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="231.0" layoutY="33.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="231.0" layoutY="33.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
-                                    </AnchorPane>
-                                    <Button fx:id="Dashboard_button" mnemonicParsing="false" onAction="#Dashboard_button_clicked" style="-fx-background-color: transparent; -fx-border-color: #E5A94D; -fx-border-radius: 10; -fx-text-fill: #E5A94D; -fx-font-size: 14; -fx-font-weight: bold; -fx-padding: 8, 14, 8, 14;" text="Back To Dashboard">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
-                                       </cursor></Button>
+                                       </cursor>
+                                    </AnchorPane>
                                  </children>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="110.0" style="-fx-background-color: transparent;">
+                              <VBox fx:id="semifinalsRight" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="110.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" maxHeight="35.0" maxWidth="148.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #8CEB7A;" text="Semifinals" textFill="WHITE">
                                        <font>
                                           <Font name="Bell MT Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane fx:id="sfmatch2" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="sfmatch2" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="25.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                  </children>
                                  <padding>
                                     <Insets top="215.0" />
                                  </padding>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="637.0" prefWidth="240.0" spacing="110.0" style="-fx-background-color: transparent;">
+                              <VBox fx:id="quarterfinalsRight" alignment="TOP_CENTER" prefHeight="637.0" prefWidth="240.0" spacing="110.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" maxHeight="35.0" maxWidth="148.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #8CEB7A;" text="Quarterfinals" textFill="WHITE">
                                        <font>
                                           <Font name="Bell MT Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane fx:id="qfmatch3" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="qfmatch3" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="-60.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="qfmatch4" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="qfmatch4" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="120.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                  </children>
                                  <padding>
                                     <Insets top="115.0" />
                                  </padding>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="65.0" style="-fx-background-color: transparent;">
+                              <VBox fx:id="roundof16Right" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="65.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" maxHeight="35.0" maxWidth="148.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #8CEB7A;" text="Round of 16" textFill="WHITE">
                                        <font>
                                           <Font name="Bell MT Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <AnchorPane fx:id="r16match5" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="r16match5" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="-30.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="r16match6" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="r16match6" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="10.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="r16match7" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="r16match7" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="55.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="r16match8" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
+                                    <AnchorPane fx:id="r16match8" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;" translateY="100.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                  </children>
                                  <padding>
                                     <Insets top="40.0" />
                                  </padding>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="20.0" style="-fx-background-color: transparent;">
+                              <VBox fx:id="roundof32Right" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="20.0" style="-fx-background-color: transparent;">
                                  <children>
                                     <Label alignment="CENTER" maxHeight="35.0" maxWidth="148.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #8CEB7A;" text="Round of 32" textFill="WHITE">
                                        <font>
@@ -592,155 +663,179 @@
                                     </Label>
                                     <AnchorPane fx:id="r32match9" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match10" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match11" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match12" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match13" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match14" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match15" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                     <AnchorPane fx:id="r32match16" maxHeight="70.0" maxWidth="250.0" minHeight="70.0" minWidth="250.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #1B5E3D; -fx-background-radius: 14; -fx-border-color: #E5A94D; -fx-border-radius: 14; -fx-border-width: 2;">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
+                                          <Label fx:id="team1label" layoutX="16.0" layoutY="10.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country A" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
+                                          <Label fx:id="team2label" layoutX="16.0" layoutY="43.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" text="Country B" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
+                                          <Label fx:id="scorelabel" layoutX="153.0" layoutY="25.0" maxHeight="20.0" maxWidth="67.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="67.0" style="-fx-text-fill: #E5A94D;" text="Score" textFill="WHITE">
                                              <font>
                                                 <Font name="Bell MT Bold" size="20.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </AnchorPane>
                                  </children>
                               </VBox>
@@ -757,7 +852,29 @@
          <top>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1920.0" text="FIFA WORLD CUP 2026 — KNOCKOUT STAGE" textAlignment="CENTER" textFill="WHITE" translateX="150.0">
+                  <Button fx:id="simulateRound_Button" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#simulateRoundClicked" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #1B5E3D; -fx-border-color: #E5A94D; -fx-background-radius: 10; -fx-border-radius: 8; -fx-border-width: 2; -fx-text-fill: #E5A94D;" text="Simulate Round" translateX="150.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="8.0" left="18.0" right="18.0" top="8.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="simulateTournament_Button" layoutX="30.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#simulateTournamentClicked" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #1B5E3D; -fx-border-color: #E5A94D; -fx-background-radius: 10; -fx-border-radius: 8; -fx-border-width: 2; -fx-text-fill: #E5A94D;" text="Simulate Tournament" translateX="200.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="8.0" left="18.0" right="18.0" top="8.0" />
+                     </padding>
+                  </Button>
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="787.0" text="FIFA WORLD CUP 2026 — KNOCKOUT STAGE" textAlignment="CENTER" textFill="WHITE" translateX="150.0">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
