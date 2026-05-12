@@ -10,6 +10,19 @@ AnchorPane {
     -fx-background-color: radial-gradient(center 60% 30%, radius 80%, #01362e 0%, #0a0f0d 100%);
 }
 
+ScrollPane {
+    -fx-background-color: radial-gradient(center 60% 30%, radius 80%, #01362e 0%, #0a0f0d 100%);
+}
+
+FlowPane {
+    -fx-background-color: radial-gradient(center 60% 30%, radius 80%, #01362e 0%, #0a0f0d 100%);
+}
+
+Pane {
+    -fx-background-color: radial-gradient(center 60% 30%, radius 80%, #01362e 0%, #0a0f0d 100%);
+}
+
+
 .header-label {
     -fx-text-fill: #ffffff;
     -fx-font-size: 47px;
@@ -20,6 +33,8 @@ AnchorPane {
 .body-label {
     -fx-text-fill: #a5c9a7;
 }
+
+
 
 .title-label {
     -fx-text-fill: #ffad43;
@@ -40,4 +55,14 @@ AnchorPane {
     -fx-cursor: hand;
     -fx-padding: 8px 16px;
     -fx-effect: dropshadow(gaussian, #00000066, 6, 0.2, 0, 3);
+}
+
+.group-pane {
+    -fx-background-color: #0f4d10;
+}
+
+.team-label {
+    -fx-text-fill: #ffad43;
+    -fx-font-family: "Georgia";
+    -fx-font-weight: bold;
 }
