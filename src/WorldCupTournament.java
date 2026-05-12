@@ -7,16 +7,11 @@ public class WorldCupTournament {
     // Singleton instance
     public static final WorldCupTournament instance = new WorldCupTournament();
 
-    // Stage names + status
-    public static final String GROUP_STAGE = "Group Stage";
-    public static final String KNOCKOUT_STAGE = "Knockout Stage";
-    public static final String COMPLETE = "Complete";
-
     private final List<Team> allTeams;
     private GroupStage groupStage;
     private Bracket bracket;
 
-    private String currentStage;
+    private StageMode currentStage;
     private Team champion;
     private Match currentlyViewedMatch;
 
@@ -87,21 +82,10 @@ public class WorldCupTournament {
         return null;
     }
 
-    public String getCurrentStage() {
+    public StageMode getCurrentStage() {
         return currentStage;
     }
 
-    public String getCurrentRound() {
-        if (currentStage.equals(GROUP_STAGE)) {
-            return "Group Stage";
-        }
-
-        if (currentStage.equals(COMPLETE)) {
-            return "Tournament Complete";
-        }
-
-        return "Knockout Stage";
-    }
     // following methods check if certain aspects of the program are completed before moving on.
     public boolean isGroupStageComplete() {
         return groupStage.isSimulated();
@@ -112,7 +96,7 @@ public class WorldCupTournament {
     }
 
     public boolean isTournamentComplete() {
-        return currentStage.equals(COMPLETE);
+        return currentStage == StageMode.COMPLETE;
     }
 
     public boolean isFinished() {
@@ -121,45 +105,47 @@ public class WorldCupTournament {
 
     // Simulates the next available match
     public Match simulateOneMatch() {
-        if (currentStage.equals(COMPLETE)) {
+        if (isTournamentComplete()) {
             return null;
         }
 
-        if (currentStage.equals(GROUP_STAGE)) {
-            //FIXME: waiting for implementation in GroupStage
-            /*
+        if (currentStage == StageMode.GROUP_STAGE) {
             Match match = groupStage.simulateOneMatch();
             if (groupStage.isSimulated()) {
                 createKnockoutStage();
             }
             return match;
-            */
-            groupStage.simulateGroupStage();
-            createKnockoutStage();
-            return null;
         }
 
         Match match = bracket.simulateOneMatch();
 
         if (bracket.isFinished()) {
             champion = bracket.getFinal().getWinner();
-            currentStage = COMPLETE;
+            currentStage = StageMode.COMPLETE;
         }
 
         return match;
     }
 
-    public Match simulateNextAvailableMatch() {
-        return simulateOneMatch();
+    public Group simulateNextGroup() {
+        if (isGroupStageComplete()) {
+            return null;
+        }
+
+        Group group = groupStage.simulateNextGroup();
+        if (groupStage.isSimulated()) {
+            createKnockoutStage();
+        }
+        return group;
     }
 
     // Simulates the rest of the current round
     public void simulateRemainingCurrentRound() {
-        if (currentStage.equals(COMPLETE)) {
+        if (isTournamentComplete()) {
             return;
         }
 
-        if (currentStage.equals(GROUP_STAGE)) {
+        if (currentStage ==  StageMode.GROUP_STAGE) {
             groupStage.simulateGroupStage();
             createKnockoutStage();
             return;
@@ -170,7 +156,7 @@ public class WorldCupTournament {
         }
 
         champion = bracket.getFinal().getWinner();
-        currentStage = COMPLETE;
+        currentStage = StageMode.COMPLETE;
     }
 
     // Simulates the rest of the tournament
@@ -191,7 +177,7 @@ public class WorldCupTournament {
         }
 
         bracket = new Bracket(advancingTeams);
-        currentStage = KNOCKOUT_STAGE;
+        currentStage = StageMode.KNOCKOUT_STAGE;
     }
 
     // The following methods reset the entire tournnament,
@@ -201,7 +187,7 @@ public class WorldCupTournament {
         groupStage = new GroupStage(allTeams);
         bracket = null;
 
-        currentStage = GROUP_STAGE;
+        currentStage = StageMode.GROUP_STAGE;
         champion = null;
     }
 

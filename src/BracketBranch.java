@@ -75,8 +75,7 @@ public class BracketBranch {
         if (leftBranch != null && rightBranch != null) {
             if (!leftBranch.isFinished() && leftBranch.matchesSimulated <= rightBranch.matchesSimulated) {
                 result = leftBranch.simulateOneMatch();
-            }
-            if (!rightBranch.isFinished()) {
+            } else if (!rightBranch.isFinished()) {
                 result = rightBranch.simulateOneMatch();
             }
         }

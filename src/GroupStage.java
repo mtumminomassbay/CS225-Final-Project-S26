@@ -100,16 +100,9 @@ public class GroupStage {
     }
 
     public void simulateGroupStage() {
-        if (simulated) {
-            return;
+        while (!simulated) {
+            simulateOneMatch();
         }
-
-        for (Group group : groups) {
-            group.simulateAllMatches();
-            advancingTeams.addAll(group.getAdvancingTeams(ADVANCING_PER_GROUP));
-        }
-
-        simulated = true;
     }
 
     public Group simulateNextGroup() {
