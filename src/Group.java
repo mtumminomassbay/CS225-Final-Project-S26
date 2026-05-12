@@ -46,20 +46,26 @@ public class Group {
         }
     }
 
-    public void simulateAllMatches() {
+    public Match simulateOneMatch() {
         if (completed) {
-            return;
+            return null;
         }
 
-        for (Match match : matches) {
-            if (!match.isFinished()) {
-                match.simulate();
-                recordMatchResult(match);
-                matchesPlayed++;
-            }
-        }
+        Match match = matches.get(matchesPlayed);
+        match.simulate();
+        recordMatchResult(match);
+        matchesPlayed++;
 
-        completed = true;
+        if (matchesPlayed == matches.size()) {
+            completed = true;
+        }
+        return match;
+    }
+
+    public void simulateAllMatches() {
+        while (!completed) {
+            simulateOneMatch();
+        }
     }
 
     private void recordMatchResult(Match match) {
