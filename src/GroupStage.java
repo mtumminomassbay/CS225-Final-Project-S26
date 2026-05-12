@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -8,10 +9,12 @@ public class GroupStage {
     private static final int TEAMS_PER_GROUP = 4;
     private static final int TOTAL_GROUP_STAGE_TEAMS = GROUP_COUNT * TEAMS_PER_GROUP;
     private static final int ADVANCING_PER_GROUP = 2;
+    private static final int THIRD_PLACE_ADVANCING = 8;
 
     private List<Team> teams;
     private List<Group> groups;
     private List<Team> advancingTeams;
+    private int currentGroup = 0;
 
     private boolean simulated;
 
@@ -59,6 +62,36 @@ public class GroupStage {
             Group group = new Group("Group " + groupLetter, groupBuckets.get(i), 1);
             groups.add(group);
         }
+    }
+
+    private void finalizeGroupStage() {
+        simulated = true;
+
+        ArrayList<GroupResults> thirdPlaceTeams = new ArrayList<>();
+        for (Group group : groups) {
+            advancingTeams.addAll(group.getAdvancingTeams(ADVANCING_PER_GROUP));
+            thirdPlaceTeams.add(group.getSortedResults().get(2));
+        }
+
+        Collections.sort(thirdPlaceTeams);
+        advancingTeams.addAll(thirdPlaceTeams.subList(0, THIRD_PLACE_ADVANCING).stream().map(GroupResults::getTeam).toList());
+    }
+
+    public Match simulateOneMatch() {
+        if (simulated) {
+            return null;
+        }
+
+        Group group = groups.get(currentGroup);
+        Match match = group.simulateOneMatch();
+
+        if (group.isCompleted()) {
+            currentGroup++;
+            if (currentGroup == groups.size()) {
+                finalizeGroupStage();
+            }
+        }
+        return match;
     }
 
     public void simulateGroupStage() {
