@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 public abstract class BaseController {
     
     protected final Navigator navigator = Navigator.getInstance();
+    protected final WorldCupTournament worldCup = WorldCupTournament.getInstance();
 
 
     /*  Our subclasses will no longer override initialize()

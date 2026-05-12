@@ -3,13 +3,18 @@
 //Andrew Larrazabal
 //Menu for the Team Info view
 
+
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
 
 public class TeamInfoViewController extends BaseController {
 
@@ -19,12 +24,20 @@ public class TeamInfoViewController extends BaseController {
 
     private ArrayList<TeamInfoCardController> listTeamCards = new ArrayList<>();
 
+    //TeamParser parser = new TeamParser(); //Use world cup tournament one
+    List<Team> teams = WorldCupTournament.getInstance().getGroupStage().getTeams();
+
     //INITIALIZE
     @Override
     protected void onLoad() {
-        // load cards
-        for (int i = 0; i < 48; i++) {
-            addTeamCard();
+        cardContainer.setMaxWidth(Double.MAX_VALUE); //For making the view screen resize with the window
+        cardContainer.setMaxHeight(Double.MAX_VALUE);
+
+        //TEST: teams object
+
+        System.out.println("Loading Team Cards");
+        for (Team team: teams) {
+            addTeamCard(team);
         }
 
         //TODO: a bit lost on how to sort the list alphabetically from an object
@@ -41,31 +54,40 @@ public class TeamInfoViewController extends BaseController {
     }
 
     //METHODS
-    public void addTeamCard() {
+    public void addTeamCard(Team team) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("TeamInfoCard.fxml")
+                getClass().getResource("/TeamInfoCard.fxml")
             );
             
             Node cardNode = loader.load();
-
+        
             TeamInfoCardController card = loader.getController();
 
+            card.setTeam(team);                           //Set up team in each card
             listTeamCards.add(card);                      //Add team in array list
-            
             cardContainer.getChildren().add(cardNode);    //<--- MAYBE MOVE TO DIFFERENT METHOD (Load card to Team View Menu)
+
         } catch (IOException e) {
             System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
         }
     }
 
+
+    /*//Tristan refresh with groups
+    public void refresh() {
+        cardContainer.getChildren().clear();
+        listTeamCards.clear();
+
+        for (Team team : teams) {
+            addTeamCard(team);
+        }
+    }
+     */
+
     //FIXME: add method to set up the team view if needed
 
-    public ArrayList<TeamInfoCardController> getTeamList() {
-        return listTeamCards;
-    }
+    public ArrayList<TeamInfoCardController> getTeamList() {return listTeamCards;}
 
-    public void setTeamList(ArrayList<TeamInfoCardController> list) {
-        listTeamCards = list;
-    }
+    public void setTeamList(ArrayList<TeamInfoCardController> list) {listTeamCards = list;}
 }
