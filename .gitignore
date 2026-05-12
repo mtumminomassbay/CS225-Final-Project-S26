@@ -8,6 +8,7 @@ gradle/
 gradlew
 gradlew.bat
 .idea
+.vscode
 
 # Log file
 *.log
