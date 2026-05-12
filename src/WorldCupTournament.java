@@ -222,4 +222,22 @@ public class WorldCupTournament {
     public List<Team> getAllTeams() {
         return Collections.unmodifiableList(allTeams);
     }
+
+    //Joey Barton
+    public List<PenaltyShootout.KickResult> getPenaltyKickResults() {
+
+        
+        List<PenaltyShootout.KickResult> results = new ArrayList<>();
+
+        for(Match match : getKnockoutMatches()) {
+            PenaltyShootout shootout = match.getPenalties();
+
+            if(shootout != null && shootout.isFinished()) {
+                results.addAll(shootout.getKickResults());
+            }
+        }
+
+
+        return results;
+    }
 }
