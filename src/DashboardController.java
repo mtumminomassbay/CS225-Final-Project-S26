@@ -30,6 +30,10 @@ public class DashboardController extends BaseController{
     protected void onLoad() {
         fillAllStarList();
         displayRandomAllStar();
+
+        statusLabel.setText("Status: " + worldCup.getProgressText());
+        currentStageLabel.setText("Current Stage: " + worldCup.getCurrentStage());
+        groupsCompletedLabel.setText("Remaining Matches: " + worldCup.getRemainingMatches());
     }
 
     @FXML
