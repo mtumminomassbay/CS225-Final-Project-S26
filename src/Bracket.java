@@ -39,30 +39,38 @@ public class Bracket {
         return new ArrayList<>(qualifiedTeams);
     }
 
-    
-    public Match simulateOneMatch() {
-        if (bracketRoot.isFinished()) {
+    private Match getAndSimulateMatch(boolean dryRun) {
+        if (isFinished()) {
             return null;
         }
 
         BracketBranch leftSemi  = bracketRoot.getLeftBranch();
         BracketBranch rightSemi = bracketRoot.getRightBranch();
 
-        if (leftSemi.isFinished() && rightSemi.isFinished() && thirdPlace == null) {
-            Match leftMatch  = leftSemi.getMatch();
-            Match rightMatch = rightSemi.getMatch();
-
-            Team loser1 = leftMatch.getWinner().equals(leftMatch.getFirstTeam())
-                ? leftMatch.getSecondTeam() : leftMatch.getFirstTeam();
-            Team loser2 = rightMatch.getWinner().equals(rightMatch.getFirstTeam())
-                ? rightMatch.getSecondTeam() : rightMatch.getFirstTeam();
-
-            thirdPlace = new Match(loser1, loser2, false);
-            thirdPlace.simulate();
+        if (thirdPlace != null && !thirdPlace.isFinished()) {
+            if (!dryRun) {
+                thirdPlace.simulate();
+            }
             return thirdPlace;
         }
 
-        return bracketRoot.simulateOneMatch();
+        Match result = bracketRoot.simulateOneMatch(dryRun);
+
+        if (!dryRun && thirdPlace == null && leftSemi.isFinished() && rightSemi.isFinished()) {
+            Match leftMatch  = leftSemi.getMatch();
+            Match rightMatch = rightSemi.getMatch();
+
+            thirdPlace = new Match(leftMatch.getLoser(), rightMatch.getLoser(), false);
+        }
+        return result;
+    }
+
+    public Match getNextMatch() {
+        return getAndSimulateMatch(true);
+    }
+
+    public Match simulateOneMatch() {
+        return getAndSimulateMatch(false);
     }
 
     public boolean isFinished() {
@@ -101,6 +109,37 @@ public class Bracket {
 
     public Match getThirdPlace() {
         return thirdPlace;
+    }
+
+    public String getCurrentRound() {
+        if (getCompletedMatches() < 16) {
+            return "Round of 32";
+        } else if (getCompletedMatches() < 24) {
+            return "Round of 16";
+        } else if (getCompletedMatches() < 28) {
+            return "Quarterfinals";
+        } else if (getCompletedMatches() < 30) {
+            return "Semifinals";
+        } else if (getCompletedMatches() == 30) {
+            return "Match for Third";
+        } else if (getCompletedMatches() == 31) {
+            return "Finals";
+        } else {
+            return "Completed";
+        }
+    }
+
+    public int getTotalMatches() {
+        return teams.size();
+    }
+
+    public int getCompletedMatches() {
+        int totalMatches = bracketRoot.getMatchesSimulated();
+        if (thirdPlace != null && thirdPlace.isFinished()) {
+            totalMatches += 1;
+        }
+
+        return totalMatches;
     }
 }
 

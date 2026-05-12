@@ -46,12 +46,20 @@ public class Group {
         }
     }
 
+    public Match getNextMatch() {
+        if (completed) {
+            return null;
+        }
+
+        return matches.get(matchesPlayed);
+    }
+
     public Match simulateOneMatch() {
         if (completed) {
             return null;
         }
 
-        Match match = matches.get(matchesPlayed);
+        Match match = getNextMatch();
         match.simulate();
         recordMatchResult(match);
         matchesPlayed++;
@@ -60,12 +68,6 @@ public class Group {
             completed = true;
         }
         return match;
-    }
-
-    public void simulateAllMatches() {
-        while (!completed) {
-            simulateOneMatch();
-        }
     }
 
     private void recordMatchResult(Match match) {
@@ -94,24 +96,6 @@ public class Group {
         }
 
         return advancingTeams;
-    }
-    public void simulate() {
-
-        while(teams.size() > 1) {
-
-            int length = teams.size() / 2;
-
-            for (int i = 0; i < length; i += 2) {
-                Team first = teams.get(i);
-                Team second = teams.get(i + 1);
-
-
-                Match match1 = new Match(first, second, true);
-                match1.simulate();
-                matches.add(match1);
-
-            }
-        }
     }
 
     public int getMatchesPerTeamPair() {

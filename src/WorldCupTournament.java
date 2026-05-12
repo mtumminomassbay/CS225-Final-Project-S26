@@ -86,21 +86,69 @@ public class WorldCupTournament {
         return currentStage;
     }
 
+    // Returns how many matches have been completed
+    public int getCompletedMatches() {
+        return getCompletedGroupMatches() + getCompletedKnockoutMatches();
+    }
+
+    // Returns the total number of matches in the tournament
+    public int getTotalMatches() {
+        return getTotalGroupMatches() + getTotalKnockoutMatches();
+    }
+
+    // returns remaining matches
+    public int getRemainingMatches() {
+        return getTotalMatches() - getCompletedMatches();
+    }
+
+    // Counts completed group-stage matches
+    private int getCompletedGroupMatches() {
+        int completed = 0;
+
+        for (Match match : getGroupMatches()) {
+            if (match.isFinished()) {
+                completed++;
+            }
+        }
+
+        return completed;
+    }
+
+    private int getTotalGroupMatches() {
+        return getGroupMatches().size();
+    }
+
+    private int getCompletedKnockoutMatches() {
+        if (bracket == null) {
+            return 0;
+        }
+
+        return bracket.getCompletedMatches();
+    }
+
+    private int getTotalKnockoutMatches() {
+        return 32;
+    }
+
     // following methods check if certain aspects of the program are completed before moving on.
     public boolean isGroupStageComplete() {
         return groupStage.isSimulated();
-    }
-
-    public boolean isKnockoutBracketCreated() {
-        return bracket != null;
     }
 
     public boolean isTournamentComplete() {
         return currentStage == StageMode.COMPLETE;
     }
 
-    public boolean isFinished() {
-        return isTournamentComplete();
+    public Match getNextMatch() {
+        if (isTournamentComplete()) {
+            return null;
+        }
+
+        if (currentStage == StageMode.GROUP_STAGE) {
+            return groupStage.getNextMatch();
+        }
+
+        return bracket.getNextMatch();
     }
 
     // Simulates the next available match
@@ -118,6 +166,10 @@ public class WorldCupTournament {
         }
 
         Match match = bracket.simulateOneMatch();
+
+        if (match != null) {
+            currentlyViewedMatch = match;
+        }
 
         if (bracket.isFinished()) {
             champion = bracket.getFinal().getWinner();
@@ -190,8 +242,26 @@ public class WorldCupTournament {
         currentStage = StageMode.GROUP_STAGE;
         champion = null;
     }
-
+    
     public List<Team> getAllTeams() {
         return Collections.unmodifiableList(allTeams);
+    }
+
+    //Joey Barton
+    public List<PenaltyShootout.KickResult> getPenaltyKickResults() {
+
+        
+        List<PenaltyShootout.KickResult> results = new ArrayList<>();
+
+        for(Match match : getKnockoutMatches()) {
+            PenaltyShootout shootout = match.getPenalties();
+
+            if(shootout != null && shootout.isFinished()) {
+                results.addAll(shootout.getKickResults());
+            }
+        }
+
+
+        return results;
     }
 }
