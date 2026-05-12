@@ -185,45 +185,53 @@ public class KnockoutPhaseController extends BaseController {
 
     @FXML
     private void simulateTournamentClicked() {
-        WorldCupTournament.getInstance().simulateRestOfTournament();
+        worldCup.simulateRestOfTournament();
         loadKnockoutMatches();
     }
 
     private void loadKnockoutMatches() {
-        List<Match> matches = WorldCupTournament.getInstance().getKnockoutMatches();
+        loadMatchesIntoVBox(roundof32Left,32, 8);
+        loadMatchesIntoVBox(roundof32Right,32, 8);
 
-        System.out.println("Knockout matches found: " + matches.size());
+        loadMatchesIntoVBox(roundof16Left, 16, 4);
+        loadMatchesIntoVBox(roundof16Right, 16, 4);
 
-        if (matches.isEmpty()) {
-            return;
-        }
+        loadMatchesIntoVBox(quarterfinalsLeft, 8, 2);
+        loadMatchesIntoVBox(quarterfinalsRight, 8, 2);
 
-        loadMatchesIntoVBox(roundof32Left, matches, 0, 8);
-        loadMatchesIntoVBox(roundof32Right, matches, 8, 16);
+        loadMatchesIntoVBox(semifinalsLeft, 4, 1);
+        loadMatchesIntoVBox(semifinalsRight, 4, 1);
 
-        loadMatchesIntoVBox(roundof16Left, matches, 16, 20);
-        loadMatchesIntoVBox(roundof16Right, matches, 20, 24);
-
-        loadMatchesIntoVBox(quarterfinalsLeft, matches, 24, 26);
-        loadMatchesIntoVBox(quarterfinalsRight, matches, 26, 28);
-
-        loadMatchesIntoVBox(semifinalsLeft, matches, 28, 29);
-        loadMatchesIntoVBox(semifinalsRight, matches, 29, 30);
-
-        loadMatchesIntoVBox(finals, matches, 30, matches.size());
+        loadMatchesIntoVBox(finals, 2, 2);
     }
 
-    private void loadMatchesIntoVBox(VBox roundBox, List<Match> matches, int start, int end) {
-        int matchIndex = start;
+    private void loadMatchesIntoVBox(VBox roundBox, int bracketRound, int count) {
+        List<Match> matches = List.of();
+        if (worldCup.isGroupStageComplete()) {
+            matches = worldCup.getBracket().getMatchesForRound(bracketRound);
+            if (bracketRound == 2) {
+                matches.add(worldCup.getBracket().getThirdPlace());
+            }
+        }
 
+        int matchIndex = 0;
         for (Node node : roundBox.getChildren()) {
-            if (node instanceof AnchorPane card && matchIndex < end && matchIndex < matches.size()) {
-                Match match = matches.get(matchIndex);
+            if (node instanceof AnchorPane card && matchIndex < count) {
+                Match match;
+                if (matchIndex < matches.size()) {
+                    match = matches.get(matchIndex);
+                } else {
+                    match = null;
+                }
 
                 updateMatchCard(card, match);
 
                 card.setCursor(Cursor.HAND);
-                card.setOnMouseClicked(event -> matchClicked(match));
+                if (match != null) {
+                    card.setOnMouseClicked(event -> matchClicked(match));
+                } else {
+                    card.setOnMouseClicked(null);
+                }
 
                 matchIndex++;
             }
@@ -236,20 +244,18 @@ public class KnockoutPhaseController extends BaseController {
         Label score = getCardLabel(card, 2);
 
         if (team1 != null) {
-            team1.setText(match.getFirstTeam().getCode());
+            team1.setText(match == null ? "???" : match.getFirstTeam().getCode());
         }
 
         if (team2 != null) {
-            team2.setText(match.getSecondTeam().getCode());
+            team2.setText(match == null ? "???" : match.getSecondTeam().getCode());
         }
 
         if (score != null) {
-            score.setText(match.isFinished()
+            score.setText(match != null && match.isFinished()
                 ? match.getFirstTeamScore() + " - " + match.getSecondTeamScore()
                 : "vs");
         }
-
-        System.out.println("Loaded match: " + match.getFirstTeam().getCode() + " vs " + match.getSecondTeam().getCode());
     }
 
     private Label getCardLabel(AnchorPane card, int index) {

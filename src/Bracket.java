@@ -94,6 +94,28 @@ public class Bracket {
         return matches;
     }
 
+    // Gets all the matches at a particular round (of 32, of 16, etc). Null values are deliberately included in the list
+    // to act as placeholders and ensure the order is stable.
+    private List<Match> getMatchesForRound(int round, BracketBranch cursor, List<Match> work) {
+        if (cursor.getBracketStage() < round) {
+            if (cursor.getLeftBranch() == null || cursor.getRightBranch() == null) {
+                return work;
+            }
+
+            getMatchesForRound(round, cursor.getLeftBranch(), work);
+            getMatchesForRound(round, cursor.getRightBranch(), work);
+        } else if (cursor.getBracketStage() == round) {
+            work.add(cursor.getMatch());
+        }
+
+        return work;
+    }
+
+    public List<Match> getMatchesForRound(int round) {
+        List<Match> matches = new ArrayList<>();
+        return getMatchesForRound(round, bracketRoot, matches);
+    }
+
     private void collectMatches(BracketBranch branch, List<Match> matches) {
         if (branch == null) return;
         collectMatches(branch.getLeftBranch(), matches);

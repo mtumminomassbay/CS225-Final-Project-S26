@@ -47,7 +47,6 @@ public class SimulationController {
     private Timeline actionTimeline;
     private Timeline autoPlayTimeline;
     private StageMode lastStage;
-    private boolean knockoutMode = false;
     private Runnable onSimulationChanged;
 
     @FXML
@@ -77,7 +76,6 @@ public class SimulationController {
 
     public void configureForGroupStage() {
         // Parent screens call this after loading or after a group is selected.
-        knockoutMode = false;
         simulateCurrentGroupButton.setVisible(true);
         simulateCurrentGroupButton.setManaged(true);
         refreshLabels();
@@ -85,7 +83,6 @@ public class SimulationController {
     }
 
     public void configureForKnockoutStage() {
-        knockoutMode = true;
         simulateCurrentGroupButton.setVisible(false);
         simulateCurrentGroupButton.setManaged(false);
         refreshLabels();
@@ -227,6 +224,7 @@ public class SimulationController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             worldCup.resetTournament();
             refreshLabels();
+            refreshButtonStates();
             statusLabel.setText("Tournament reset.");
             notifySimulationChanged();
         }
