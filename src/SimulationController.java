@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -46,6 +47,8 @@ public class SimulationController {
     private Timeline actionTimeline;
     private Timeline autoPlayTimeline;
     private StageMode lastStage;
+    private boolean knockoutMode = false;
+    private Runnable onSimulationChanged;
 
     @FXML
     private void initialize() {
@@ -75,29 +78,44 @@ public class SimulationController {
 
     public void configureForGroupStage() {
         // Parent screens call this after loading or after a group is selected.
+        knockoutMode = false;
+        simulateCurrentGroupButton.setVisible(true);
+        simulateCurrentGroupButton.setManaged(true);
         refreshLabels();
         refreshButtonStates();
     }
 
     public void configureForKnockoutStage() {
+        knockoutMode = true;
+        simulateCurrentGroupButton.setVisible(false);
+        simulateCurrentGroupButton.setManaged(false);
         refreshLabels();
         refreshButtonStates();
     }
 
+    public void setOnSimulationChanged(Runnable callback) {
+        onSimulationChanged = callback;
+    }
+
     private void advanceTournamentStage() {
         lastStage = worldCup.getCurrentStage();
-        if (worldCup.getCurrentStage() == StageMode.GROUP_STAGE) {
-            configureForKnockoutStage();
-        }
+        refreshLabels();
+        refreshButtonStates();
     }
 
     private String simulateNextMatch() {
         Match match = worldCup.simulateOneMatch();
+        if (match == null) {
+            return "No match available.";
+        }
         return match.toString();
     }
 
     private String simulateCurrentGroup() {
         Group group = worldCup.simulateNextGroup();
+        if (group == null) {
+            return "No group available.";
+        }
         return group.getGroupName() + " completed.";
     }
 
@@ -135,6 +153,7 @@ public class SimulationController {
             refreshLabels();
             statusLabel.setText(result);
             refreshButtonStates();
+            notifySimulationChanged();
         };
 
         if (useDelay) {
@@ -209,18 +228,22 @@ public class SimulationController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             worldCup.resetTournament();
-            refreshLabels();
+            lastStage = worldCup.getCurrentStage();
+            if (knockoutMode) {
+                configureForKnockoutStage();
+            } else {
+                configureForGroupStage();
+            }
             statusLabel.setText("Tournament reset.");
-            refreshButtonStates();
-            configureForGroupStage();
+            notifySimulationChanged();
         }
     }
 
     private void refreshLabels() {
         currentStageLabel.setText("Stage: " + worldCup.getCurrentStage());
         currentRoundLabel.setText(getRoundLabel());
-        nextMatchLabel.setText("Next match: " + "TODO"); //TODO
-        progressLabel.setText("Progress: " + "TODO"); //TODO
+        nextMatchLabel.setText(getNextMatchText());
+        progressLabel.setText(getProgressText());
     }
 
     private void refreshButtonStates() {
@@ -235,6 +258,11 @@ public class SimulationController {
         pauseButton.setDisable(actionRunning || !autoPlayRunning);
         resetTournamentButton.setDisable(actionRunning);
         speedComboBox.setDisable(actionRunning);
+
+        if (knockoutMode) {
+            simulateCurrentGroupButton.setVisible(false);
+            simulateCurrentGroupButton.setManaged(false);
+        }
     }
 
     private Duration getSelectedDelay() {
@@ -254,10 +282,94 @@ public class SimulationController {
 
     private String getRoundLabel() {
         if (worldCup.getCurrentStage() == StageMode.GROUP_STAGE) {
-            return "Current Group: " + worldCup.getGroupStage().getCurrentGroup().getGroupName();
+            GroupStage groupStage = worldCup.getGroupStage();
+            Group group = groupStage == null ? null : groupStage.getCurrentGroup();
+            if (group == null) {
+                return "Current Group: None";
+            }
+
+            return "Current Group: " + group.getGroupName();
         }
 
-        //TODO: round of 32, of 16, etc
-        return "Knockout Bracket";
+        if (worldCup.getCurrentStage() == StageMode.KNOCKOUT_STAGE) {
+            return "Current Round: Knockout Bracket";
+        }
+
+        return "Tournament Complete";
+    }
+
+    private String getNextMatchText() {
+        if (worldCup.isTournamentComplete()) {
+            return "Next match: None";
+        }
+
+        if (worldCup.getCurrentStage() == StageMode.GROUP_STAGE) {
+            GroupStage groupStage = worldCup.getGroupStage();
+            Group group = groupStage == null ? null : groupStage.getCurrentGroup();
+            if (group == null) {
+                return "Next match: TBD";
+            }
+
+            for (Match match : group.getMatches()) {
+                if (!match.isFinished()) {
+                    return "Next match: " + getMatchTeamsText(match);
+                }
+            }
+
+            return "Next match: TBD";
+        }
+
+        if (worldCup.getCurrentStage() == StageMode.KNOCKOUT_STAGE) {
+            for (Match match : worldCup.getKnockoutMatches()) {
+                if (!match.isFinished()) {
+                    return "Next match: " + getMatchTeamsText(match);
+                }
+            }
+        }
+
+        return "Next match: TBD";
+    }
+
+    private String getProgressText() {
+        if (worldCup.getCurrentStage() == StageMode.GROUP_STAGE) {
+            List<Match> matches = worldCup.getGroupMatches();
+            return "Progress: " + countFinishedMatches(matches) + " / "
+                    + matches.size() + " group matches simulated";
+        }
+
+        if (worldCup.getCurrentStage() == StageMode.KNOCKOUT_STAGE) {
+            List<Match> matches = worldCup.getKnockoutMatches();
+            return "Progress: " + countFinishedMatches(matches) + " / "
+                    + matches.size() + " knockout matches simulated";
+        }
+
+        Team champion = worldCup.getChampionIfComplete();
+        if (champion != null) {
+            return "Progress: Tournament complete. Champion: " + champion.getName();
+        }
+
+        return "Progress: Tournament complete.";
+    }
+
+    private int countFinishedMatches(List<Match> matches) {
+        int finishedMatches = 0;
+
+        for (Match match : matches) {
+            if (match.isFinished()) {
+                finishedMatches++;
+            }
+        }
+
+        return finishedMatches;
+    }
+
+    private String getMatchTeamsText(Match match) {
+        return match.getFirstTeam().getName() + " vs " + match.getSecondTeam().getName();
+    }
+
+    private void notifySimulationChanged() {
+        if (onSimulationChanged != null) {
+            onSimulationChanged.run();
+        }
     }
 }
