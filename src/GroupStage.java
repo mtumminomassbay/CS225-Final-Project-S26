@@ -45,14 +45,13 @@ public class GroupStage {
 
     private void createGroups() {
 
-
         ArrayList<Team> tempTeams = new ArrayList<>();
 
         for (int i = 0; i < teams.size(); i++) {
-            int groupIndex = i / GROUP_COUNT;
+            int groupIndex = i / TEAMS_PER_GROUP;
             tempTeams.add(teams.get(i));
 
-            if(i % GROUP_COUNT == GROUP_COUNT - 1) {
+            if(i % TEAMS_PER_GROUP == TEAMS_PER_GROUP - 1) {
                 char groupLetter = (char) ('A' + groupIndex);
 
                 groups.add(new Group("Group " + groupLetter, tempTeams, 1));
@@ -61,6 +60,7 @@ public class GroupStage {
             }
 
         }
+
 
     }
 
