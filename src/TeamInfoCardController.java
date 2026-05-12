@@ -127,7 +127,8 @@ public class TeamInfoCardController extends BaseController {
         ) {   //Change color of text with dark backgrounds
             countryName.setTextFill(Color.BLACK);
         }
-        backgroundPane.setStyle("-fx-background-color: " + color + ";");
+        backgroundPane.setStyle("-fx-background-radius: 8px; -fx-background-color: " + color + ";");
+        
     }
 
     public boolean equals(TeamInfoCardController other) {
