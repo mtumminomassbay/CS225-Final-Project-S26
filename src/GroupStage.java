@@ -94,6 +94,15 @@ public class GroupStage {
         return match;
     }
 
+    public Match getNextMatch() {
+        if (simulated) {
+            return null;
+        }
+
+        Group group = groups.get(currentGroup);
+        return group.getNextMatch();
+    }
+
     public void simulateGroupStage() {
         while (!simulated) {
             simulateOneMatch();

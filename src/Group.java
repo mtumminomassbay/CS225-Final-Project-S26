@@ -46,12 +46,20 @@ public class Group {
         }
     }
 
+    public Match getNextMatch() {
+        if (completed) {
+            return null;
+        }
+
+        return matches.get(matchesPlayed);
+    }
+
     public Match simulateOneMatch() {
         if (completed) {
             return null;
         }
 
-        Match match = matches.get(matchesPlayed);
+        Match match = getNextMatch();
         match.simulate();
         recordMatchResult(match);
         matchesPlayed++;

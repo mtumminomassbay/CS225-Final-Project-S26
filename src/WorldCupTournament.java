@@ -135,16 +135,20 @@ public class WorldCupTournament {
         return groupStage.isSimulated();
     }
 
-    public boolean isKnockoutBracketCreated() {
-        return bracket != null;
-    }
-
     public boolean isTournamentComplete() {
         return currentStage == StageMode.COMPLETE;
     }
 
-    public boolean isFinished() {
-        return isTournamentComplete();
+    public Match getNextMatch() {
+        if (isTournamentComplete()) {
+            return null;
+        }
+
+        if (currentStage == StageMode.GROUP_STAGE) {
+            return groupStage.getNextMatch();
+        }
+
+        return bracket.getNextMatch();
     }
 
     // Simulates the next available match

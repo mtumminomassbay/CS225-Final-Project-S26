@@ -219,7 +219,14 @@ public class SimulationController {
     private void refreshLabels() {
         currentStageLabel.setText("Stage: " + worldCup.getCurrentStage());
         currentRoundLabel.setText(getRoundLabel());
-        nextMatchLabel.setText("Next match: " + "TODO"); //TODO
+
+        Match nextMatch = worldCup.getNextMatch();
+        if (nextMatch != null) {
+            nextMatchLabel.setText("Next match: " + nextMatch.getFirstTeam().getName() + " vs " + nextMatch.getSecondTeam().getName());
+        } else {
+            nextMatchLabel.setText("");
+        }
+
         progressLabel.setText("Progress: " + worldCup.getCompletedMatches() + " / " + worldCup.getTotalMatches() + " matches");
     }
 
@@ -238,7 +245,6 @@ public class SimulationController {
     }
 
     private Duration getSelectedDelay() {
-        // TODO: If speed settings become user preferences, load them from storage.
         String speed = speedComboBox.getValue();
 
         if ("Slow (2 sec)".equals(speed)) {

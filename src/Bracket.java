@@ -39,8 +39,7 @@ public class Bracket {
         return new ArrayList<>(qualifiedTeams);
     }
 
-    
-    public Match simulateOneMatch() {
+    private Match getAndSimulateMatch(boolean dryRun) {
         if (bracketRoot.isFinished()) {
             return null;
         }
@@ -48,21 +47,30 @@ public class Bracket {
         BracketBranch leftSemi  = bracketRoot.getLeftBranch();
         BracketBranch rightSemi = bracketRoot.getRightBranch();
 
-        if (leftSemi.isFinished() && rightSemi.isFinished() && thirdPlace == null) {
-            Match leftMatch  = leftSemi.getMatch();
-            Match rightMatch = rightSemi.getMatch();
-
-            Team loser1 = leftMatch.getWinner().equals(leftMatch.getFirstTeam())
-                ? leftMatch.getSecondTeam() : leftMatch.getFirstTeam();
-            Team loser2 = rightMatch.getWinner().equals(rightMatch.getFirstTeam())
-                ? rightMatch.getSecondTeam() : rightMatch.getFirstTeam();
-
-            thirdPlace = new Match(loser1, loser2, false);
-            thirdPlace.simulate();
+        if (thirdPlace != null) {
+            if (!dryRun) {
+                thirdPlace.simulate();
+            }
             return thirdPlace;
         }
 
-        return bracketRoot.simulateOneMatch();
+        Match result = bracketRoot.simulateOneMatch(dryRun);
+
+        if (!dryRun && leftSemi.isFinished() && rightSemi.isFinished()) {
+            Match leftMatch  = leftSemi.getMatch();
+            Match rightMatch = rightSemi.getMatch();
+
+            thirdPlace = new Match(leftMatch.getLoser(), rightMatch.getLoser(), false);
+        }
+        return result;
+    }
+
+    public Match getNextMatch() {
+        return getAndSimulateMatch(true);
+    }
+
+    public Match simulateOneMatch() {
+        return getAndSimulateMatch(false);
     }
 
     public boolean isFinished() {
