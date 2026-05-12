@@ -6,10 +6,11 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GroupButtonController">
    <children>
-      <GridPane fx:id="grid" layoutX="10.0" layoutY="10.0" onMouseClicked="#buttonClicked" prefHeight="62.0" prefWidth="111.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+      <GridPane fx:id="grid" layoutX="10.0" layoutY="10.0" onMouseClicked="#buttonClicked" prefHeight="62.0" prefWidth="111.0" styleClass="group-pane" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" />
             <ColumnConstraints hgrow="SOMETIMES" />
@@ -22,7 +23,7 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="2">
                <children>
-                  <Label fx:id="groupNameLabel" text="Group" />
+                  <Label fx:id="groupNameLabel" text="Group" styleClass="group-name-label"/>
                </children>
             </StackPane>
          </children>

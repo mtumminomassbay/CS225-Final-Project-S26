@@ -82,6 +82,8 @@ public class SingleGroupController extends BaseController {
         box.setOnMouseClicked(evt -> matchClicked(match));
         box.setCursor(Cursor.HAND);
         GridPane.setHalignment(box, HPos.CENTER);
+
+        box.getStyleClass().add("match-cell");
         matchGrid.add(box, x, y);
     }
 

@@ -44,6 +44,15 @@ public class SingleGroupTeamInfoController extends BaseController {
         goalsFor.setText(results.getGoalsFor() + "");
         goalsAgainst.setText(results.getGoalsAgainst() + "");
         points.setText(results.getPoints() + "");
+
+        teamName.getStyleClass().add("standings-team-name");
+        points.getStyleClass().add("standings-points");
+        rank.getStyleClass().add("standings-stat");
+        wins.getStyleClass().add("standings-stat");
+        draws.getStyleClass().add("standings-stat");
+        losses.getStyleClass().add("standings-stat");
+        goalsFor.getStyleClass().add("standings-stat");
+        goalsAgainst.getStyleClass().add("standings-stat");
     }
 
     @FXML
