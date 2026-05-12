@@ -57,7 +57,7 @@ public class SingleGroupController extends BaseController {
             );
             
             Node teamNode = loader.load();
-            ((SingleGroupTeamInfoController)loader.getController()).setTeam(currentGroup, team);
+            ((SingleGroupTeamInfoController)loader.getController()).setTeam(team);
 
             teamsList.getChildren().add(teamNode);
         } catch (IOException e) {
