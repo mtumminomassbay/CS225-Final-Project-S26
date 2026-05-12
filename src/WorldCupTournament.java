@@ -204,20 +204,6 @@ public class WorldCupTournament {
         currentStage = GROUP_STAGE;
         champion = null;
     }
-    
-    public void resetCurrentGroup(int groupNumber) {
-        //FIXME: waiting for implementation in GroupStage
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void resetCurrentRound() {
-        if (currentStage.equals(GROUP_STAGE)) {
-            groupStage = new GroupStage(allTeams);
-        } else {
-            createKnockoutStage();
-            champion = null;
-        }
-    }
 
     public List<Team> getAllTeams() {
         return Collections.unmodifiableList(allTeams);
