@@ -52,7 +52,6 @@ public class SimulationController {
         worldCup = WorldCupTournament.getInstance();
         lastStage = worldCup.getCurrentStage();
 
-        // TODO: These speeds are placeholder UI choices until we finalize settings.
         speedComboBox.getItems().addAll("Slow (2 sec)", "Normal (1 sec)", "Fast (0.5 sec)");
         speedComboBox.setValue("Normal (1 sec)");
         speedComboBox.setOnAction(event -> restartAutoPlayWithNewSpeed());
@@ -155,7 +154,6 @@ public class SimulationController {
     }
 
     private Timeline buildAutoPlayTimeline() {
-        // Each Timeline tick simulates one placeholder match.
         Timeline timeline = new Timeline(new KeyFrame(getSelectedDelay(), event -> autoPlayNextMatch()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         return timeline;
