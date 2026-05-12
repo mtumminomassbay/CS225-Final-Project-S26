@@ -101,12 +101,6 @@ public class WorldCupTournament {
         return getTotalMatches() - getCompletedMatches();
     }
 
-    // displays progress as text
-    public String getProgressText() {
-        return getCompletedMatches() + " / " + getTotalMatches()
-                + " matches completed";
-    }
-
     // Counts completed group-stage matches
     private int getCompletedGroupMatches() {
         int completed = 0;

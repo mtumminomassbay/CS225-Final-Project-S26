@@ -31,7 +31,7 @@ public class DashboardController extends BaseController{
         fillAllStarList();
         displayRandomAllStar();
 
-        statusLabel.setText("Status: " + worldCup.getProgressText());
+        statusLabel.setText("Status: " + worldCup.getCompletedMatches() + " / " + worldCup.getTotalMatches() + " matches");
         currentStageLabel.setText("Current Stage: " + worldCup.getCurrentStage());
         groupsCompletedLabel.setText("Remaining Matches: " + worldCup.getRemainingMatches());
     }

@@ -220,7 +220,7 @@ public class SimulationController {
         currentStageLabel.setText("Stage: " + worldCup.getCurrentStage());
         currentRoundLabel.setText(getRoundLabel());
         nextMatchLabel.setText("Next match: " + "TODO"); //TODO
-        progressLabel.setText("Progress: " + "TODO"); //TODO
+        progressLabel.setText("Progress: " + worldCup.getCompletedMatches() + " / " + worldCup.getTotalMatches() + " matches");
     }
 
     private void refreshButtonStates() {
