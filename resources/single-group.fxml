@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SingleGroupController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SingleGroupController">
    <children>
       <StackPane layoutX="200.0" layoutY="100.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="280.0">
          <children>
@@ -30,7 +30,7 @@
       </StackPane>
       <StackPane prefHeight="100.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="groupLabel" alignment="CENTER" minHeight="73.0" minWidth="314.0" prefHeight="162.0" prefWidth="652.0" text="Group">
+            <Label fx:id="groupLabel" alignment="CENTER" minHeight="73.0" minWidth="314.0" prefHeight="162.0" prefWidth="652.0" styleClass="group-header-label" text="Group">
                <font>
                   <Font size="47.0" />
                </font>
@@ -55,18 +55,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text fx:id="teamName" strokeType="OUTSIDE" strokeWidth="0.0" text="Team" GridPane.columnIndex="1">
+                  <Text fx:id="teamName" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="standings-header-team" text="Team" GridPane.columnIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="rank" strokeType="OUTSIDE" strokeWidth="0.0" text="Rank" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-                  <Text fx:id="wins" strokeType="OUTSIDE" strokeWidth="0.0" text="W" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-                  <Text fx:id="draws" strokeType="OUTSIDE" strokeWidth="0.0" text="D" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
-                  <Text fx:id="losses" strokeType="OUTSIDE" strokeWidth="0.0" text="L" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
-                  <Text fx:id="goalsFor" strokeType="OUTSIDE" strokeWidth="0.0" text="GF" GridPane.columnIndex="6" GridPane.halignment="CENTER" />
-                  <Text fx:id="goalsAgainst" strokeType="OUTSIDE" strokeWidth="0.0" text="GA" GridPane.columnIndex="7" GridPane.halignment="CENTER" />
-                  <Text fx:id="points" strokeType="OUTSIDE" strokeWidth="0.0" text="Pts" GridPane.columnIndex="8" GridPane.halignment="CENTER" />
+                  <Text fx:id="rank" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="standings-header-text" text="Rank" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                  <Text fx:id="wins" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="standings-header-text" text="W" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+                  <Text fx:id="draws" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="standings-header-text" text="D" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
+                  <Text fx:id="losses" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="standings-header-text" text="L" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
+                  <Text fx:id="goalsFor" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="standings-header-text" text="GF" GridPane.columnIndex="6" GridPane.halignment="CENTER" />
+                  <Text fx:id="goalsAgainst" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="standings-header-text" text="GA" GridPane.columnIndex="7" GridPane.halignment="CENTER" />
+                  <Text fx:id="points" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="standings-header-text" text="Pts" GridPane.columnIndex="8" GridPane.halignment="CENTER" />
                </children>
             </GridPane>
          </children>
