@@ -14,6 +14,7 @@ public class GroupStage {
     private List<Team> teams;
     private List<Group> groups;
     private List<Team> advancingTeams;
+    private List<Team> thirdPlaceAdvancingTeams;
     private int currentGroup = 0;
 
     private boolean simulated;
@@ -34,6 +35,7 @@ public class GroupStage {
 
         this.groups = new ArrayList<>();
         this.advancingTeams = new ArrayList<>();
+        this.thirdPlaceAdvancingTeams = new ArrayList<>();
         this.simulated = false;
 
         createGroups();
@@ -74,7 +76,12 @@ public class GroupStage {
         }
 
         Collections.sort(thirdPlaceTeams);
-        advancingTeams.addAll(thirdPlaceTeams.subList(0, THIRD_PLACE_ADVANCING).stream().map(GroupResults::getTeam).toList());
+        thirdPlaceAdvancingTeams = thirdPlaceTeams.subList(0, THIRD_PLACE_ADVANCING).stream().map(GroupResults::getTeam).toList();
+        advancingTeams.addAll(thirdPlaceAdvancingTeams);
+    }
+
+    public List<Team> getThirdPlaceAdvancingTeams() {
+        return thirdPlaceAdvancingTeams;
     }
 
     public Match simulateOneMatch() {
@@ -105,6 +112,26 @@ public class GroupStage {
         }
 
         simulated = true;
+    }
+
+    public Group simulateNextGroup() {
+        if (simulated) {
+            return null;
+        }
+
+        int savedGroup = currentGroup;
+        while (currentGroup == savedGroup) {
+            simulateOneMatch();
+        }
+
+        return groups.get(savedGroup);
+    }
+
+    public Group getCurrentGroup() {
+        if (simulated) {
+            return null;
+        }
+        return groups.get(currentGroup);
     }
 
     public List<Group> getGroups() {
