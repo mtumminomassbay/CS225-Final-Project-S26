@@ -13,19 +13,19 @@ public class Bracket {
         //}
         this.teams = getTeamsSorted(teams);  // seed teams 
         this.bracketRoot = buildBracket(this.teams); // build the bracket from seeded list
-        this.thirdPlace = null; // no third place match untill semifinals have been completed
+        this.thirdPlace = null; // no third place match until semifinals have been completed
     }
 
     private BracketBranch buildBracket(List<Team> seededTeams) {
         List<BracketBranch> currentRound = new ArrayList<>();
         for (int i = 0; i < seededTeams.size(); i += 2) {
-        currentRound.add(new BracketBranch(seededTeams.get(i), seededTeams.get(i + 1)));
+            currentRound.add(new BracketBranch(seededTeams.get(i), seededTeams.get(i + 1), seededTeams.size()));
         }
 
         while (currentRound.size() > 1) {
             List<BracketBranch> nextRound = new ArrayList<>();
             for (int i = 0; i < currentRound.size(); i += 2) {
-                nextRound.add(new BracketBranch(currentRound.get(i), currentRound.get(i + 1)));
+                nextRound.add(new BracketBranch(currentRound.get(i), currentRound.get(i + 1), currentRound.size()));
             }
             currentRound = nextRound;
         }
@@ -34,39 +34,43 @@ public class Bracket {
     }
 
     public List<Team> getTeamsSorted(List<Team> qualifiedTeams) {
-    // Returns teams in the order provided by GroupStage.getAdvancingTeams()
-    // Full bracket seeding logic can be added later if requested by frontend team
-    return new ArrayList<>(qualifiedTeams);
-}
+        // Returns teams in the order provided by GroupStage.getAdvancingTeams()
+        // Full bracket seeding logic can be added later if requested by frontend team
+        return new ArrayList<>(qualifiedTeams);
+    }
 
-    
-    public Match simulateOneMatch() {
-        if (bracketRoot.isFinished()) {
+    private Match getAndSimulateMatch(boolean dryRun) {
+        if (isFinished()) {
             return null;
         }
 
         BracketBranch leftSemi  = bracketRoot.getLeftBranch();
         BracketBranch rightSemi = bracketRoot.getRightBranch();
 
-        if (leftSemi.isFinished() && rightSemi.isFinished() && thirdPlace == null) {
-            Match leftMatch  = leftSemi.getMatch();
-            Match rightMatch = rightSemi.getMatch();
-
-            Team loser1 = leftMatch.getWinner().equals(leftMatch.getFirstTeam())
-                ? leftMatch.getSecondTeam() : leftMatch.getFirstTeam();
-            Team loser2 = rightMatch.getWinner().equals(rightMatch.getFirstTeam())
-                ? rightMatch.getSecondTeam() : rightMatch.getFirstTeam();
-
-            thirdPlace = new Match(loser1, loser2, false);
-            thirdPlace.simulate();
+        if (thirdPlace != null && !thirdPlace.isFinished()) {
+            if (!dryRun) {
+                thirdPlace.simulate();
+            }
             return thirdPlace;
         }
 
-        if (thirdPlace != null && thirdPlace.isFinished()) {
-            return bracketRoot.simulateOneMatch();
-        }
+        Match result = bracketRoot.simulateOneMatch(dryRun);
 
-        return bracketRoot.simulateOneMatch();
+        if (!dryRun && thirdPlace == null && leftSemi.isFinished() && rightSemi.isFinished()) {
+            Match leftMatch  = leftSemi.getMatch();
+            Match rightMatch = rightSemi.getMatch();
+
+            thirdPlace = new Match(leftMatch.getLoser(), rightMatch.getLoser(), false);
+        }
+        return result;
+    }
+
+    public Match getNextMatch() {
+        return getAndSimulateMatch(true);
+    }
+
+    public Match simulateOneMatch() {
+        return getAndSimulateMatch(false);
     }
 
     public boolean isFinished() {
@@ -107,7 +111,36 @@ public class Bracket {
         return thirdPlace;
     }
 
+    public String getCurrentRound() {
+        if (getCompletedMatches() < 16) {
+            return "Round of 32";
+        } else if (getCompletedMatches() < 24) {
+            return "Round of 16";
+        } else if (getCompletedMatches() < 28) {
+            return "Quarterfinals";
+        } else if (getCompletedMatches() < 30) {
+            return "Semifinals";
+        } else if (getCompletedMatches() == 30) {
+            return "Match for Third";
+        } else if (getCompletedMatches() == 31) {
+            return "Finals";
+        } else {
+            return "Completed";
+        }
+    }
 
+    public int getTotalMatches() {
+        return teams.size();
+    }
+
+    public int getCompletedMatches() {
+        int totalMatches = bracketRoot.getMatchesSimulated();
+        if (thirdPlace != null && thirdPlace.isFinished()) {
+            totalMatches += 1;
+        }
+
+        return totalMatches;
+    }
 }
 
 

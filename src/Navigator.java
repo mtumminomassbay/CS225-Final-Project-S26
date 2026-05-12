@@ -45,6 +45,12 @@ public class Navigator {
             FXMLLoader loader = new FXMLLoader(Navigator.class.getResource(path));
             Node view = loader.load();
             content.getChildren().setAll(view);
+
+            AnchorPane.setTopAnchor(view, 0.0); //Tristan added to allow for resizable screens with windows
+            AnchorPane.setRightAnchor(view, 0.0);
+            AnchorPane.setBottomAnchor(view, 0.0);
+            AnchorPane.setLeftAnchor(view, 0.0);
+
         } catch(IOException e) {
             System.err.println("Failed to load screen: " + screen);
             e.printStackTrace();

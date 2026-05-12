@@ -1,25 +1,25 @@
 // Author: Chris Rabanales
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class WorldCupTournament {
-
     // Singleton instance
     public static final WorldCupTournament instance = new WorldCupTournament();
 
-    // Stage names + status
-    private static final String GROUP_STAGE = "Group Stage";
-    private static final String KNOCKOUT_STAGE = "Knockout Stage";
-    private static final String COMPLETE = "Complete";
-
+    private final List<Team> allTeams;
     private GroupStage groupStage;
     private Bracket bracket;
 
-    private String currentStage;
+    private StageMode currentStage;
     private Team champion;
+    private Match currentlyViewedMatch;
 
     // Private constructor because this class is a singleton
     private WorldCupTournament() {
+        TeamParser teamParser = new TeamParser();
+        allTeams = teamParser.getTeams();
+
         resetTournament();
     }
 
@@ -62,6 +62,14 @@ public class WorldCupTournament {
         return bracket.getMatches();
     }
 
+    public Match getCurrentlyViewedMatch() {
+        return currentlyViewedMatch;
+    }
+
+    public void setCurrentlyViewedMatch(Match currentlyViewedMatch) {
+        this.currentlyViewedMatch = currentlyViewedMatch;
+    }
+
     public Team getChampion() {
         return champion;
     }
@@ -74,71 +82,122 @@ public class WorldCupTournament {
         return null;
     }
 
-    public String getCurrentStage() {
+    public StageMode getCurrentStage() {
         return currentStage;
     }
 
-    public String getCurrentRound() {
-        if (currentStage.equals(GROUP_STAGE)) {
-            return "Group Stage";
-        }
-
-        if (currentStage.equals(COMPLETE)) {
-            return "Tournament Complete";
-        }
-
-        return "Knockout Stage";
+    // Returns how many matches have been completed
+    public int getCompletedMatches() {
+        return getCompletedGroupMatches() + getCompletedKnockoutMatches();
     }
+
+    // Returns the total number of matches in the tournament
+    public int getTotalMatches() {
+        return getTotalGroupMatches() + getTotalKnockoutMatches();
+    }
+
+    // returns remaining matches
+    public int getRemainingMatches() {
+        return getTotalMatches() - getCompletedMatches();
+    }
+
+    // Counts completed group-stage matches
+    private int getCompletedGroupMatches() {
+        int completed = 0;
+
+        for (Match match : getGroupMatches()) {
+            if (match.isFinished()) {
+                completed++;
+            }
+        }
+
+        return completed;
+    }
+
+    private int getTotalGroupMatches() {
+        return getGroupMatches().size();
+    }
+
+    private int getCompletedKnockoutMatches() {
+        if (bracket == null) {
+            return 0;
+        }
+
+        return bracket.getCompletedMatches();
+    }
+
+    private int getTotalKnockoutMatches() {
+        return 32;
+    }
+
     // following methods check if certain aspects of the program are completed before moving on.
     public boolean isGroupStageComplete() {
         return groupStage.isSimulated();
     }
 
-    public boolean isKnockoutBracketCreated() {
-        return bracket != null;
-    }
-
     public boolean isTournamentComplete() {
-        return currentStage.equals(COMPLETE);
+        return currentStage == StageMode.COMPLETE;
     }
 
-    public boolean isFinished() {
-        return isTournamentComplete();
+    public Match getNextMatch() {
+        if (isTournamentComplete()) {
+            return null;
+        }
+
+        if (currentStage == StageMode.GROUP_STAGE) {
+            return groupStage.getNextMatch();
+        }
+
+        return bracket.getNextMatch();
     }
 
     // Simulates the next available match
     public Match simulateOneMatch() {
-        if (currentStage.equals(COMPLETE)) {
+        if (isTournamentComplete()) {
             return null;
         }
 
-        if (currentStage.equals(GROUP_STAGE)) {
-            groupStage.simulateGroupStage();
-            createKnockoutStage();
-            return null;
+        if (currentStage == StageMode.GROUP_STAGE) {
+            Match match = groupStage.simulateOneMatch();
+            if (groupStage.isSimulated()) {
+                createKnockoutStage();
+            }
+            return match;
         }
 
         Match match = bracket.simulateOneMatch();
 
+        if (match != null) {
+            currentlyViewedMatch = match;
+        }
+
         if (bracket.isFinished()) {
             champion = bracket.getFinal().getWinner();
-            currentStage = COMPLETE;
+            currentStage = StageMode.COMPLETE;
         }
 
         return match;
     }
 
-    public Match simulateNextAvailableMatch() {
-        return simulateOneMatch();
+    public Group simulateNextGroup() {
+        if (isGroupStageComplete()) {
+            return null;
+        }
+
+        Group group = groupStage.simulateNextGroup();
+        if (groupStage.isSimulated()) {
+            createKnockoutStage();
+        }
+        return group;
     }
 
     // Simulates the rest of the current round
     public void simulateRemainingCurrentRound() {
-        if (currentStage.equals(COMPLETE)) {
+        if (isTournamentComplete()) {
             return;
         }
 
-        if (currentStage.equals(GROUP_STAGE)) {
+        if (currentStage ==  StageMode.GROUP_STAGE) {
             groupStage.simulateGroupStage();
             createKnockoutStage();
             return;
@@ -149,7 +208,7 @@ public class WorldCupTournament {
         }
 
         champion = bracket.getFinal().getWinner();
-        currentStage = COMPLETE;
+        currentStage = StageMode.COMPLETE;
     }
 
     // Simulates the rest of the tournament
@@ -170,26 +229,21 @@ public class WorldCupTournament {
         }
 
         bracket = new Bracket(advancingTeams);
-        currentStage = KNOCKOUT_STAGE;
+        currentStage = StageMode.KNOCKOUT_STAGE;
     }
 
     // The following methods reset the entire tournnament,
     // the current group, and the current round.
+    //TODO: these reset methods need testing against the frontend to make sure that old copies of groupStage/bracket don't stick around
     public void resetTournament() {
-        TeamParser parser = new TeamParser();
-
-        groupStage = new GroupStage(parser.getTeams());
+        groupStage = new GroupStage(allTeams);
         bracket = null;
 
-        currentStage = GROUP_STAGE;
+        currentStage = StageMode.GROUP_STAGE;
         champion = null;
     }
     
-    public void resetCurrentGroup(int groupNumber) {
-        resetTournament();
-    }
-
-    public void resetCurrentRound() {
-        resetTournament();
+    public List<Team> getAllTeams() {
+        return Collections.unmodifiableList(allTeams);
     }
 }

@@ -29,6 +29,7 @@ public class Group {
 
         for (Team team : teams) {
             groupResults.put(team, new GroupResults(team));
+            team.setGroup(this);
         }
 
         createMatches();
@@ -45,20 +46,28 @@ public class Group {
         }
     }
 
-    public void simulateAllMatches() {
+    public Match getNextMatch() {
         if (completed) {
-            return;
+            return null;
         }
 
-        for (Match match : matches) {
-            if (!match.isFinished()) {
-                match.simulate();
-                recordMatchResult(match);
-                matchesPlayed++;
-            }
+        return matches.get(matchesPlayed);
+    }
+
+    public Match simulateOneMatch() {
+        if (completed) {
+            return null;
         }
 
-        completed = true;
+        Match match = getNextMatch();
+        match.simulate();
+        recordMatchResult(match);
+        matchesPlayed++;
+
+        if (matchesPlayed == matches.size()) {
+            completed = true;
+        }
+        return match;
     }
 
     private void recordMatchResult(Match match) {
@@ -115,5 +124,10 @@ public class Group {
 
     public boolean isCompleted() {
         return completed;
+    }
+
+    @Override
+    public String toString() {
+        return groupName;
     }
 }
