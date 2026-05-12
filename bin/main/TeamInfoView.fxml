@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="TeamInfoViewController">
+
+   <children>
+      <ScrollPane fitToWidth="true"
+                  fitToHeight="true"
+                  VBox.vgrow="ALWAYS">
+
+         <content>
+            <FlowPane fx:id="cardContainer"
+                      hgap="10.0"
+                      vgap="10.0"
+                      style="-fx-padding: 10;" />
+         </content>
+
+      </ScrollPane>
+   </children>
+</VBox>

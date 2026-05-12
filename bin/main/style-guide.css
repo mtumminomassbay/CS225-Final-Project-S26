@@ -1,0 +1,152 @@
+.root {
+
+    -fx-background-color: #1b7f1d;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+
+}
+
+AnchorPane,
+ScrollPane,
+FlowPane,
+Pane {
+    -fx-background-color: radial-gradient(center 60% 30%, radius 80%, #01362e 0%, #0a0f0d 100%);
+}
+
+
+
+.header-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 47px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(one-pass-box, #0a0f0d, 5.0, 10.0, 0, 0);
+}
+
+.body-label {
+    -fx-text-fill: #a5c9a7;
+}
+
+
+
+.title-label {
+    -fx-text-fill: #ffad43;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(one-pass-box, #0a0f0d, 5.0, 10.0, 0, 0);
+}
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, #e8f5e9, #ffffff);
+    -fx-background-radius: 8px;
+    -fx-border-color: #0f4d10;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1.5px;
+    -fx-text-fill: #1b7f1d;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 8px 16px;
+    -fx-effect: dropshadow(gaussian, #00000077, 8, 0.25, 0, 3),
+                innershadow(gaussian, #ffffff66, 1, 1.0, 0, 1);
+}
+
+.group-pane {
+    -fx-background-color: linear-gradient(to bottom right, #0f4d10, #082e09);
+    -fx-background-radius: 8px;
+    -fx-border-color: #04e87933;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, #00000066, 8, 0.2, 0, 2),
+                innershadow(gaussian, #04e87918, 1, 1.0, 0, 1);
+    
+}
+
+.group-name-label {
+    -fx-text-fill: #04e879;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, #00000099, 4, 0.4, 0, 1);
+}
+
+.team-label {
+    -fx-text-fill: #ffad43;
+    -fx-font-family: "Georgia";
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-graphic-text-gap: 5px;
+    -fx-effect: dropshadow(one-pass-box, #00000099, 2, 0.5, 0, 1);
+    -fx-padding: 2px 4px;
+}
+
+.group-header-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 47px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, #0a0f0d, 14, 0.45, 0, 2);
+}
+
+.standings-header-text {
+    -fx-fill: #04e879;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.standings-header-team {
+    -fx-fill: #04e879;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.standings-row {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #04e87918 transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 4px 0;
+}
+
+.standings-team-name {
+    -fx-fill: #ffffff;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 15px;
+}
+
+.standings-stat {
+    -fx-fill: #a5c9a7;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+}
+
+.standings-points {
+    -fx-fill: #ffad43;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.match-cell {
+    -fx-background-color: linear-gradient(to bottom right, #0f4d10, #082e09);
+    -fx-background-radius: 6px;
+    -fx-border-color: #04e87933;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-padding: 6px 10px;
+    -fx-effect: dropshadow(gaussian, #00000055, 6, 0.2, 0, 2);
+}
+
+.match-score {
+    -fx-fill: #ffffff;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.match-teams {
+    -fx-fill: #a5c9a7;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 11px;
+}
