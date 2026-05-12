@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Iterator;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,53 +12,31 @@ import javafx.scene.layout.GridPane;
 */
 public class GroupPhaseController extends BaseController {
     @FXML private GridPane buttonGrid;
-    private static String groupInFocus;
-
-    @FXML private Button group1;
-    @FXML private Button group2;
-    @FXML private Button group3;
-    @FXML private Button group4;
-    @FXML private Button group5;
-    @FXML private Button group6;
-    @FXML private Button group7;
-    @FXML private Button group8;
-    @FXML private Button group9;
-    @FXML private Button group10;
-    @FXML private Button group11;
-    @FXML private Button group12;
     @FXML private SimulationController simulationControlsController;
 
     // 0 means no group has been selected yet.
     private String selectedGroup = null;
     @Override
     protected void onLoad(){
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 3; ++j) {
-                addGroupButton(i, j);
+        Iterator<Group> groups = worldCup.getGroupStage().getGroups().iterator();
+
+        for (int i = 0; i < buttonGrid.getRowCount(); ++i) {
+            for (int j = 0; j < buttonGrid.getColumnCount(); ++j) {
+                addGroupButton(j, i, groups.next());
             }
         }
     }
 
-    private void addGroupButton(int x, int y) {
+    private void addGroupButton(int x, int y, Group group) {
         try {
             FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("GroupButton.fxml")
             );
             
             Node buttonNode = loader.load();
-
-            // Start with no group selected, so group-specific buttons stay disabled.
-            simulationControlsController.configureForGroupStage(selectedGroup);
+           ((GroupButtonController)loader.getController()).setGroup(group);
 
             buttonGrid.add(buttonNode, x, y);
-
-            // FIXME
-            //
-            // TeamInfoCardController card = loader.getController();
-
-            // listTeamCards.add(card);                      //Add team in array list
-
-            // cardContainer.getChildren().add(cardNode);    //<--- MAYBE MOVE TO DIFFERENT METHOD (Load card to Team View Menu)
         } catch (IOException e) {
             System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
         }
@@ -67,12 +46,6 @@ public class GroupPhaseController extends BaseController {
     private void showGroup(String groupName) {
         selectedGroup = groupName;
         simulationControlsController.configureForGroupStage(selectedGroup);
-        //TODO: open single group view for corresponding group
-        groupInFocus = groupName;
         navigateTo(Screen.SINGLE_GROUP);
-    }
-
-    public static String getGroupInFocus() {
-        return groupInFocus;
     }
 }
