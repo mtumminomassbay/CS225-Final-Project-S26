@@ -20,8 +20,9 @@ import javafx.scene.layout.Pane;
 
 public class KnockoutPhaseController extends BaseController {
     private List<AnchorPane> matchCards;
-    @FXML
-    private Button Dashboard_button;
+    
+    //@FXML
+    //private Button Dashboard_button;
     
     @FXML
     private Button simulateRound_Button;
