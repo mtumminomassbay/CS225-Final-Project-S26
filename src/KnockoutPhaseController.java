@@ -6,11 +6,8 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -108,11 +105,11 @@ public class KnockoutPhaseController extends BaseController{
             thirdplacematch
         );
 
-        connectMatchCards();
-        loadKnockoutMatches();
+        //connectMatchCards();
+        //loadKnockoutMatches();
         }
     
-    private void connectMatchCards() {
+    /*private void connectMatchCards() {
         List<Match> matches = WorldCupTournament.getInstance().getKnockoutMatches();
         for (int i = 0; i < matches.size() && i < matchCards.size(); i++) {
 
@@ -124,7 +121,7 @@ public class KnockoutPhaseController extends BaseController{
         }
         System.out.println("Knockout matches found: " + matches.size());
         System.out.println("Match cards found: " + matchCards.size());
-    }
+    }*/
 
     private void matchClicked(Match match) {
         MatchDetailsController.setMatch(match);
@@ -145,25 +142,13 @@ public class KnockoutPhaseController extends BaseController{
         }
     }
 
-    @FXML
+   /*  @FXML
     private void Dashboard_button_clicked() {
         navigateTo(Screen.DASHBOARD);
-    }
+    }*/
 
     
-    @FXML
-    private void simulateRoundClicked() {
-    WorldCupTournament.getInstance().simulateRemainingCurrentRound();
-    loadKnockoutMatches();
-}
-
-    @FXML
-    private void simulateTournamentClicked() {
-    WorldCupTournament.getInstance().simulateRestOfTournament();
-    loadKnockoutMatches();
-}
-
-private void loadKnockoutMatches() {
+        /*private void loadKnockoutMatches() {
     List<Match> matches = WorldCupTournament.getInstance().getKnockoutMatches();
 
     System.out.println("Knockout matches found: " + matches.size());
@@ -184,7 +169,8 @@ private void loadKnockoutMatches() {
     loadMatchesIntoVBox(semifinalsLeft, matches, 28, 29);
     loadMatchesIntoVBox(semifinalsRight, matches, 29, 30);
 
-    loadMatchesIntoVBox(finals, matches, 30, matches.size());
+loadMatchesIntoVBox(finals, matches, 31, 32);
+loadMatchesIntoVBox(finals, matches, 30, 31);
 }
 
 private void loadMatchesIntoVBox(VBox roundBox, List<Match> matches, int start, int end) {
@@ -200,6 +186,11 @@ private void loadMatchesIntoVBox(VBox roundBox, List<Match> matches, int start, 
             card.setOnMouseClicked(event -> matchClicked(match));
 
             matchIndex++;
+            System.out.println(
+             matchIndex + ": " +
+            match.getFirstTeam().getCode() +
+            " vs " +
+            match.getSecondTeam().getCode());
         }
     }
 }
@@ -239,5 +230,5 @@ private Label getCardLabel(AnchorPane card, int index) {
     }
 
     return null;
-}
+}*/
 }
