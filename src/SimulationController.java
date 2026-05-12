@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -46,6 +47,7 @@ public class SimulationController {
     private Timeline actionTimeline;
     private Timeline autoPlayTimeline;
     private StageMode lastStage;
+    private Runnable onSimulationChanged;
 
     @FXML
     private void initialize() {
@@ -74,29 +76,42 @@ public class SimulationController {
 
     public void configureForGroupStage() {
         // Parent screens call this after loading or after a group is selected.
+        simulateCurrentGroupButton.setVisible(true);
+        simulateCurrentGroupButton.setManaged(true);
         refreshLabels();
         refreshButtonStates();
     }
 
     public void configureForKnockoutStage() {
+        simulateCurrentGroupButton.setVisible(false);
+        simulateCurrentGroupButton.setManaged(false);
         refreshLabels();
         refreshButtonStates();
     }
 
+    public void setOnSimulationChanged(Runnable callback) {
+        onSimulationChanged = callback;
+    }
+
     private void advanceTournamentStage() {
         lastStage = worldCup.getCurrentStage();
-        if (worldCup.getCurrentStage() == StageMode.GROUP_STAGE) {
-            configureForKnockoutStage();
-        }
+        refreshLabels();
+        refreshButtonStates();
     }
 
     private String simulateNextMatch() {
         Match match = worldCup.simulateOneMatch();
+        if (match == null) {
+            return "No match available.";
+        }
         return match.toString();
     }
 
     private String simulateCurrentGroup() {
         Group group = worldCup.simulateNextGroup();
+        if (group == null) {
+            return "No group available.";
+        }
         return group.getGroupName() + " completed.";
     }
 
@@ -134,6 +149,7 @@ public class SimulationController {
             refreshLabels();
             statusLabel.setText(result);
             refreshButtonStates();
+            notifySimulationChanged();
         };
 
         if (useDelay) {
@@ -208,9 +224,9 @@ public class SimulationController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             worldCup.resetTournament();
             refreshLabels();
-            statusLabel.setText("Tournament reset.");
             refreshButtonStates();
-            configureForGroupStage();
+            statusLabel.setText("Tournament reset.");
+            notifySimulationChanged();
         }
     }
 
@@ -262,5 +278,11 @@ public class SimulationController {
         }
 
         return "Current Round: " + worldCup.getBracket().getCurrentRound();
+    }
+
+    private void notifySimulationChanged() {
+        if (onSimulationChanged != null) {
+            onSimulationChanged.run();
+        }
     }
 }

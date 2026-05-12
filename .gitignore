@@ -1,12 +1,14 @@
 # Compiled class file
 *.class
 
+bin/
 build/
 .gradle/
 gradle/
 gradlew
 gradlew.bat
 .idea
+.vscode
 
 # Log file
 *.log
