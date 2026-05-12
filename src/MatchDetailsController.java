@@ -21,15 +21,16 @@ public class MatchDetailsController extends BaseController {
     @FXML private Label winnerLabel;
     @FXML private Button backButton;
 
+    private static Match match;
+
     @Override
     protected void onLoad() {
         
-        TeamParser parser = new TeamParser();
-        GroupStage groupStage = new GroupStage(parser.getTeams());
-        Match match = groupStage.getGroups().get(0).getMatches().get(0);
+        // TeamParser parser = new TeamParser();
+        // GroupStage groupStage = new GroupStage(parser.getTeams());
+        // Match match = groupStage.getGroups().get(0).getMatches().get(0);
 
-        
-        match.simulate();
+        // match.simulate();
 
         // Show teams names and the scores
         teamANameLabel.setText(match.getFirstTeam().getName());
@@ -62,5 +63,9 @@ public class MatchDetailsController extends BaseController {
     @FXML
     private void backButton_clicked() {
         navigateTo(Screen.DASHBOARD);
+    }
+
+    public static void setMatch(Match newMatch) {
+        match = newMatch;
     }
 }
