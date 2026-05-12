@@ -20,7 +20,7 @@ public class Team {
     private final String flagPath;
     private final String color;
 
-    private String group = "Unset";
+    private Group group = null;
     private String stage;
     private String record;
 
@@ -46,11 +46,11 @@ public class Team {
     public String getFlagPath() {return flagPath;}
     public String getColor() {return color;}
 
-    public String getGroup() {return group;}
+    public Group getGroup() {return group;}
     public String getStage() {return stage;}
     public String getRecord() {return record;}
 
-    public void setGroup(String group) {
+    public void setGroup(Group group) {
         this.group = group;
     }
 
@@ -74,7 +74,7 @@ public class Team {
                 ", headCoach='" + headCoach + '\'' +
                 ", flagPath=" + flagPath + '\''+
                 ", color=" + color + '\'' +
-                ", group='" + group + '\'' +
+                ", group='" + group.getGroupName() + '\'' +
                 ", stage=" + stage + '\''+
                 ", record=" + record + '\'' +
                 '}';

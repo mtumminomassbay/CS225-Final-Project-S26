@@ -1,4 +1,7 @@
+import javafx.print.Collation;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -8,10 +11,13 @@ public class GroupStage {
     private static final int TEAMS_PER_GROUP = 4;
     private static final int TOTAL_GROUP_STAGE_TEAMS = GROUP_COUNT * TEAMS_PER_GROUP;
     private static final int ADVANCING_PER_GROUP = 2;
+    private static final int THIRD_PLACE_ADVANCING = 8;
 
     private List<Team> teams;
     private List<Group> groups;
     private List<Team> advancingTeams;
+    private List<Team> thirdPlaceAdvancingTeams;
+    private int currentGroup = 0;
 
     private boolean simulated;
 
@@ -31,47 +37,92 @@ public class GroupStage {
 
         this.groups = new ArrayList<>();
         this.advancingTeams = new ArrayList<>();
+        this.thirdPlaceAdvancingTeams = new ArrayList<>();
         this.simulated = false;
 
         createGroups();
     }
 
     private void createGroups() {
-        List<List<Team>> groupBuckets = new ArrayList<>();
 
-        for (int i = 0; i < GROUP_COUNT; i++) {
-            groupBuckets.add(new ArrayList<>());
-        }
+        ArrayList<Team> tempTeams = new ArrayList<>();
 
         for (int i = 0; i < teams.size(); i++) {
-            Team t = teams.get(i);
-            int groupIndex = i % GROUP_COUNT;
-            groupBuckets.get(groupIndex).add(t);
+            int groupIndex = i / TEAMS_PER_GROUP;
+            tempTeams.add(teams.get(i));
 
-            //Tristan to set group letter to Team
-            char groupLetter = (char) ('A' + groupIndex);
-            t.setGroup("Group " + groupLetter);
-            //System.out.println("Setting group for: " + t.getName() + " " + t.getGroup());
+            if(i % TEAMS_PER_GROUP == TEAMS_PER_GROUP - 1) {
+                char groupLetter = (char) ('A' + groupIndex);
+
+                groups.add(new Group("Group " + groupLetter, tempTeams, 1));
+                tempTeams = new ArrayList<>();
+
+            }
+
         }
 
-        for (int i = 0; i < GROUP_COUNT; i++) {
-            char groupLetter = (char) ('A' + i);
-            Group group = new Group("Group " + groupLetter, groupBuckets.get(i), 1);
-            groups.add(group);
+
+    }
+
+    private void finalizeGroupStage() {
+        simulated = true;
+
+        ArrayList<GroupResults> thirdPlaceTeams = new ArrayList<>();
+        for (Group group : groups) {
+            advancingTeams.addAll(group.getAdvancingTeams(ADVANCING_PER_GROUP));
+            thirdPlaceTeams.add(group.getSortedResults().get(2));
         }
+
+        Collections.sort(thirdPlaceTeams);
+        thirdPlaceAdvancingTeams = thirdPlaceTeams.subList(0, THIRD_PLACE_ADVANCING).stream().map(GroupResults::getTeam).toList();
+        advancingTeams.addAll(thirdPlaceAdvancingTeams);
+    }
+
+    public List<Team> getThirdPlaceAdvancingTeams() {
+        return thirdPlaceAdvancingTeams;
+    }
+
+    public Match simulateOneMatch() {
+        if (simulated) {
+            return null;
+        }
+
+        Group group = groups.get(currentGroup);
+        Match match = group.simulateOneMatch();
+
+        if (group.isCompleted()) {
+            currentGroup++;
+            if (currentGroup == groups.size()) {
+                finalizeGroupStage();
+            }
+        }
+        return match;
     }
 
     public void simulateGroupStage() {
+        while (!simulated) {
+            simulateOneMatch();
+        }
+    }
+
+    public Group simulateNextGroup() {
         if (simulated) {
-            return;
+            return null;
         }
 
-        for (Group group : groups) {
-            group.simulateAllMatches();
-            advancingTeams.addAll(group.getAdvancingTeams(ADVANCING_PER_GROUP));
+        int savedGroup = currentGroup;
+        while (currentGroup == savedGroup) {
+            simulateOneMatch();
         }
 
-        simulated = true;
+        return groups.get(savedGroup);
+    }
+
+    public Group getCurrentGroup() {
+        if (simulated) {
+            return null;
+        }
+        return groups.get(currentGroup);
     }
 
     public List<Group> getGroups() {
@@ -99,4 +150,5 @@ public class GroupStage {
     public boolean isSimulated() {
         return simulated;
     }
+
 }

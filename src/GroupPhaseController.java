@@ -4,6 +4,7 @@ import java.util.Iterator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
 /*
@@ -11,6 +12,7 @@ import javafx.scene.layout.GridPane;
 */
 public class GroupPhaseController extends BaseController {
     @FXML private GridPane buttonGrid;
+    @FXML private SimulationController simulationControlsController;
 
     @Override
     protected void onLoad(){
@@ -40,6 +42,7 @@ public class GroupPhaseController extends BaseController {
     
     @FXML
     private void showGroup() {
+        simulationControlsController.configureForGroupStage();
         navigateTo(Screen.SINGLE_GROUP);
     }
 }

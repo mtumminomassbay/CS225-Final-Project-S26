@@ -108,7 +108,7 @@ public class TeamInfoCardController extends BaseController {
         countryName.setText(team.getName());
         confederationName.setText(team.getRegion());
         flagImageView.setImage(new Image(team.getFlagPath()));
-        groupAssignment.setText(team.getGroup());
+        groupAssignment.setText(team.getGroup().getGroupName());
 
         setBackgroundColor(team.getColor());
     }
