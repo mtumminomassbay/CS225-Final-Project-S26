@@ -86,6 +86,75 @@ public class WorldCupTournament {
         return currentStage;
     }
 
+    public String getCurrentRound() {
+        if (currentStage.equals(GROUP_STAGE)) {
+            return "Group Stage";
+        }
+
+        if (currentStage.equals(COMPLETE)) {
+            return "Tournament Complete";
+        }
+
+        return "Knockout Stage";
+    }
+
+    // Returns how many matches have been completed
+    public int getCompletedMatches() {
+        return getCompletedGroupMatches() + getCompletedKnockoutMatches();
+    }
+
+    // Returns the total number of matches in the tournament
+    public int getTotalMatches() {
+        return getTotalGroupMatches() + getTotalKnockoutMatches();
+    }
+
+    // returns remaining matches
+    public int getRemainingMatches() {
+        return getTotalMatches() - getCompletedMatches();
+    }
+
+    // displays progress as text
+    public String getProgressText() {
+        return getCompletedMatches() + " / " + getTotalMatches()
+                + " matches completed";
+    }
+
+    // Counts completed group-stage matches
+    private int getCompletedGroupMatches() {
+        int completed = 0;
+
+        for (Match match : getGroupMatches()) {
+            if (match.isFinished()) {
+                completed++;
+            }
+        }
+
+        return completed;
+    }
+
+    private int getTotalGroupMatches() {
+        return getGroupMatches().size();
+    }
+
+    private int getCompletedKnockoutMatches() {
+        if (bracket == null) {
+            return 0;
+        }
+
+        int completed = 0;
+
+        for (Match match : bracket.getMatches()) {
+            if (match.isFinished()) {
+                completed++;
+            }
+        }
+
+        return completed;
+    }
+
+    private int getTotalKnockoutMatches() {
+        return 32;
+    }
     // following methods check if certain aspects of the program are completed before moving on.
     public boolean isGroupStageComplete() {
         return groupStage.isSimulated();
@@ -118,6 +187,10 @@ public class WorldCupTournament {
         }
 
         Match match = bracket.simulateOneMatch();
+
+        if (match != null) {
+            currentlyViewedMatch = match;
+        }
 
         if (bracket.isFinished()) {
             champion = bracket.getFinal().getWinner();
@@ -190,7 +263,7 @@ public class WorldCupTournament {
         currentStage = StageMode.GROUP_STAGE;
         champion = null;
     }
-
+    
     public List<Team> getAllTeams() {
         return Collections.unmodifiableList(allTeams);
     }
