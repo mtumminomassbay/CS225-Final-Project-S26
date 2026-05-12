@@ -1,18 +1,23 @@
 //Bandana Kadel
-/*this screen shows the details like team A name , team B name, scores by 1st half
-score by second half, OT, and penalties if needed. It also shows the place and time the game is being
-played at. 
+/*This class shows the result of the match including the first half score, 
+second half scores and penalties and overtime as needed. 
 */
-
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MatchDetailsController extends BaseController {
 
+    @FXML private Label roundLabel;
     @FXML private Label teamANameLabel;
     @FXML private Label teamBNameLabel;
+    @FXML private Label teamARankLabel;
+    @FXML private Label teamBRankLabel;
+    @FXML private ImageView teamAFlag;
+    @FXML private ImageView teamBFlag;
     @FXML private Label scoreLabel;
     @FXML private Label firstHalfLabel;
     @FXML private Label secondHalfLabel;
@@ -25,39 +30,62 @@ public class MatchDetailsController extends BaseController {
 
     @Override
     protected void onLoad() {
-        
-        // TeamParser parser = new TeamParser();
-        // GroupStage groupStage = new GroupStage(parser.getTeams());
-        // Match match = groupStage.getGroups().get(0).getMatches().get(0);
+        if (match == null) {
+            match = worldCup.getCurrentlyViewedMatch();
+        }
 
-        // match.simulate();
+        if (match == null) {
+            return;
+        }
 
-        // Show teams names and the scores
-        teamANameLabel.setText(match.getFirstTeam().getName());
-        teamBNameLabel.setText(match.getSecondTeam().getName());
+        Team teamA = match.getFirstTeam();
+        Team teamB = match.getSecondTeam();
+
+        // Basic match information
+        roundLabel.setText(worldCup.getCurrentRound());
+
+        // Team information
+        teamANameLabel.setText(teamA.getName());
+        teamBNameLabel.setText(teamB.getName());
+        teamARankLabel.setText("#" + teamA.getRanking());
+        teamBRankLabel.setText("#" + teamB.getRanking());
+
+        // Team flags
+        teamAFlag.setImage(new Image(teamA.getFlagPath()));
+        teamBFlag.setImage(new Image(teamB.getFlagPath()));
+
+        // Final score
         scoreLabel.setText(match.getFirstTeamScore() + " - " + match.getSecondTeamScore());
 
-        // Show score at half time
-        firstHalfLabel.setText(match.getFirstHalf().getFirstTeamScore() + " - " + match.getFirstHalf().getSecondTeamScore());
-        secondHalfLabel.setText(match.getSecondHalf().getFirstTeamScore() + " - " + match.getSecondHalf().getSecondTeamScore());
+        // Half scores
+        firstHalfLabel.setText(match.getFirstHalf().getFirstTeamScore() + " - "
+                + match.getFirstHalf().getSecondTeamScore());
 
-        // Show if the match goes to OT nad the score after OT
+        secondHalfLabel.setText(match.getSecondHalf().getFirstTeamScore() + " - "
+                + match.getSecondHalf().getSecondTeamScore());
+
+        // Overtime score
         if (match.getOvertime() != null) {
-            extraTimeLabel.setText(match.getOvertime().getFirstTeamScore() + " - " + match.getOvertime().getSecondTeamScore());
+            extraTimeLabel.setText(match.getOvertime().getFirstTeamScore() + " - "
+                    + match.getOvertime().getSecondTeamScore());
         } else {
             extraTimeLabel.setText("--");
         }
 
-        // Show penalties shootout scores
+        // Penalty score
         if (match.getPenalties() != null) {
-            penaltiesLabel.setText(match.getPenalties().getFirstTeamGoals() + " - " + match.getPenalties().getSecondTeamGoals());
+            penaltiesLabel.setText(match.getPenalties().getFirstTeamGoals() + " - "
+                    + match.getPenalties().getSecondTeamGoals());
         } else {
-            penaltiesLabel.setText("- -");
+            penaltiesLabel.setText("--");
         }
 
-        // Show winner of the match or if it is draw
-        Team winner = match.getWinner();
-        winnerLabel.setText(winner != null ? "Winner: " + winner.getName() : "Draw");
+        // Winner
+        if (match.getWinner() != null) {
+            winnerLabel.setText("Winner: " + match.getWinner().getName());
+        } else {
+            winnerLabel.setText("Draw");
+        }
     }
 
     @FXML
@@ -65,7 +93,7 @@ public class MatchDetailsController extends BaseController {
         navigateTo(Screen.DASHBOARD);
     }
 
-    public static void setMatch(Match newMatch) {
-        match = newMatch;
+    public static void setMatch(Match selectedMatch) {
+        match = selectedMatch;
     }
 }
