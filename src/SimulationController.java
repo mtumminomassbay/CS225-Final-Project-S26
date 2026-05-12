@@ -257,7 +257,6 @@ public class SimulationController {
             return "Current Group: " + worldCup.getGroupStage().getCurrentGroup().getGroupName();
         }
 
-        //TODO: round of 32, of 16, etc
-        return "Knockout Bracket";
+        return "Current Round: " + worldCup.getBracket().getCurrentRound();
     }
 }

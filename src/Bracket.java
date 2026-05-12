@@ -102,6 +102,37 @@ public class Bracket {
     public Match getThirdPlace() {
         return thirdPlace;
     }
+
+    public String getCurrentRound() {
+        if (getCompletedMatches() < 16) {
+            return "Round of 32";
+        } else if (getCompletedMatches() < 24) {
+            return "Round of 16";
+        } else if (getCompletedMatches() < 28) {
+            return "Quarterfinals";
+        } else if (getCompletedMatches() < 30) {
+            return "Semifinals";
+        } else if (getCompletedMatches() == 30) {
+            return "Match for Third";
+        } else if (getCompletedMatches() == 31) {
+            return "Finals";
+        } else {
+            return "Completed";
+        }
+    }
+
+    public int getTotalMatches() {
+        return teams.size();
+    }
+
+    public int getCompletedMatches() {
+        int totalMatches = bracketRoot.getMatchesSimulated();
+        if (thirdPlace != null && thirdPlace.isFinished()) {
+            totalMatches += 1;
+        }
+
+        return totalMatches;
+    }
 }
 
 

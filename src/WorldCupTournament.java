@@ -123,20 +123,13 @@ public class WorldCupTournament {
             return 0;
         }
 
-        int completed = 0;
-
-        for (Match match : bracket.getMatches()) {
-            if (match.isFinished()) {
-                completed++;
-            }
-        }
-
-        return completed;
+        return bracket.getCompletedMatches();
     }
 
     private int getTotalKnockoutMatches() {
         return 32;
     }
+
     // following methods check if certain aspects of the program are completed before moving on.
     public boolean isGroupStageComplete() {
         return groupStage.isSimulated();
