@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -13,6 +15,35 @@ import java.util.Random;
  */
 public class PenaltyShootout {
 
+    //Joey Barton additions
+    /*
+        This class holds the result of a single Penalty Kick
+    */
+    public static class KickResult {
+
+        private final Team team;
+        private final boolean scored;
+
+
+        private final int round;
+
+        public KickResult(Team team, boolean scored, int round) {
+            this.team = team;
+            this.scored = scored;
+            this.round = round;
+        }
+
+        public Team getTeam() {return team;}
+        public boolean isScored() { return scored;}
+        public int getRound() { return round; }
+
+        @Override
+        public String toString() {
+            return "Round " + round + " | " + team.getName() + ": " + (scored ? "Scored" : "Missed");
+        }
+    }
+
+
     private Team team1;
     private Team team2;
 
@@ -20,6 +51,8 @@ public class PenaltyShootout {
     private int team2Goals;
 
     private boolean finished;
+
+    private final List<KickResult> kickResults;
 
     /**
      * Creates a penalty shootout between two teams
@@ -36,6 +69,8 @@ public class PenaltyShootout {
 
         // The shootout has not been completed yet
         this.finished = false;
+
+        this.kickResults = new ArrayList<>();
     }
 
     /**
@@ -55,30 +90,51 @@ public class PenaltyShootout {
 
         // Standard penalty shootout: each team gets 5 kicks
         for (int i = 0; i < 5; i++) {
-            if (penaltyScored(team1, random)) {
-                team1Goals++;
-            }
+            // if (penaltyScored(team1, random)) {
+            //     team1Goals++;
+            // }
 
-            if (penaltyScored(team2, random)) {
-                team2Goals++;
-            }
+            // if (penaltyScored(team2, random)) {
+            //     team2Goals++;
+            // }
+
+            performKick(team1, i + 1, random);
+            performKick(team2, i + 1, random);
         }
 
+        int round = 6;
         // Sudden death: continue until one team wins
         while (team1Goals == team2Goals) {
-            boolean team1Scored = penaltyScored(team1, random);
-            boolean team2Scored = penaltyScored(team2, random);
+            // boolean team1Scored = penaltyScored(team1, random);
+            // boolean team2Scored = penaltyScored(team2, random);
 
-            if (team1Scored) {
-                team1Goals++;
-            }
+            // if (team1Scored) {
+            //     team1Goals++;
+            // }
 
-            if (team2Scored) {
-                team2Goals++;
-            }
+            // if (team2Scored) {
+            //     team2Goals++;
+            // }
+
+            performKick(team1, round, random);
+            performKick(team2, round, random);
+            round++;
         }
 
         finished = true;
+    }
+
+    private void performKick(Team team, int round, Random random) {
+        boolean scored = penaltyScored(team, random);
+        kickResults.add(new KickResult(team, scored, round));
+
+        if(scored) {
+            if(team == team1) {
+                team1Goals++;
+            } else {
+                team2Goals++;
+            }
+        }
     }
 
     /**
@@ -134,4 +190,6 @@ public class PenaltyShootout {
             return team2;
         }
     }
+
+    public List<KickResult> getKickResults() { return this.kickResults;}
 }
