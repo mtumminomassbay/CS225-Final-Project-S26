@@ -40,14 +40,14 @@ public class Bracket {
     }
 
     private Match getAndSimulateMatch(boolean dryRun) {
-        if (bracketRoot.isFinished()) {
+        if (isFinished()) {
             return null;
         }
 
         BracketBranch leftSemi  = bracketRoot.getLeftBranch();
         BracketBranch rightSemi = bracketRoot.getRightBranch();
 
-        if (thirdPlace != null) {
+        if (thirdPlace != null && !thirdPlace.isFinished()) {
             if (!dryRun) {
                 thirdPlace.simulate();
             }
@@ -56,7 +56,7 @@ public class Bracket {
 
         Match result = bracketRoot.simulateOneMatch(dryRun);
 
-        if (!dryRun && leftSemi.isFinished() && rightSemi.isFinished()) {
+        if (!dryRun && thirdPlace == null && leftSemi.isFinished() && rightSemi.isFinished()) {
             Match leftMatch  = leftSemi.getMatch();
             Match rightMatch = rightSemi.getMatch();
 
