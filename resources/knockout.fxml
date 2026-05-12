@@ -11,17 +11,27 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="3049.0" style="-fx-background-color: #0D3B2E;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KnockoutPhaseController">
+<AnchorPane prefHeight="932.0" prefWidth="3662.0" style="-fx-background-color: #0D3B2E;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KnockoutPhaseController">
    <children>
       <BorderPane prefHeight="1080.0" style="-fx-background-color: #0D3B2E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <ScrollPane hbarPolicy="ALWAYS" pannable="true" prefHeight="1280.0" prefWidth="200.0" style="-fx-background: #0D3B2E; -fx-background-color: #0D3B2E;" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+            <ScrollPane pannable="true" prefHeight="1280.0" style="-fx-background: #0D3B2E; -fx-background-color: #0D3B2E;" BorderPane.alignment="CENTER">
               <content>
-                <AnchorPane prefHeight="850.0" prefWidth="3500.0" style="-fx-background-color: #0D3B2E;">
+                <AnchorPane prefHeight="850.0" style="-fx-background-color: #0D3B2E;">
                      <children>
-                        <HBox fx:id="bracketContainer" alignment="CENTER_LEFT" layoutY="45.0" prefHeight="850.0" prefWidth="3500.0" spacing="150.0" style="-fx-background-color: #0D3B2E;">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="3649.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="603.0" text="FIFA WORLD CUP 2026 — KNOCKOUT STAGE" textFill="WHITE" translateX="150.0">
+                                 <font>
+                                    <Font name="System Bold" size="26.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="bracketContainer" alignment="CENTER_LEFT" layoutY="85.0" prefHeight="810.0" prefWidth="3647.0" spacing="150.0" style="-fx-background-color: #0D3B2E;">
                            <children>
                               <VBox alignment="TOP_CENTER" prefHeight="736.0" prefWidth="230.0" spacing="20.0" style="-fx-background-color: transparent;">
                                  <children>
@@ -749,22 +759,73 @@
                               <Insets bottom="35.0" left="45.0" right="45.0" top="35.0" />
                            </padding>
                         </HBox>
+                        <Line endX="352.8888854980469" endY="208.6667022705078" startX="295.33331298828125" startY="208.66668701171875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="343.33331298828125" endY="289.33331298828125" layoutX="10.0" layoutY="10.0" startX="285.33331298828125" startY="289.33331298828125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="333.33331298828125" endY="279.1111145019531" layoutX="20.0" layoutY="20.0" startX="333.33331298828125" startY="188.88888549804688" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="324.2221984863281" endY="361.111083984375" layoutX="30.0" layoutY="30.0" startX="265.3333435058594" startY="361.111083984375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="313.7777404785156" endY="441.3332824707031" layoutX="40.0" layoutY="40.0" startX="255.33334350585938" startY="441.33331298828125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="304.6666259765625" endY="430.8888854980469" layoutX="50.0" layoutY="50.0" startX="304.6666259765625" startY="341.5555419921875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="293.3333435058594" endY="510.11114501953125" layoutX="60.0" layoutY="60.0" startX="235.33334350585938" startY="510.66668701171875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="283.3333435058594" endY="590.888916015625" layoutX="70.0" layoutY="70.0" startX="225.33334350585938" startY="590.888916015625" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="273.3333435058594" endY="580.4444580078125" layoutX="80.0" layoutY="80.0" startX="273.3333435058594" startY="491.11114501953125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="264.2221984863281" endY="661.5556030273438" layoutX="90.0" layoutY="90.0" startX="205.33334350585938" startY="661.5556030273438" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="254.22219848632812" endY="739.1111450195312" layoutX="100.0" layoutY="100.0" startX="195.33334350585938" startY="739.1111450195312" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="244.22216796875" endY="728.6666870117188" layoutX="110.0" layoutY="110.0" startX="244.22219848632812" startY="641.5556030273438" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="324.22222900390625" endY="223.7777862548828" layoutX="30.0" layoutY="30.0" startX="415.33331298828125" startY="265.9999694824219" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="295.6666259765625" endY="371.5555419921875" layoutX="60.0" layoutY="60.0" startX="385.33331298828125" startY="371.5555419921875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="284.22222900390625" endY="549.5555419921875" layoutX="70.0" layoutY="70.0" startX="375.33331298828125" startY="497.5555419921875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="275.111083984375" endY="718.6666870117188" layoutX="80.0" layoutY="80.0" startX="365.33331298828125" startY="623.5556030273438" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="714.2222290039062" endY="257.3332824707031" layoutX="40.0" layoutY="40.0" startX="655.3333740234375" startY="257.33331298828125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="705.1111450195312" endY="380.6666564941406" layoutX="50.0" layoutY="50.0" startX="645.3333740234375" startY="380.6666564941406" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="695.1112060546875" endY="369.6666259765625" layoutX="60.0" layoutY="60.0" startX="695.1111450195312" startY="237.77777099609375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="625.3333129882812" endY="496.66668701171875" layoutX="70.0" layoutY="70.0" startX="686.4444580078125" startY="496.66668701171875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="615.3333740234375" endY="621.858642578125" layoutX="80.0" layoutY="80.0" startX="676.8889770507812" startY="621.858642578125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="666.888916015625" endY="477.11114501953125" layoutX="90.0" layoutY="90.0" startX="666.8889770507812" startY="610.4444580078125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="745.3333129882812" endY="314.22222900390625" layoutX="100.0" layoutY="100.0" startX="656.0" startY="265.33331298828125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="735.3333129882812" endY="487.77777099609375" layoutX="110.0" layoutY="110.0" startX="648.2222290039062" startY="528.6666870117188" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1038.6666259765625" endY="294.6666564941406" layoutX="120.0" layoutY="120.0" startX="975.111083984375" startY="294.6666564941406" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1029.4444580078125" endY="465.1112060546875" layoutX="130.0" layoutY="130.0" startX="965.333251953125" startY="465.11114501953125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1020.4444580078125" endY="455.11114501953125" layoutX="140.0" layoutY="140.0" startX="1020.4444580078125" startY="275.111083984375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1011.333251953125" endY="366.4444580078125" layoutX="150.0" layoutY="150.0" startX="1095.333251953125" startY="366.4444580078125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3131.111083984375" endY="49.777801513671875" layoutX="160.0" layoutY="160.0" startX="3191.33349609375" startY="49.77778625488281" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3120.666748046875" endY="131.0" layoutX="170.0" layoutY="170.0" startX="3181.33349609375" startY="130.88888549804688" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3110.666748046875" endY="120.0" layoutX="180.0" layoutY="180.0" startX="3110.666748046875" startY="30.22222900390625" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3103.33349609375" endY="197.99996948242188" layoutX="190.0" layoutY="190.0" startX="3161.33349609375" startY="197.99996948242188" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3093.33349609375" endY="280.44439697265625" layoutX="200.0" layoutY="200.0" startX="3151.33349609375" startY="280.4444274902344" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3082.444580078125" endY="270.0" layoutX="210.0" layoutY="210.0" startX="3082.444580078125" startY="178.44442749023438" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3073.77783203125" endY="351.55560302734375" layoutX="220.0" layoutY="220.0" startX="3131.33349609375" startY="351.55560302734375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3064.666748046875" endY="431.3333740234375" layoutX="230.0" layoutY="230.0" startX="3121.33349609375" startY="431.3333740234375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3053.77783203125" endY="420.888916015625" layoutX="240.0" layoutY="240.0" startX="3053.666748046875" startY="332.55560302734375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3046.0" endY="502.0" layoutX="250.0" layoutY="250.0" startX="3101.33349609375" startY="502.0" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3037.33349609375" endY="581.3334350585938" layoutX="260.0" layoutY="260.0" startX="3091.33349609375" startY="581.3333740234375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3026.0" endY="571.3333740234375" layoutX="270.0" layoutY="270.0" startX="3026.0" startY="483.0" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3009.77783203125" endY="-22.22222900390625" layoutX="280.0" layoutY="280.0" startX="2921.33349609375" startY="13.77777099609375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="3000.666748046875" endY="140.22216796875" layoutX="290.0" layoutY="290.0" startX="2911.33349609375" startY="140.22216796875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2992.888916015625" endY="318.66668701171875" layoutX="300.0" layoutY="300.0" startX="2901.33349609375" startY="265.77783203125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2985.0" endY="487.16668701171875" layoutX="310.0" layoutY="310.0" startX="2891.33349609375" startY="393.11114501953125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2661.33349609375" endY="6.0" layoutX="290.0" layoutY="290.0" startX="2596.666748046875" startY="6.0" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2651.33349609375" endY="130.22222900390625" layoutX="300.0" layoutY="300.0" startX="2588.444580078125" startY="130.22222900390625" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2576.666748046875" endY="-13.555572509765625" layoutX="310.0" layoutY="310.0" startX="2576.666748046875" startY="120.22222900390625" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2631.33349609375" endY="247.55560302734375" layoutX="320.0" layoutY="320.0" startX="2568.0" startY="247.55560302734375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2621.33349609375" endY="372.66668701171875" layoutX="330.0" layoutY="330.0" startX="2559.33349609375" startY="372.66668701171875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2548.0" endY="228.4444580078125" layoutX="340.0" layoutY="340.0" startX="2548.33349609375" startY="361.66668701171875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2451.33349609375" endY="63.33331298828125" layoutX="350.0" layoutY="350.0" startX="2535.77783203125" startY="15.33331298828125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2441.33349609375" endY="235.5555419921875" layoutX="360.0" layoutY="360.0" startX="2527.5556640625" startY="284.4444580078125" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2181.33349609375" endY="48.22222900390625" layoutX="370.0" layoutY="370.0" startX="2123.77783203125" startY="48.22222900390625" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2171.33349609375" endY="217.77777099609375" layoutX="380.0" layoutY="380.0" startX="2114.666748046875" startY="217.77777099609375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2104.222412109375" endY="28.666656494140625" layoutX="390.0" layoutY="390.0" startX="2104.222412109375" startY="207.3333740234375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="2001.33349609375" endY="114.22222900390625" layoutX="400.0" layoutY="400.0" startX="2093.77783203125" startY="114.22222900390625" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1392.0" endY="356.0" layoutX="160.0" layoutY="160.0" startX="1335.333251953125" startY="356.0" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1981.33349609375" endY="347.3333740234375" layoutX="170.0" layoutY="170.0" startX="1916.222412109375" startY="347.3333740234375" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1904.888916015625" endY="337.77783203125" layoutX="180.0" layoutY="180.0" startX="1821.3333740234375" startY="440.66668701171875" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1895.33349609375" endY="327.77783203125" layoutX="190.0" layoutY="190.0" startX="1811.333251953125" startY="39.77778625488281" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1475.333251953125" endY="453.11114501953125" layoutX="170.0" layoutY="170.0" startX="1382.4444580078125" startY="346.0" stroke="#e5a94d" strokeWidth="2.0" />
+                        <Line endX="1465.333251953125" endY="51.0" layoutX="180.0" layoutY="180.0" startX="1372.8887939453125" startY="336.4444580078125" stroke="#e5a94d" strokeWidth="2.0" />
                      </children>
                   </AnchorPane>
               </content>
             </ScrollPane>
          </center>
-         <top>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1920.0" text="FIFA WORLD CUP 2026 — KNOCKOUT STAGE" textAlignment="CENTER" textFill="WHITE" translateX="150.0">
-                     <font>
-                        <Font name="System Bold" size="26.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-         </top>
       </BorderPane>
    </children>
 </AnchorPane>
