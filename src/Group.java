@@ -29,6 +29,7 @@ public class Group {
 
         for (Team team : teams) {
             groupResults.put(team, new GroupResults(team));
+            team.setGroup(this);
         }
 
         createMatches();
@@ -139,5 +140,10 @@ public class Group {
 
     public boolean isCompleted() {
         return completed;
+    }
+
+    @Override
+    public String toString() {
+        return groupName;
     }
 }
