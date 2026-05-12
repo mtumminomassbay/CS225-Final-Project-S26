@@ -126,17 +126,11 @@ public class WorldCupTournament {
         }
 
         if (currentStage.equals(GROUP_STAGE)) {
-            //FIXME: waiting for implementation in GroupStage
-            /*
             Match match = groupStage.simulateOneMatch();
             if (groupStage.isSimulated()) {
                 createKnockoutStage();
             }
             return match;
-            */
-            groupStage.simulateGroupStage();
-            createKnockoutStage();
-            return null;
         }
 
         Match match = bracket.simulateOneMatch();
