@@ -150,3 +150,34 @@ Pane {
     -fx-font-family: "Segoe UI";
     -fx-font-size: 11px;
 }
+
+.team-card-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #0a0f0d, 6, 0.3, 0, 1);
+}
+
+.team-card-title-small {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.team-card-field {
+    -fx-fill: #a5c9a7;
+}
+
+.team-card-value {
+    -fx-fill: #ffffff;
+}
+
+.team-card-rank {
+    -fx-fill: #ffad43;
+    -fx-font-weight: bold;
+}
+
+.team-card-record {
+    -fx-fill: #04e879;
+    -fx-font-weight: bold;
+}
