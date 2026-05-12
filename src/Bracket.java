@@ -13,19 +13,19 @@ public class Bracket {
         //}
         this.teams = getTeamsSorted(teams);  // seed teams 
         this.bracketRoot = buildBracket(this.teams); // build the bracket from seeded list
-        this.thirdPlace = null; // no third place match untill semifinals have been completed
+        this.thirdPlace = null; // no third place match until semifinals have been completed
     }
 
     private BracketBranch buildBracket(List<Team> seededTeams) {
         List<BracketBranch> currentRound = new ArrayList<>();
         for (int i = 0; i < seededTeams.size(); i += 2) {
-        currentRound.add(new BracketBranch(seededTeams.get(i), seededTeams.get(i + 1)));
+            currentRound.add(new BracketBranch(seededTeams.get(i), seededTeams.get(i + 1), seededTeams.size()));
         }
 
         while (currentRound.size() > 1) {
             List<BracketBranch> nextRound = new ArrayList<>();
             for (int i = 0; i < currentRound.size(); i += 2) {
-                nextRound.add(new BracketBranch(currentRound.get(i), currentRound.get(i + 1)));
+                nextRound.add(new BracketBranch(currentRound.get(i), currentRound.get(i + 1), currentRound.size()));
             }
             currentRound = nextRound;
         }
@@ -34,10 +34,10 @@ public class Bracket {
     }
 
     public List<Team> getTeamsSorted(List<Team> qualifiedTeams) {
-    // Returns teams in the order provided by GroupStage.getAdvancingTeams()
-    // Full bracket seeding logic can be added later if requested by frontend team
-    return new ArrayList<>(qualifiedTeams);
-}
+        // Returns teams in the order provided by GroupStage.getAdvancingTeams()
+        // Full bracket seeding logic can be added later if requested by frontend team
+        return new ArrayList<>(qualifiedTeams);
+    }
 
     
     public Match simulateOneMatch() {
@@ -60,10 +60,6 @@ public class Bracket {
             thirdPlace = new Match(loser1, loser2, false);
             thirdPlace.simulate();
             return thirdPlace;
-        }
-
-        if (thirdPlace != null && thirdPlace.isFinished()) {
-            return bracketRoot.simulateOneMatch();
         }
 
         return bracketRoot.simulateOneMatch();
@@ -106,8 +102,6 @@ public class Bracket {
     public Match getThirdPlace() {
         return thirdPlace;
     }
-
-
 }
 
 

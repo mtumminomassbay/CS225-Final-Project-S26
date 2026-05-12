@@ -186,6 +186,15 @@ public class Match {
         return null;
     }
 
+    public Team getLoser() {
+        Team winner = getWinner();
+        if (winner == null) {
+            return null;
+        }
+
+        return team1 == winner ? team2 : team1;
+    }
+
     public boolean isTied() {
         return getFirstTeamScore() == getSecondTeamScore();
     }
