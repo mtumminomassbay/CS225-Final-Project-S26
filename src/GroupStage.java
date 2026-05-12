@@ -1,3 +1,5 @@
+import javafx.print.Collation;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -37,28 +39,24 @@ public class GroupStage {
     }
 
     private void createGroups() {
-        List<List<Team>> groupBuckets = new ArrayList<>();
 
-        for (int i = 0; i < GROUP_COUNT; i++) {
-            groupBuckets.add(new ArrayList<>());
-        }
+
+        ArrayList<Team> tempTeams = new ArrayList<>();
 
         for (int i = 0; i < teams.size(); i++) {
-            Team t = teams.get(i);
-            int groupIndex = i % GROUP_COUNT;
-            groupBuckets.get(groupIndex).add(t);
+            int groupIndex = i / GROUP_COUNT;
+            tempTeams.add(teams.get(i));
 
-            //Tristan to set group letter to Team
-            char groupLetter = (char) ('A' + groupIndex);
-            t.setGroup("Group " + groupLetter);
-            //System.out.println("Setting group for: " + t.getName() + " " + t.getGroup());
+            if(i % GROUP_COUNT == GROUP_COUNT - 1) {
+                char groupLetter = (char) ('A' + groupIndex);
+
+                groups.add(new Group("Group " + groupLetter, tempTeams, 1));
+                tempTeams = new ArrayList<>();
+
+            }
+
         }
 
-        for (int i = 0; i < GROUP_COUNT; i++) {
-            char groupLetter = (char) ('A' + i);
-            Group group = new Group("Group " + groupLetter, groupBuckets.get(i), 1);
-            groups.add(group);
-        }
     }
 
     public void simulateGroupStage() {
@@ -99,4 +97,5 @@ public class GroupStage {
     public boolean isSimulated() {
         return simulated;
     }
+
 }
