@@ -30,6 +30,7 @@ public class GroupPhaseController extends BaseController {
         }
 
         worldCup.getGroupStage().simulateGroupStage();
+        
         if (worldCup.getGroupStage().isSimulated()) {
             makeThirdPlaceLeaderboard();
         }
@@ -64,10 +65,5 @@ public class GroupPhaseController extends BaseController {
             Label scoreLabel = new Label(teams.get(i).getGroup().getGroupResults(teams.get(i)).getPoints() + "");
             leaderboardGrid.add(scoreLabel, 1, i);
         }
-    }
-    
-    @FXML
-    private void showGroup() {
-        navigateTo(Screen.SINGLE_GROUP);
     }
 }
