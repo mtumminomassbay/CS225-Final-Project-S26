@@ -149,8 +149,13 @@ public class WorldCupTournament {
         return match;
     }
 
-    public Match simulateNextAvailableMatch() {
-        return simulateOneMatch();
+    public void simulateOneGroup(String groupName) {
+        if (isTournamentComplete()) {
+            return;
+        }
+
+        //groupStage.simulateOneGroup(groupName);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     // Simulates the rest of the current round

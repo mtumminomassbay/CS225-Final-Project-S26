@@ -44,11 +44,10 @@ public class SimulationController {
     // TODO: Replace this limit with a real "no more matches left" backend check.
     private static final int AUTO_PLAY_PLACEHOLDER_LIMIT = 5;
 
-    // TODO: Replace this mock service with the real tournament simulation service.
-    private final MockSimulationService mockService = new MockSimulationService();
+    private WorldCupTournament worldCup;
 
     private StageMode stageMode = StageMode.GROUP_STAGE;
-    private int selectedGroupNumber = 0;
+    private String selectedGroup = null;
     private boolean bracketReady = false;
     private boolean actionRunning = false;
     private boolean autoPlayRunning = false;
@@ -58,6 +57,8 @@ public class SimulationController {
 
     @FXML
     private void initialize() {
+        worldCup = WorldCupTournament.getInstance();
+
         // TODO: These speeds are placeholder UI choices until we finalize settings.
         speedComboBox.getItems().addAll("Slow (2 sec)", "Normal (1 sec)", "Fast (0.5 sec)");
         speedComboBox.setValue("Normal (1 sec)");
@@ -69,17 +70,16 @@ public class SimulationController {
         simulateRestOfTournamentButton.setOnAction(event -> simulateRestOfTournament());
         autoPlayButton.setOnAction(event -> startAutoPlay());
         pauseButton.setOnAction(event -> stopAutoPlay("Auto play paused."));
-        resetCurrentContextButton.setOnAction(event -> resetCurrentContext());
         resetTournamentButton.setOnAction(event -> confirmAndResetTournament());
 
         refreshLabels();
         refreshButtonStates();
     }
 
-    public void configureForGroupStage(int groupNumber) {
+    public void configureForGroupStage(String groupName) {
         // Parent screens call this after loading or after a group is selected.
         stageMode = StageMode.GROUP_STAGE;
-        selectedGroupNumber = groupNumber;
+        selectedGroup = groupName;
         bracketReady = false;
         resetCurrentContextButton.setText("Reset Current Group");
         refreshLabels();
@@ -89,44 +89,69 @@ public class SimulationController {
     public void configureForKnockoutStage(boolean bracketReady) {
         // TODO: bracketReady should come from real tournament state later.
         stageMode = StageMode.KNOCKOUT_STAGE;
-        selectedGroupNumber = 0;
+        selectedGroup = null;
         this.bracketReady = bracketReady;
         resetCurrentContextButton.setText("Reset Current Round");
         refreshLabels();
         refreshButtonStates();
     }
 
+    private void advanceTournamentStage() {
+        if (stageMode == StageMode.GROUP_STAGE) {
+            configureForKnockoutStage(true);
+        } else {
+            //TODO: logic for tournament completion
+        }
+    }
+
+    private boolean tournamentStageChanged() {
+        if (stageMode == StageMode.GROUP_STAGE && worldCup.isGroupStageComplete()) {
+            return true;
+        }
+
+        return stageMode == StageMode.KNOCKOUT_STAGE && worldCup.isTournamentComplete();
+    }
+
+    private void simulate(Runnable action) {
+        action.run();
+        if (tournamentStageChanged()) {
+            advanceTournamentStage();
+        }
+    }
+
     private void simulateNextMatch() {
-        runMockAction("Simulating next match", () ->
-            mockService.simulateNextMatch(getStageName(), getContextName())
-        );
-    }
-
-    private void simulateCurrentGroup() {
-        runMockAction("Simulating current group", () ->
-            mockService.simulateCurrentGroup(selectedGroupNumber)
-        );
-    }
-
-    private void simulateCurrentRound() {
-        runMockAction("Simulating current round", mockService::simulateCurrentRound);
-    }
-
-    private void simulateRestOfTournament() {
-        runMockAction("Simulating rest of tournament", mockService::simulateRestOfTournament);
-    }
-
-    private void resetCurrentContext() {
-        runMockAction("Resetting current context", () -> {
-            if (stageMode == StageMode.GROUP_STAGE) {
-                return mockService.resetCurrentGroup(selectedGroupNumber);
-            }
-
-            return mockService.resetCurrentRound();
+        runAction("Simulating next match", () -> {
+            String result = "Match simulated for " + getContextName();
+            simulate(() -> worldCup.simulateOneMatch());
+            return result;
         });
     }
 
-    private void runMockAction(String runningMessage, Supplier<String> action) {
+    private void simulateCurrentGroup() {
+        runAction("Simulating current group", () -> {
+            String result = selectedGroup + " simulated.";
+            simulate(() -> worldCup.simulateOneGroup(selectedGroup));
+            return result;
+        });
+    }
+
+    private void simulateCurrentRound() {
+        runAction("Simulating current round", () -> {
+            String result = getStageName() + " simulated.";
+            simulate(() -> worldCup.simulateRemainingCurrentRound());
+            return result;
+        });
+    }
+
+    private void simulateRestOfTournament() {
+        runAction("Simulating rest of tournament", () -> {
+            String result = "Entire tournament simulated.";
+            simulate(() -> worldCup.simulateRestOfTournament());
+            return result;
+        });
+    }
+
+    private void runAction(String runningMessage, Supplier<String> action) {
         if (actionRunning) {
             return;
         }
@@ -173,7 +198,8 @@ public class SimulationController {
         }
 
         autoPlayMatchesThisRun++;
-        String result = mockService.simulateNextMatch(getStageName(), getContextName());
+        String result = "Match simulated for " + getContextName();
+        simulate(() -> worldCup.simulateOneMatch());
         refreshLabels();
         statusLabel.setText("Auto play: " + result);
 
@@ -220,9 +246,9 @@ public class SimulationController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            mockService.resetTournament();
+            worldCup.resetTournament();
             refreshLabels();
-            statusLabel.setText("Tournament reset with placeholder data.");
+            statusLabel.setText("Tournament reset.");
             refreshButtonStates();
         }
     }
@@ -231,13 +257,13 @@ public class SimulationController {
         // TODO: Replace these labels with live match and progress data.
         currentStageLabel.setText("Stage: " + getStageName());
         selectedContextLabel.setText("Selected: " + getContextName());
-        nextMatchLabel.setText("Next match: " + mockService.getNextMatchPlaceholder(getContextName()));
-        progressLabel.setText("Progress: " + mockService.getProgressPlaceholder());
+        nextMatchLabel.setText("Next match: " + "TODO"); //TODO
+        progressLabel.setText("Progress: " + "TODO"); //TODO
     }
 
     private void refreshButtonStates() {
         // Keep invalid actions disabled so users cannot start two simulations at once.
-        boolean groupSelected = selectedGroupNumber > 0;
+        boolean groupSelected = selectedGroup != null;
         boolean knockoutCanSimulate = stageMode == StageMode.KNOCKOUT_STAGE && bracketReady;
         boolean simulationRunning = actionRunning || autoPlayRunning;
 
@@ -258,7 +284,7 @@ public class SimulationController {
 
     private boolean canResetCurrentContext() {
         if (stageMode == StageMode.GROUP_STAGE) {
-            return selectedGroupNumber > 0;
+            return selectedGroup != null;
         }
 
         return bracketReady;
@@ -290,8 +316,8 @@ public class SimulationController {
     private String getContextName() {
         // TODO: Replace these context strings with selected group/round model data.
         if (stageMode == StageMode.GROUP_STAGE) {
-            if (selectedGroupNumber > 0) {
-                return "Group " + selectedGroupNumber;
+            if (selectedGroup != null) {
+                return selectedGroup;
             }
 
             return "No group selected";

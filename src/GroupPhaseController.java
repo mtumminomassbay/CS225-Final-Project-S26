@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 */
 public class GroupPhaseController extends BaseController {
     @FXML private GridPane buttonGrid;
-    private static int groupInFocus;
+    private static String groupInFocus;
 
     @FXML private Button group1;
     @FXML private Button group2;
@@ -28,7 +28,7 @@ public class GroupPhaseController extends BaseController {
     @FXML private SimulationController simulationControlsController;
 
     // 0 means no group has been selected yet.
-    private int selectedGroupNumber = 0;
+    private String selectedGroup = null;
     @Override
     protected void onLoad(){
         for (int i = 0; i < 4; ++i) {
@@ -47,7 +47,7 @@ public class GroupPhaseController extends BaseController {
             Node buttonNode = loader.load();
 
             // Start with no group selected, so group-specific buttons stay disabled.
-            simulationControlsController.configureForGroupStage(selectedGroupNumber);
+            simulationControlsController.configureForGroupStage(selectedGroup);
 
             buttonGrid.add(buttonNode, x, y);
 
@@ -64,16 +64,15 @@ public class GroupPhaseController extends BaseController {
     }
     
     @FXML
-    private void showGroup(int i) {
-        selectedGroupNumber = i;
-        simulationControlsController.configureForGroupStage(selectedGroupNumber);
-        System.out.println("Selected Group " + i);
+    private void showGroup(String groupName) {
+        selectedGroup = groupName;
+        simulationControlsController.configureForGroupStage(selectedGroup);
         //TODO: open single group view for corresponding group
-        groupInFocus = i;
+        groupInFocus = groupName;
         navigateTo(Screen.SINGLE_GROUP);
     }
 
-    public static int getGroupInFocus() {
+    public static String getGroupInFocus() {
         return groupInFocus;
     }
 }
