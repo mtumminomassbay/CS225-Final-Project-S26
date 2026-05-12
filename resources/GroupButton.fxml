@@ -22,7 +22,7 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="2">
                <children>
-                  <Label fx:id="groupNameLabel" text="Group X" />
+                  <Label fx:id="groupNameLabel" text="Group" />
                </children>
             </StackPane>
          </children>

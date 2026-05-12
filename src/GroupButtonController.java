@@ -46,7 +46,5 @@ public class GroupButtonController extends BaseController {
                 grid.add(label, j, i);
             }
         }
-
-        
     }
 }

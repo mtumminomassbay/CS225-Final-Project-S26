@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,30 +17,22 @@ public class SingleGroupController extends BaseController {
     @Override
     protected void onLoad() {
         groupLabel.setText(currentGroup.getGroupName());
-        
-        for (int i = 0; i < 4; ++i) {
-            addTeamPane();
+        List<Team> teams = currentGroup.getTeams();
+        for (Team team : teams) {
+            addTeamPane(team);
         }
     }
 
-    private void addTeamPane() {
+    private void addTeamPane(Team team) {
         try {
             FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("SingleGroupTeamInfo.fxml")
             );
             
             Node teamNode = loader.load();
-
+            ((SingleGroupTeamInfoController)loader.getController()).setTeam(team);
 
             teamsList.getChildren().add(teamNode);
-
-            // FIXME
-            //
-            // TeamInfoCardController card = loader.getController();
-
-            // listTeamCards.add(card);                      //Add team in array list
-            
-            // cardContainer.getChildren().add(cardNode);    //<--- MAYBE MOVE TO DIFFERENT METHOD (Load card to Team View Menu)
         } catch (IOException e) {
             System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
         }

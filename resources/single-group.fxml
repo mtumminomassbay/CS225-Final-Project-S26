@@ -46,7 +46,7 @@
       </StackPane>
       <StackPane prefHeight="100.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="groupLabel" alignment="CENTER" minHeight="73.0" minWidth="314.0" prefHeight="73.0" prefWidth="314.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Group X">
+            <Label fx:id="groupLabel" alignment="CENTER" minHeight="73.0" minWidth="314.0" prefHeight="73.0" prefWidth="314.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Group">
                <font>
                   <Font size="47.0" />
                </font>
