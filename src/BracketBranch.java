@@ -2,24 +2,24 @@ public class BracketBranch {
     private Match match;
     private BracketBranch leftBranch;
     private BracketBranch rightBranch;
-    private final int bracketStage;
+    private final int BRACKET_STAGE;
     private int matchesSimulated = 0;
 
     public BracketBranch(Team team1, Team team2, int bracketStage) {
         this.match = new Match(team1, team2, false);
         this.leftBranch = null;
         this.rightBranch = null;
-        this.bracketStage = bracketStage;
+        this.BRACKET_STAGE = bracketStage;
 
-        team1.setStage(bracketStageToLabel(bracketStage));
-        team2.setStage(bracketStageToLabel(bracketStage));
+        team1.setStage(bracketStageToLabel(BRACKET_STAGE));
+        team2.setStage(bracketStageToLabel(BRACKET_STAGE));
     }
 
     public BracketBranch(BracketBranch left, BracketBranch right, int bracketStage) {
         this.leftBranch = left;
         this.rightBranch = right;
         this.match = null;
-        this.bracketStage = bracketStage;
+        this.BRACKET_STAGE = bracketStage;
     }
 
     public Match getMatch() {
@@ -35,7 +35,7 @@ public class BracketBranch {
     }
 
     public int getBracketStage() {
-        return bracketStage;
+        return BRACKET_STAGE;
     }
 
     public boolean isFinished() {
@@ -60,9 +60,9 @@ public class BracketBranch {
             if (!dryRun) {
                 matchesSimulated++;
                 match.simulate();
-                match.getWinner().setStage(bracketStageToLabel(bracketStage / 2));
+                match.getWinner().setStage(bracketStageToLabel(BRACKET_STAGE / 2));
 
-                if (bracketStage == 4) {
+                if (BRACKET_STAGE == 4) {
                     match.getLoser().setStage(bracketStageToLabel(3));
                 }
             }
