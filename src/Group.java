@@ -29,6 +29,7 @@ public class Group {
 
         for (Team team : teams) {
             groupResults.put(team, new GroupResults(team));
+            team.setGroup(this);
         }
 
         createMatches();
@@ -94,6 +95,24 @@ public class Group {
 
         return advancingTeams;
     }
+    public void simulate() {
+
+        while(teams.size() > 1) {
+
+            int length = teams.size() / 2;
+
+            for (int i = 0; i < length; i += 2) {
+                Team first = teams.get(i);
+                Team second = teams.get(i + 1);
+
+
+                Match match1 = new Match(first, second, true);
+                match1.simulate();
+                matches.add(match1);
+
+            }
+        }
+    }
 
     public int getMatchesPerTeamPair() {
         return matchesPerTeamPair;
@@ -121,5 +140,10 @@ public class Group {
 
     public boolean isCompleted() {
         return completed;
+    }
+
+    @Override
+    public String toString() {
+        return groupName;
     }
 }
