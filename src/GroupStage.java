@@ -127,26 +127,6 @@ public class GroupStage {
         return groups.get(currentGroup);
     }
 
-    public Group simulateNextGroup() {
-        if (simulated) {
-            return null;
-        }
-
-        int savedGroup = currentGroup;
-        while (currentGroup == savedGroup) {
-            simulateOneMatch();
-        }
-
-        return groups.get(savedGroup);
-    }
-
-    public Group getCurrentGroup() {
-        if (simulated) {
-            return null;
-        }
-        return groups.get(currentGroup);
-    }
-
     public List<Group> getGroups() {
         return groups;
     }

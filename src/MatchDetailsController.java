@@ -42,7 +42,7 @@ public class MatchDetailsController extends BaseController {
         Team teamB = match.getSecondTeam();
 
         // Basic match information
-        roundLabel.setText(worldCup.getCurrentRound());
+        roundLabel.setText(worldCup.getCurrentStage().toString());
 
         // Team information
         teamANameLabel.setText(teamA.getName());
