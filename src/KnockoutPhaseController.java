@@ -20,14 +20,6 @@ import javafx.scene.layout.Pane;
 
 public class KnockoutPhaseController extends BaseController {
     private List<AnchorPane> matchCards;
-    @FXML
-    private Button Dashboard_button;
-    
-    @FXML
-    private Button simulateRound_Button;
-
-    @FXML
-    private Button simulateTournament_Button;
 
     @FXML private Pane simulationControlsDrawer;
     @FXML private SimulationController simulationControlsController;
@@ -111,7 +103,6 @@ public class KnockoutPhaseController extends BaseController {
             thirdplacematch
         );
 
-        connectMatchCards();
         loadKnockoutMatches();
 
         hideSimulationControlsDrawer();
@@ -139,20 +130,6 @@ public class KnockoutPhaseController extends BaseController {
     private void refreshKnockoutView() {
         loadKnockoutMatches();
     }
-    
-    private void connectMatchCards() {
-        List<Match> matches = WorldCupTournament.getInstance().getKnockoutMatches();
-        for (int i = 0; i < matches.size() && i < matchCards.size(); i++) {
-
-            Match match = matches.get(i);
-            AnchorPane card = matchCards.get(i);
-
-            card.setCursor(Cursor.HAND);
-            card.setOnMouseClicked(event -> matchClicked(match));
-        }
-        System.out.println("Knockout matches found: " + matches.size());
-        System.out.println("Match cards found: " + matchCards.size());
-    }
 
     private void matchClicked(Match match) {
         MatchDetailsController.setMatch(match);
@@ -170,23 +147,6 @@ public class KnockoutPhaseController extends BaseController {
                 "COULD NOT LOAD FXML: " + e.getMessage()
             );
         }
-    }
-
-    @FXML
-    private void Dashboard_button_clicked() {
-        navigateTo(Screen.DASHBOARD);
-    }
-    
-    @FXML
-    private void simulateRoundClicked() {
-        WorldCupTournament.getInstance().simulateRemainingCurrentRound();
-        loadKnockoutMatches();
-    }
-
-    @FXML
-    private void simulateTournamentClicked() {
-        worldCup.simulateRestOfTournament();
-        loadKnockoutMatches();
     }
 
     private void loadKnockoutMatches() {

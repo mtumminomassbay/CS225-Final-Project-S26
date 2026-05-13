@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="3049.0" style="-fx-background-color: #0D3B2E;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KnockoutPhaseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="3049.0" style="-fx-background-color: #0D3B2E;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KnockoutPhaseController">
    <children>
       <BorderPane prefHeight="1080.0" style="-fx-background-color: #0D3B2E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -852,28 +852,6 @@
          <top>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="simulateRound_Button" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#simulateRoundClicked" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #1B5E3D; -fx-border-color: #E5A94D; -fx-background-radius: 10; -fx-border-radius: 8; -fx-border-width: 2; -fx-text-fill: #E5A94D;" text="Simulate Round" translateX="150.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="8.0" left="18.0" right="18.0" top="8.0" />
-                     </padding>
-                  </Button>
-                  <Button fx:id="simulateTournament_Button" layoutX="30.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#simulateTournamentClicked" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #1B5E3D; -fx-border-color: #E5A94D; -fx-background-radius: 10; -fx-border-radius: 8; -fx-border-width: 2; -fx-text-fill: #E5A94D;" text="Simulate Tournament" translateX="200.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="8.0" left="18.0" right="18.0" top="8.0" />
-                     </padding>
-                  </Button>
                   <Label alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="787.0" text="FIFA WORLD CUP 2026 — KNOCKOUT STAGE" textAlignment="CENTER" textFill="WHITE" translateX="150.0">
                      <font>
                         <Font name="System Bold" size="26.0" />
