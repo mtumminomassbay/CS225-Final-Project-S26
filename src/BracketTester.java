@@ -1,5 +1,8 @@
 import java.util.List;
 
+/**
+ * @author Quincy Williams
+ */
 public class BracketTester {
     public static void main(String[] args) {
         // Load teams and simulate group stage to get proper 32 advancing teams

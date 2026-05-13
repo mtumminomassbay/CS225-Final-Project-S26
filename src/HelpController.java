@@ -1,7 +1,9 @@
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Label;
 
+/**
+ * @author Joey Barton
+ */
 public class HelpController extends BaseController{
     @FXML private Label helpText_Label;
 
@@ -17,12 +19,9 @@ public class HelpController extends BaseController{
                                                 "and the Final. The two semifinal losers play each other in a Third Place match before the Final.\n\nIf a knockout match is tied at the end of regulation, the game goes " + 
                                                 "to a 30-minute overtime. If the score remains tied after overtime, the match is decided by a penalty shootout. The match detail view will show exactly how each game was decided.\n\n" + 
                                                 "Click on any match in the bracket to view its full details. Click on any team to view their team info. ";
-    
 
     @Override
     protected void onLoad() {
         helpText_Label.setText(HELP_CONTENT);
     }
-
-
 }

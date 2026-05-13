@@ -21,6 +21,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**This class shows the result of the match including the first half score,
+second half scores and penalties and overtime as needed.
+@author Bandana Kadel
+*/
 public class MatchDetailsController extends BaseController {
 
     @FXML private Label roundLabel;

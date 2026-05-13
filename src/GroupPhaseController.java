@@ -11,8 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-/*
+/**
     Controller for group-stage.fxml
+    @author Lior Sapir
 */
 public class GroupPhaseController extends BaseController {
 
@@ -21,6 +22,8 @@ public class GroupPhaseController extends BaseController {
     @FXML private GridPane buttonGrid;
     @FXML private GridPane leaderboardGrid;
     @FXML private SimulationController simulationControlsController;
+
+    private boolean thirdPlaceCreated = false;
 
     @Override
     protected void onLoad(){
@@ -32,8 +35,14 @@ public class GroupPhaseController extends BaseController {
             }
         }
         
-        if (worldCup.getGroupStage().isSimulated()) {
+        if (worldCup.isGroupStageComplete()) {
             makeThirdPlaceLeaderboard();
+        } else {
+            simulationControlsController.setOnSimulationChanged(() -> {
+                if (worldCup.isGroupStageComplete()) {
+                    makeThirdPlaceLeaderboard();
+                }
+            });
         }
     }
 
@@ -53,6 +62,11 @@ public class GroupPhaseController extends BaseController {
     }
 
     private void makeThirdPlaceLeaderboard() {
+        if (thirdPlaceCreated) {
+            return;
+        }
+        thirdPlaceCreated = true;
+
         List<Team> teams = worldCup.getGroupStage().getThirdPlaceAdvancingTeams();
 
         for (int i = 0; i < teams.size(); ++i) {
@@ -61,9 +75,11 @@ public class GroupPhaseController extends BaseController {
             flag.setPreserveRatio(true);
             flag.setFitWidth(FLAG_WIDTH);
             teamLabel.setGraphic(flag);
+            teamLabel.getStyleClass().add("team-label");
             leaderboardGrid.add(teamLabel, 0, i + 1);
 
             Label scoreLabel = new Label(teams.get(i).getTeamResults().getPoints() + "");
+            scoreLabel.getStyleClass().add("score-label");
             GridPane.setHalignment(scoreLabel, HPos.RIGHT);
             GridPane.setMargin(scoreLabel, new Insets(0, 10, 0, 0));
             leaderboardGrid.add(scoreLabel, 1, i + 1);

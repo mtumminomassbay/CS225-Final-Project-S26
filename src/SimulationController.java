@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -14,13 +13,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
-/*
+/**
     Controller for simulation-controls.fxml.
 
-    This controller only manages the reusable UI controls. The mock service at
-    the bottom stands in for real simulation work until the backend is ready.
+    This controller manages the reusable UI controls.
 
-    Gabriel Ferreira
+    @author Gabriel Ferreira, Joshua Staub
 */
 public class SimulationController {
     private final static double SIMULATION_DELAY = 300;
@@ -43,7 +41,6 @@ public class SimulationController {
 
     private boolean actionRunning = false;
     private boolean autoPlayRunning = false;
-    private int autoPlayMatchesThisRun = 0;
     private Timeline actionTimeline;
     private Timeline autoPlayTimeline;
     private StageMode lastStage;
@@ -70,14 +67,6 @@ public class SimulationController {
         pauseButton.setOnAction(event -> stopAutoPlay("Auto play paused."));
         resetTournamentButton.setOnAction(event -> confirmAndResetTournament());
 
-        refreshLabels();
-        refreshButtonStates();
-    }
-
-    public void configureForGroupStage() {
-        // Parent screens call this after loading or after a group is selected.
-        simulateCurrentGroupButton.setVisible(true);
-        simulateCurrentGroupButton.setManaged(true);
         refreshLabels();
         refreshButtonStates();
     }
@@ -162,7 +151,6 @@ public class SimulationController {
 
     private void startAutoPlay() {
         autoPlayRunning = true;
-        autoPlayMatchesThisRun = 0;
         statusLabel.setText("Auto play running...");
         autoPlayTimeline = buildAutoPlayTimeline();
         autoPlayTimeline.play();
@@ -181,7 +169,6 @@ public class SimulationController {
             return;
         }
 
-        autoPlayMatchesThisRun++;
         runAction("", false, this::simulateNextMatch);
     }
 

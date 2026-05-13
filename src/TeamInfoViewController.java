@@ -1,8 +1,3 @@
-//package FinalProject.CS225-Final-Project-S26.src;
-
-//Andrew Larrazabal
-//Menu for the Team Info view
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
 
+/**
+ * Menu for the Team Info view
+ * @author Andrew Larrazabal
+ */
 public class TeamInfoViewController extends BaseController {
     //ATTRIBUTES
     @FXML

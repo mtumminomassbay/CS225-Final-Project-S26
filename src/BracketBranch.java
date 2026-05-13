@@ -1,3 +1,6 @@
+/**
+ * @author Quincy Williams, Joshua Staub
+ */
 public class BracketBranch {
     private Match match;
     private BracketBranch leftBranch;

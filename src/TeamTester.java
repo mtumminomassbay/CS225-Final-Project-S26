@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * TeamTester class.
  *
@@ -5,9 +7,6 @@
  *
  * @author Tristan Burchard
  */
-
-import java.util.*;
-
 public class TeamTester {
     public static void main(String[] args) throws Exception {
 

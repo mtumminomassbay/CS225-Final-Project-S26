@@ -3,7 +3,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
+/**
+ * @author David Hagbi, Joshua Staub
+ */
 public class GroupStage {
     private static final int GROUP_COUNT = 12;
     private static final int TEAMS_PER_GROUP = 4;

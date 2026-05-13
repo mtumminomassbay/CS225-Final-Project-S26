@@ -9,6 +9,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * @author Lior Sapir
+ */
 public class SingleGroupTeamInfoController extends BaseController {
     
     @FXML private ImageView flag;

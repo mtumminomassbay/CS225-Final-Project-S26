@@ -182,3 +182,7 @@ Pane {
     -fx-font-weight: bold;
 }
 
+.score-label {
+    -fx-text-fill: #a5c9a7;
+    -fx-font-weight: bold;
+}

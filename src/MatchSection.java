@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * Each MatchSection stores the two teams, the length of the section,
  * and the number of goals scored by each team during that section
- * Author: Jasper Carr
+ * @author Jasper Carr
  *
  */
 public class MatchSection {
