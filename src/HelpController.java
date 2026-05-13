@@ -8,7 +8,7 @@ public class HelpController extends BaseController{
     private static final String HELP_CONTENT = "This application lets you simulate the entire 2026 FIFA World Cup, from the group stage through to the championship.\n\n" +
                                                 "The Team Info screen displays all 48 qualified countries competing. Teams are listed alphabetically and each card shows the country name, flag, confederation, and group assignment. " +
                                                 "Click on any team card to open a detailed view with additional information including the team's coach, home stadium, and FIFA ranking. " + 
-                                                "Multiple team detail windows can be open at the same time, allowing you to compare teams side by side.\n\n " + 
+                                                "Multiple team detail windows can be open at the same time, allowing you to compare teams side by side.\n\n" + 
                                                 "The Group Stage screen shows all 12 groups of 4 teams competing. Every team plays each other team in their group exactly once. A win is worth " + 
                                                 "3 points, a draw is worth 1 point, and a loss is worth 0 points.\n\nFrom the full stage view, you can see all 12 groups at a glance and track " + 
                                                 "overall tournament progress. Click on any group to enter the single group view, where you can see individual match results, current standings, and which teams have advanced " + 
