@@ -1,5 +1,3 @@
-//Joey Barton
-
 import java.io.IOException;
 
 import javafx.fxml.FXML;
@@ -9,15 +7,15 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/*
+/**
     Controller for Background.fxml
 
     BackgroundLayer is loaded at startup and remains the base layer for the
     entire length of the program.
 
     BackgroundLayer doesn't extend BaseController.
+    @author Joey Barton
 */
-
 public class BackgroundLayer {
 
     @FXML private AnchorPane rootPane;

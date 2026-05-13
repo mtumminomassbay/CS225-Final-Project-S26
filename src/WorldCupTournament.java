@@ -1,8 +1,10 @@
-// Author: Chris Rabanales
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author Chris Rabanales
+ */
 public class WorldCupTournament {
     // Singleton instance
     public static final WorldCupTournament instance = new WorldCupTournament();
@@ -253,8 +255,6 @@ public class WorldCupTournament {
 
     //Joey Barton
     public List<PenaltyShootout.KickResult> getPenaltyKickResults() {
-
-        
         List<PenaltyShootout.KickResult> results = new ArrayList<>();
 
         for(Match match : getKnockoutMatches()) {
@@ -264,7 +264,6 @@ public class WorldCupTournament {
                 results.addAll(shootout.getKickResults());
             }
         }
-
 
         return results;
     }

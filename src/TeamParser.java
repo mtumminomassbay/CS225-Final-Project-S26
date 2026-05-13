@@ -1,3 +1,10 @@
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * TeamParser class.
  *
@@ -7,14 +14,6 @@
  *
  * @author Tristan Burchard
  */
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 public class TeamParser {
     private ArrayList<Team> teams;
     private String filePath = "/teaminfo.json";

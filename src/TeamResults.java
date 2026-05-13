@@ -1,5 +1,5 @@
 /**
- * @author Jonathan
+ * @author Jonathan Joseph, David Hagbi
  */
 public class TeamResults implements Comparable<TeamResults> {
     private Team team;

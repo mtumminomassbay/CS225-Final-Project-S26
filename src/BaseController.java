@@ -1,11 +1,9 @@
-//Joey Barton
-
 import javafx.fxml.FXML;
 
-/*
+/**
     BaseController is the parent class for every screen controller.
+    @author Joey Barton
 */
-
 public abstract class BaseController {
     
     protected final Navigator navigator = Navigator.getInstance();

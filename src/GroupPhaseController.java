@@ -11,8 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-/*
+/**
     Controller for group-stage.fxml
+    @author Lior Sapir
 */
 public class GroupPhaseController extends BaseController {
 

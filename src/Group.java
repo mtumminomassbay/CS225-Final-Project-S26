@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Jonathan
+ * @author Jonathan Joseph, David Hagbi
  */
 public class Group {
     private String groupName;

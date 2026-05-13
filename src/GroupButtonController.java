@@ -7,7 +7,7 @@ import javafx.scene.layout.GridPane;
 
 /**
 Controller for the buttons to access a single group view for a group
-
+ @author Lior Sapir
  */
 public class GroupButtonController extends BaseController {
 

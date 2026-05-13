@@ -7,9 +7,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-//Test Class
-//import javafx.scene.layout.AnchorPane; ASDF
-
+/**
+ * @author Joey Barton
+ */
 public class Main extends Application {
 
     public static void main(String[] args) {

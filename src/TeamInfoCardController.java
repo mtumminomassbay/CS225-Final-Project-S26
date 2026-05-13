@@ -1,7 +1,5 @@
 //package FinalProject.CS225-Final-Project-S26.src;
 
-//Andrew Larrazabal
-//Team Info Card that's displayed on the Team View
 
 import java.io.IOException;
 
@@ -19,7 +17,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
+/**
+ * Team Info Card that's displayed on the Team View
+ * @author Andrew Larrazabal
+ */
 public class TeamInfoCardController extends BaseController {
 
     //ATTRIUBTES 

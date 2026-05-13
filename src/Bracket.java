@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Quincy Williams, Joshua Staub
+ */
 public class Bracket {
     private List<Team> teams;
     private BracketBranch bracketRoot; // Final Match is the root of the bracket tree
