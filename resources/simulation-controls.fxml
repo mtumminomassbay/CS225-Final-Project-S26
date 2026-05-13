@@ -20,14 +20,14 @@
 		<Label fx:id="nextMatchLabel" text="Next match: Placeholder" wrapText="true" />
 		<Label fx:id="progressLabel" text="Progress: 0 placeholder matches simulated" wrapText="true" />
 		<Separator />
-		<Button fx:id="simulateNextMatchButton" maxWidth="Infinity" mnemonicParsing="false" text="Simulate Next Match" wrapText="true" />
-		<Button fx:id="simulateCurrentGroupButton" maxWidth="Infinity" mnemonicParsing="false" text="Simulate Current Group" wrapText="true" />
-		<Button fx:id="simulateCurrentRoundButton" maxWidth="Infinity" mnemonicParsing="false" text="Simulate Current Round" wrapText="true" />
-		<Button fx:id="simulateRestOfTournamentButton" maxWidth="Infinity" mnemonicParsing="false" text="Simulate Rest of Tournament" wrapText="true" />
-		<Button fx:id="autoPlayButton" maxWidth="Infinity" mnemonicParsing="false" text="Auto Play" />
-		<Button fx:id="pauseButton" maxWidth="Infinity" mnemonicParsing="false" text="Pause" />
-		<Button fx:id="resetTournamentButton" maxWidth="Infinity" mnemonicParsing="false" text="Reset Tournament" wrapText="true" />
-		<Label text="Speed" />
+		<Button fx:id="simulateNextMatchButton" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Simulate Next Match" wrapText="true" />
+		<Button fx:id="simulateCurrentGroupButton" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Simulate Current Group" wrapText="true" />
+		<Button fx:id="simulateCurrentRoundButton" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Simulate Current Round" wrapText="true" />
+		<Button fx:id="simulateRestOfTournamentButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Simulate Rest of Tournament" textAlignment="CENTER" wrapText="true" />
+		<Button fx:id="autoPlayButton" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Auto Play" />
+		<Button fx:id="pauseButton" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Pause" />
+		<Button fx:id="resetTournamentButton" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Reset Tournament" wrapText="true" />
+		<Label style="-fx-text-fill: #ffffff;" text="Speed" />
 		<ComboBox fx:id="speedComboBox" maxWidth="Infinity" />
 		<Label fx:id="statusLabel" style="-fx-font-style: italic;" text="Ready." wrapText="true" />
 	</children>
