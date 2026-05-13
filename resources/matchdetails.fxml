@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -33,13 +34,16 @@
                      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="160.0" spacing="6.0">
                         <children>
                            <ImageView fx:id="teamAFlag" fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" />
-                           <Label fx:id="teamANameLabel" maxWidth="-Infinity" prefHeight="28.0" prefWidth="138.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="      Brazil">
+                           <Label fx:id="teamANameLabel" maxWidth="-Infinity" onMouseClicked="#teamA_clicked" prefHeight="28.0" prefWidth="138.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="      Brazil">
                               <font>
                                  <Font size="16.0" />
                               </font>
                               <graphic>
                                  <Label fx:id="teamARankLabel" prefHeight="18.0" prefWidth="32.0" text="1" textFill="#a8a8a8" />
                               </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                            </Label>
                            <Label prefHeight="2.0" prefWidth="28.0" style="-fx-text-fill: #00e676; -fx-font-weight: bold;" text="Home">
                               <font>
@@ -65,13 +69,16 @@
                      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="160.0" spacing="6.0">
                         <children>
                            <ImageView fx:id="teamBFlag" fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" />
-                           <Label fx:id="teamBNameLabel" maxWidth="-Infinity" prefHeight="28.0" prefWidth="138.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="           Brazil">
+                           <Label fx:id="teamBNameLabel" maxWidth="-Infinity" onMouseClicked="#teamB_clicked" prefHeight="28.0" prefWidth="138.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="           Brazil">
                               <font>
                                  <Font size="16.0" />
                               </font>
                               <graphic>
                                  <Label fx:id="teamBRankLabel" minWidth="35.0" prefHeight="15.0" prefWidth="0.0" text="2" textFill="#aaaaaa" />
                               </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                            </Label>
                            <Label style="-fx-text-fill: #f5a623; -fx-font-weight: bold;" text="Away">
                               <font>
@@ -162,11 +169,9 @@
                </HBox>
                <Separator prefWidth="200.0" />
                <VBox alignment="CENTER" prefHeight="125.0" prefWidth="644.0" spacing="2.0">
-                  <children>
-                     <Label style="-fx-text-fill: #f5a623; -fx-font-weight: bold;" text="Venue" />
-                     <Label fx:id="venueLabel" style="-fx-text-fill: #cccccc;; -fx-font-weight: bold;" text="Gillete Stadium - Foxborough,MA,USA " />
-                  </children>
-               </VBox>
+               <children>
+                  <TextArea fx:id="kickSequenceTextArea" editable="false" prefHeight="120.0" prefWidth="500.0" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #00e676; -fx-control-inner-background: #0a2e1f;" text="&#10;" wrapText="true" />
+               </children></VBox>
                <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton_clicked" style="-fx-background-color: transparent; -fx-text-fill: #00e676;" text="Back">
                   <font>
                      <Font size="13.0" />
