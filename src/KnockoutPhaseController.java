@@ -6,8 +6,11 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -105,9 +108,96 @@ public class KnockoutPhaseController extends BaseController{
             thirdplacematch
         );
 
-        //connectMatchCards();
-        //loadKnockoutMatches();
+        loadKnockoutMatches();
+    }
+
+    private void loadKnockoutMatches() {
+        Bracket bracket = WorldCupTournament.getInstance().getKnockoutStage();
+        if (bracket == null) {
+            return;
         }
+
+        List<Match> roundOf32 = bracket.getMatchesByBracketStage(32);
+        List<Match> roundOf16 = bracket.getMatchesByBracketStage(16);
+        List<Match> quarterfinals = bracket.getMatchesByBracketStage(8);
+        List<Match> semifinals = bracket.getMatchesByBracketStage(4);
+        Match finalMatch = bracket.getFinal();
+        Match thirdPlaceMatch = bracket.getThirdPlace();
+
+        loadMatchesIntoVBox(roundof32Left, roundOf32, 0, Math.min(8, roundOf32.size()));
+        loadMatchesIntoVBox(roundof32Right, roundOf32, 8, Math.min(16, roundOf32.size()));
+
+        loadMatchesIntoVBox(roundof16Left, roundOf16, 0, Math.min(4, roundOf16.size()));
+        loadMatchesIntoVBox(roundof16Right, roundOf16, 4, Math.min(8, roundOf16.size()));
+
+        loadMatchesIntoVBox(quarterfinalsLeft, quarterfinals, 0, Math.min(2, quarterfinals.size()));
+        loadMatchesIntoVBox(quarterfinalsRight, quarterfinals, 2, Math.min(4, quarterfinals.size()));
+
+        loadMatchesIntoVBox(semifinalsLeft, semifinals, 0, Math.min(1, semifinals.size()));
+        loadMatchesIntoVBox(semifinalsRight, semifinals, 1, Math.min(2, semifinals.size()));
+
+        if (finalMatch != null) {
+            updateMatchCard(finalmatch, finalMatch);
+            finalmatch.setCursor(Cursor.HAND);
+            finalmatch.setOnMouseClicked(event -> matchClicked(finalMatch));
+        }
+
+        if (thirdPlaceMatch != null) {
+            updateMatchCard(thirdplacematch, thirdPlaceMatch);
+            thirdplacematch.setCursor(Cursor.HAND);
+            thirdplacematch.setOnMouseClicked(event -> matchClicked(thirdPlaceMatch));
+        }
+    }
+
+    private void loadMatchesIntoVBox(VBox roundBox, List<Match> matches, int start, int end) {
+        int matchIndex = start;
+
+        for (Node node : roundBox.getChildren()) {
+            if (node instanceof AnchorPane card && matchIndex < end && matchIndex < matches.size()) {
+                Match match = matches.get(matchIndex);
+
+                updateMatchCard(card, match);
+
+                card.setCursor(Cursor.HAND);
+                card.setOnMouseClicked(event -> matchClicked(match));
+
+                matchIndex++;
+            }
+        }
+    }
+
+    private void updateMatchCard(AnchorPane card, Match match) {
+        Label team1 = getCardLabel(card, 0);
+        Label team2 = getCardLabel(card, 1);
+        Label score = getCardLabel(card, 2);
+
+        if (team1 != null) {
+            team1.setText(match.getFirstTeam().getCode());
+        }
+
+        if (team2 != null) {
+            team2.setText(match.getSecondTeam().getCode());
+        }
+
+        if (score != null) {
+            score.setText(match.isFinished()
+                ? match.getFirstTeamScore() + " - " + match.getSecondTeamScore()
+                : "vs");
+        }
+    }
+
+    private Label getCardLabel(AnchorPane card, int index) {
+        int current = 0;
+        for (Node child : card.getChildren()) {
+            if (child instanceof Label label) {
+                if (current == index) {
+                    return label;
+                }
+                current++;
+            }
+        }
+        return null;
+    }
     
     /*private void connectMatchCards() {
         List<Match> matches = WorldCupTournament.getInstance().getKnockoutMatches();
