@@ -37,9 +37,24 @@ public class GroupPhaseController extends BaseController {
             System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
         }
     }
-    
-    @FXML
-    private void showGroup() {
-        navigateTo(Screen.SINGLE_GROUP);
+
+    private void makeThirdPlaceLeaderboard() {
+        List<Team> teams = worldCup.getGroupStage().getThirdPlaceAdvancingTeams();
+
+        for (int i = 0; i < teams.size(); ++i) {
+            Label teamLabel = new Label(teams.get(i).getCode());
+            ImageView flag = new ImageView(teams.get(i).getFlagPath());
+            flag.setPreserveRatio(true);
+            flag.setFitWidth(FLAG_WIDTH);
+            teamLabel.setGraphic(flag);
+            teamLabel.getStyleClass().add("team-label");
+            leaderboardGrid.add(teamLabel, 0, i + 1);
+
+            Label scoreLabel = new Label(teams.get(i).getTeamResults().getPoints() + "");
+            scoreLabel.getStyleClass().add("score-label");
+            GridPane.setHalignment(scoreLabel, HPos.RIGHT);
+            GridPane.setMargin(scoreLabel, new Insets(0, 10, 0, 0));
+            leaderboardGrid.add(scoreLabel, 1, i + 1);
+        }
     }
 }
