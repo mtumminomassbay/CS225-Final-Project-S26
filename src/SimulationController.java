@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -14,13 +13,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
-/*
+/**
     Controller for simulation-controls.fxml.
 
-    This controller only manages the reusable UI controls. The mock service at
-    the bottom stands in for real simulation work until the backend is ready.
+    This controller manages the reusable UI controls.
 
-    Gabriel Ferreira
+    @author Gabriel Ferreira, Joshua Staub
 */
 public class SimulationController {
     private final static double SIMULATION_DELAY = 300;

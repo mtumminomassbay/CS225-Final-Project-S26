@@ -10,7 +10,7 @@ import java.util.Random;
  * - the teams remain tied after regulation time and overtime
  *
  *  This class stores both teams and the number of penalty goals scored by each team.
- *  Author: Jasper Carr
+ *  @author Jasper Carr
  *
  */
 public class PenaltyShootout {

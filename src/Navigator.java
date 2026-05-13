@@ -1,24 +1,20 @@
-//Joey Barton
-
-/*
-    Navigator is a Singleton design that manages screen transitions.
-
-    It holds a reference to the background AnchorPane and swaps the 
-    foreground with navigateTo(). This ensures only one screen is shown
-    at a time, and navigation is consistent.
-*/
-
-/*
-HOW TO USE:
-    navigateTo(Screen.Dashboard)
-*/
-
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
+/**
+    Navigator is a Singleton design that manages screen transitions.
+
+    It holds a reference to the background AnchorPane and swaps the
+    foreground with navigateTo(). This ensures only one screen is shown
+    at a time, and navigation is consistent.
+
+    HOW TO USE:
+    navigateTo(Screen.Dashboard)
+ @author Joey Barton
+*/
 public class Navigator {
 
     private static Navigator instance;

@@ -1,8 +1,3 @@
-//package FinalProject.CS225-Final-Project-S26.src;
-
-//Andrew Larrazabal
-//Additional information whenever a user clicks on the team
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,6 +5,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ * Additional information whenever a user clicks on the team
+ * @author Andrew Larrazabal
+ */
 public class TeamInfoAdditionalController extends BaseController {
     
     //ATTRIBUTES

@@ -1,6 +1,3 @@
-/*
-    Controller for knockout.fxml
-*/
 import java.io.IOException;
 import java.util.List;
 
@@ -18,6 +15,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
 
+/**
+    Controller for knockout.fxml
+    @author Pranshu Shah, Joshua Staub
+*/
 public class KnockoutPhaseController extends BaseController {
     private List<AnchorPane> matchCards;
 

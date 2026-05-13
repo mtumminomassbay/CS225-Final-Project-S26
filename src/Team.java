@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Team class.
  *
@@ -6,9 +8,6 @@
  *
  * @author Tristan Burchard
  */
-
-import java.util.Objects;
-
 public class Team {
     private final String name;
     private final int ranking;

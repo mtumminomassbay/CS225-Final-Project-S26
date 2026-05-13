@@ -1,21 +1,16 @@
-//Joey Barton
-
-/*
+/**
     Screen is an enum that maps each screen in the app to its FXML file.
 
     The Navigator uses these Screen values to know which FXML file to load.
-*/
-/*To add a new Screen:
-  1. Add an entry here
-  2. Create the .fxml file in the resources folder
-  3. Create the Controller.java in the src folder
-*/
+    To add a new Screen:
+      1. Add an entry here
+      2. Create the .fxml file in the resources folder
+      3. Create the Controller.java in the src folder
 
-/*
     Example of how to navigate to a new screen
 
     navigateTo(Screen.GROUP_STAGE);
-
+    @author Joey Barton
 */
 public enum Screen {
 

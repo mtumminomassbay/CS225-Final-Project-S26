@@ -19,6 +19,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * @author Lior Sapir, Joey Barton
+ */
 public class SingleGroupController extends BaseController {
 
     public static final int FLAG_WIDTH = 30;

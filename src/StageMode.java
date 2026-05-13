@@ -1,3 +1,6 @@
+/**
+ * @author Joshua Staub
+ */
 public enum StageMode {
     GROUP_STAGE,
     KNOCKOUT_STAGE,

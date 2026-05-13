@@ -1,8 +1,3 @@
-//Bandana Kadel
-/*This class shows the result of the match including the first half score, 
-second half scores and penalties and overtime as needed. 
-*/
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,6 +7,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**This class shows the result of the match including the first half score,
+second half scores and penalties and overtime as needed.
+@author Bandana Kadel
+*/
 public class MatchDetailsController extends BaseController {
 
     @FXML private Label roundLabel;

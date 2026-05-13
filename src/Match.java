@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * The allowTies field determines whether the match can end in a tie.
  * GroupStage matches allow ties, while KnockoutStage matches do not
- * Author: Jasper Carr
+ * @author Jasper Carr
  *
  */
 public class Match {
