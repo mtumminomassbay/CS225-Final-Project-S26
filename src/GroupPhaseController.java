@@ -4,8 +4,9 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -30,8 +31,6 @@ public class GroupPhaseController extends BaseController {
                 addGroupButton(j, i, groups.next());
             }
         }
-
-        worldCup.getGroupStage().simulateGroupStage();
         
         if (worldCup.getGroupStage().isSimulated()) {
             makeThirdPlaceLeaderboard();
@@ -56,16 +55,18 @@ public class GroupPhaseController extends BaseController {
     private void makeThirdPlaceLeaderboard() {
         List<Team> teams = worldCup.getGroupStage().getThirdPlaceAdvancingTeams();
 
-        for (int i = 1; i < teams.size() + 1; ++i) {
+        for (int i = 0; i < teams.size(); ++i) {
             Label teamLabel = new Label(teams.get(i).getCode());
             ImageView flag = new ImageView(teams.get(i).getFlagPath());
             flag.setPreserveRatio(true);
             flag.setFitWidth(FLAG_WIDTH);
             teamLabel.setGraphic(flag);
-            leaderboardGrid.add(teamLabel, 0, i);
+            leaderboardGrid.add(teamLabel, 0, i + 1);
 
             Label scoreLabel = new Label(teams.get(i).getGroup().getGroupResults(teams.get(i)).getPoints() + "");
-            leaderboardGrid.add(scoreLabel, 1, i);
+            GridPane.setHalignment(scoreLabel, HPos.RIGHT);
+            GridPane.setMargin(scoreLabel, new Insets(0, 10, 0, 0));
+            leaderboardGrid.add(scoreLabel, 1, i + 1);
         }
     }
 }
