@@ -4,17 +4,12 @@ import java.util.List;
 import java.util.Random;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class DashboardController extends BaseController{
 
-    @FXML private Button GroupStage_Button;
-    @FXML private Button KnockoutPhase_Button;
-    @FXML private Button TeamInfo_Button;
-    @FXML private Button MatchDetails_Button;
     @FXML private Label statusLabel;
     @FXML private Label currentStageLabel;
     @FXML private Label groupsCompletedLabel;
@@ -49,11 +44,6 @@ public class DashboardController extends BaseController{
     @FXML
     private void TeamInfoButton_clicked() {
         navigateTo(Screen.TEAM_INFO);
-    }
-
-    @FXML
-    private void MatchDetailsButton_clicked() {
-        navigateTo(Screen.MATCH_DETAILS);
     }
 
     private void fillAllStarList() {
