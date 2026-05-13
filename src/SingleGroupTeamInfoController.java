@@ -27,8 +27,7 @@ public class SingleGroupTeamInfoController extends BaseController {
     protected void onLoad() {
     }
 
-    //FIXME: This can be changed to just have a Team as a parameter if the backend makes Team have a reference to its Group
-    public void setTeam(Group group, Team team) {
+    public void setTeam(Team team) {
         this.team = team;
 
         flag.setImage(new Image(team.getFlagPath()));
