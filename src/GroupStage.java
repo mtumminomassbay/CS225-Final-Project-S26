@@ -44,18 +44,22 @@ public class GroupStage {
     }
 
     private void createGroups() {
-        ArrayList<Team> tempTeams = new ArrayList<>();
+        List<List<Team>> groupBuckets = new ArrayList<>();
+        for (int i = 0; i < GROUP_COUNT; i++) {
+            groupBuckets.add(new ArrayList<>());
+        }
 
         for (int i = 0; i < teams.size(); i++) {
-            int groupIndex = i / TEAMS_PER_GROUP;
-            tempTeams.add(teams.get(i));
+            Team t = teams.get(i);
+            int groupIndex = i % GROUP_COUNT;
+            groupBuckets.get(groupIndex).add(t);
+        }
 
-            if(i % TEAMS_PER_GROUP == TEAMS_PER_GROUP - 1) {
-                char groupLetter = (char) ('A' + groupIndex);
+        for (int i = 0; i < GROUP_COUNT; i++) {
+            char groupLetter = (char) ('A' + i);
+            Group group = new Group("Group " + groupLetter, groupBuckets.get(i), 1);
 
-                groups.add(new Group("Group " + groupLetter, tempTeams, 1));
-                tempTeams = new ArrayList<>();
-            }
+            groups.add(group);
         }
     }
 
