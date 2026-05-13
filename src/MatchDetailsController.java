@@ -1,15 +1,24 @@
-//Bandana Kadel
-/*This class shows the result of the match including the first half score, 
-second half scores and penalties and overtime as needed. 
+/**
+ * Controller for Matchdetail.fxml
+ * This screen shows the result of the match including the first half score, 
+ * second half scores and penalties and overtime as needed. 
+ * When the penalty takes places it also shows the kick by kick sequence of the penalty. 
+ * @author Bandana Kadel
 */
+
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MatchDetailsController extends BaseController {
@@ -28,6 +37,9 @@ public class MatchDetailsController extends BaseController {
     @FXML private Label penaltiesLabel;
     @FXML private Label winnerLabel;
     @FXML private Button backButton;
+    @FXML private TextArea kickSequenceTextArea;
+
+    
 
     private static Match match;
 
@@ -79,8 +91,18 @@ public class MatchDetailsController extends BaseController {
         if (match.getPenalties() != null) {
             penaltiesLabel.setText(match.getPenalties().getFirstTeamGoals() + " - "
                     + match.getPenalties().getSecondTeamGoals());
+        
+            String kickText = "";
+
+            for (PenaltyShootout.KickResult kick: match.getPenalties().getKickResults()){
+                kickText += kick.toString() + "\n";
+            }
+
+            kickSequenceTextArea.setText(kickText);
+            
         } else {
             penaltiesLabel.setText("--");
+            kickSequenceTextArea.setText("No penalty shootout for this match.");
         }
 
         // Winner
@@ -98,5 +120,41 @@ public class MatchDetailsController extends BaseController {
 
     public static void setMatch(Match selectedMatch) {
         match = selectedMatch;
+    }
+
+    @FXML
+    private void teamA_clicked() {
+        showTeamInfo(match.getFirstTeam());
+    }
+    
+    @FXML
+    private void teamB_clicked() {
+        showTeamInfo(match.getSecondTeam());
+    }
+    
+    private void showTeamInfo(Team team) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/TeamInfoAdditional.fxml")
+            );
+    
+            VBox root = loader.load();
+    
+            TeamInfoAdditionalController controller = loader.getController();
+    
+            controller.setCountryName(team.getName());
+            controller.setFlagImage(new Image(team.getFlagPath()));
+            controller.setRank(String.valueOf(team.getRanking()));
+            controller.setStadiumName(team.getHomeStadium());
+            controller.setCoach(team.getHeadCoach());
+    
+            Stage stage = new Stage();
+            stage.setTitle("Team Info");
+            stage.setScene(new Scene(root));
+            stage.show();
+    
+        } catch (IOException e) {
+            System.err.println("COULD NOT LOAD FXML: " + e.getMessage());
+        }
     }
 }
