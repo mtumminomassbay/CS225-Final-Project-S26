@@ -41,7 +41,6 @@ public class SimulationController {
 
     private boolean actionRunning = false;
     private boolean autoPlayRunning = false;
-    private int autoPlayMatchesThisRun = 0;
     private Timeline actionTimeline;
     private Timeline autoPlayTimeline;
     private StageMode lastStage;
@@ -68,14 +67,6 @@ public class SimulationController {
         pauseButton.setOnAction(event -> stopAutoPlay("Auto play paused."));
         resetTournamentButton.setOnAction(event -> confirmAndResetTournament());
 
-        refreshLabels();
-        refreshButtonStates();
-    }
-
-    public void configureForGroupStage() {
-        // Parent screens call this after loading or after a group is selected.
-        simulateCurrentGroupButton.setVisible(true);
-        simulateCurrentGroupButton.setManaged(true);
         refreshLabels();
         refreshButtonStates();
     }
@@ -160,7 +151,6 @@ public class SimulationController {
 
     private void startAutoPlay() {
         autoPlayRunning = true;
-        autoPlayMatchesThisRun = 0;
         statusLabel.setText("Auto play running...");
         autoPlayTimeline = buildAutoPlayTimeline();
         autoPlayTimeline.play();
@@ -179,7 +169,6 @@ public class SimulationController {
             return;
         }
 
-        autoPlayMatchesThisRun++;
         runAction("", false, this::simulateNextMatch);
     }
 
