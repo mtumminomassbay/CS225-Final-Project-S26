@@ -94,6 +94,28 @@ public class Bracket {
         return matches;
     }
 
+    public List<Match> getMatchesByBracketStage(int bracketStage) {
+        List<Match> matches = new ArrayList<>();
+        collectMatchesByStage(bracketRoot, bracketStage, matches);
+        if (bracketStage == 3 && thirdPlace != null) {
+            matches.add(thirdPlace);
+        }
+        return matches;
+    }
+
+    private void collectMatchesByStage(BracketBranch branch, int stage, List<Match> matches) {
+        if (branch == null) {
+            return;
+        }
+
+        if (branch.getBracketStage() == stage && branch.getMatch() != null) {
+            matches.add(branch.getMatch());
+        }
+
+        collectMatchesByStage(branch.getLeftBranch(), stage, matches);
+        collectMatchesByStage(branch.getRightBranch(), stage, matches);
+    }
+
     private void collectMatches(BracketBranch branch, List<Match> matches) {
         if (branch == null) return;
         collectMatches(branch.getLeftBranch(), matches);
