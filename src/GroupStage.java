@@ -1,5 +1,3 @@
-import javafx.print.Collation;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -62,14 +60,14 @@ public class GroupStage {
     private void finalizeGroupStage() {
         simulated = true;
 
-        ArrayList<GroupResults> thirdPlaceTeams = new ArrayList<>();
+        ArrayList<TeamResults> thirdPlaceTeams = new ArrayList<>();
         for (Group group : groups) {
             advancingTeams.addAll(group.getAdvancingTeams(ADVANCING_PER_GROUP));
             thirdPlaceTeams.add(group.getSortedResults().get(2));
         }
 
         Collections.sort(thirdPlaceTeams);
-        thirdPlaceAdvancingTeams = thirdPlaceTeams.subList(0, THIRD_PLACE_ADVANCING).stream().map(GroupResults::getTeam).toList();
+        thirdPlaceAdvancingTeams = thirdPlaceTeams.subList(0, THIRD_PLACE_ADVANCING).stream().map(TeamResults::getTeam).toList();
         advancingTeams.addAll(thirdPlaceAdvancingTeams);
     }
 

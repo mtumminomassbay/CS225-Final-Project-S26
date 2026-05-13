@@ -1,6 +1,5 @@
 import java.io.IOException;
 
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -35,7 +34,7 @@ public class SingleGroupTeamInfoController extends BaseController {
         teamName.setText(team.getName());
         rank.setText(team.getRanking() + "");
 
-        GroupResults results = team.getGroup().getGroupResults(team);
+        TeamResults results = team.getTeamResults();
 
         wins.setText(results.getWins() + "");
         draws.setText(results.getTies() + "");
@@ -65,12 +64,7 @@ public class SingleGroupTeamInfoController extends BaseController {
 
             TeamInfoAdditionalController add_info_controller = loader.getController();
             
-            //Add team info into additional controller class
-            add_info_controller.setCountryName(team.getName());
-            add_info_controller.setFlagImage(new Image(team.getFlagPath()));
-            add_info_controller.setRank(String.valueOf(team.getRanking()));
-            add_info_controller.setStadiumName(team.getHomeStadium());
-            add_info_controller.setCoach(team.getHeadCoach());
+            add_info_controller.updateFromTeam(team);
 
             //Create a new window
             Stage stage = new Stage();

@@ -241,6 +241,10 @@ public class WorldCupTournament {
 
         currentStage = StageMode.GROUP_STAGE;
         champion = null;
+
+        for (Team team : allTeams) {
+            team.reset();
+        }
     }
     
     public List<Team> getAllTeams() {

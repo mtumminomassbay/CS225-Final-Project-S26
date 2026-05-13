@@ -11,7 +11,6 @@ public class Group {
     private String groupName;
     private List<Team> teams;
     private List<Match> matches;
-    private Map<Team, GroupResults> groupResults;
 
     private int matchesPerTeamPair;
     private int matchesPlayed;
@@ -23,12 +22,10 @@ public class Group {
         this.matchesPerTeamPair = matchesPerTeamPair;
 
         this.matches = new ArrayList<>();
-        this.groupResults = new LinkedHashMap<>();
         this.matchesPlayed = 0;
         this.completed = false;
 
         for (Team team : teams) {
-            groupResults.put(team, new GroupResults(team));
             team.setGroup(this);
         }
 
@@ -61,7 +58,6 @@ public class Group {
 
         Match match = getNextMatch();
         match.simulate();
-        recordMatchResult(match);
         matchesPlayed++;
 
         if (matchesPlayed == matches.size()) {
@@ -70,25 +66,14 @@ public class Group {
         return match;
     }
 
-    private void recordMatchResult(Match match) {
-        Team team1 = match.getFirstTeam();
-        Team team2 = match.getSecondTeam();
-
-        int team1Score = match.getFirstTeamScore();
-        int team2Score = match.getSecondTeamScore();
-
-        groupResults.get(team1).addResult(team1Score, team2Score);
-        groupResults.get(team2).addResult(team2Score, team1Score);
-    }
-
-    public List<GroupResults> getSortedResults() {
-        List<GroupResults> results = new ArrayList<>(groupResults.values());
+    public List<TeamResults> getSortedResults() {
+        List<TeamResults> results = new ArrayList<>(teams.stream().map(Team::getTeamResults).toList());
         Collections.sort(results);
         return results;
     }
 
     public List<Team> getAdvancingTeams(int numberOfTeams) {
-        List<GroupResults> results = getSortedResults();
+        List<TeamResults> results = getSortedResults();
         List<Team> advancingTeams = new ArrayList<>();
 
         for (int i = 0; i < numberOfTeams && i < results.size(); i++) {
@@ -112,10 +97,6 @@ public class Group {
 
     public List<Team> getTeams() {
         return teams;
-    }
-
-    public GroupResults getGroupResults(Team team) {
-        return groupResults.get(team);
     }
 
     public String getGroupName() {
