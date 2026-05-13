@@ -22,6 +22,8 @@ public class GroupPhaseController extends BaseController {
     @FXML private GridPane leaderboardGrid;
     @FXML private SimulationController simulationControlsController;
 
+    private boolean thirdPlaceCreated = false;
+
     @Override
     protected void onLoad(){
         Iterator<Group> groups = worldCup.getGroupStage().getGroups().iterator();
@@ -32,8 +34,14 @@ public class GroupPhaseController extends BaseController {
             }
         }
         
-        if (worldCup.getGroupStage().isSimulated()) {
+        if (worldCup.isGroupStageComplete()) {
             makeThirdPlaceLeaderboard();
+        } else {
+            simulationControlsController.setOnSimulationChanged(() -> {
+                if (worldCup.isGroupStageComplete()) {
+                    makeThirdPlaceLeaderboard();
+                }
+            });
         }
     }
 
@@ -53,6 +61,11 @@ public class GroupPhaseController extends BaseController {
     }
 
     private void makeThirdPlaceLeaderboard() {
+        if (thirdPlaceCreated) {
+            return;
+        }
+        thirdPlaceCreated = true;
+
         List<Team> teams = worldCup.getGroupStage().getThirdPlaceAdvancingTeams();
 
         for (int i = 0; i < teams.size(); ++i) {
