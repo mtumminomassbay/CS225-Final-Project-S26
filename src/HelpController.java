@@ -7,7 +7,8 @@ import javafx.scene.control.Label;
 public class HelpController extends BaseController{
     @FXML private Label helpText_Label;
 
-    private static final String HELP_CONTENT = "This application lets you simulate the entire 2026 FIFA World Cup, from the group stage through to the championship.\n\n" +
+    private static final String HELP_CONTENT =  "Click the World Cup Trophy in the top left to return to the Dashboard.\n\n" + 
+                                                "This application lets you simulate the entire 2026 FIFA World Cup, from the group stage through to the championship.\n\n" +
                                                 "The Team Info screen displays all 48 qualified countries competing. Teams are listed alphabetically and each card shows the country name, flag, confederation, and group assignment. " +
                                                 "Click on any team card to open a detailed view with additional information including the team's coach, home stadium, and FIFA ranking. " + 
                                                 "Multiple team detail windows can be open at the same time, allowing you to compare teams side by side.\n\n" + 
