@@ -3,11 +3,14 @@
 second half scores and penalties and overtime as needed. 
 */
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class MatchDetailsController extends BaseController {
 
@@ -89,8 +92,8 @@ public class MatchDetailsController extends BaseController {
     }
 
     @FXML
-    private void backButton_clicked() {
-        navigateTo(Screen.DASHBOARD);
+    private void backButton_clicked(ActionEvent e) {
+        ((Stage)((Node)e.getSource()).getScene().getWindow()).close();
     }
 
     public static void setMatch(Match selectedMatch) {
