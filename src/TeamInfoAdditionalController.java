@@ -34,34 +34,22 @@ public class TeamInfoAdditionalController extends BaseController {
     @FXML
     private ImageView flagImageView;
 
-    private int wins;
-
-    private int losses;
-
-    private int ties;
-
     //INITIALIZE
     @Override
     protected void onLoad() {}
 
     //METHODS
-
-    //All methods to update record
-    private void updateRecord() {
-        record.setText(String.valueOf(wins) + " - " + String.valueOf(ties) + " - " + String.valueOf(losses));
+    public void updateFromTeam(Team team) {
+        setCountryName(team.getName());
+        setFlagImage(new Image(team.getFlagPath()));
+        setRank(String.valueOf(team.getRanking()));
+        setStadiumName(team.getHomeStadium());
+        setCoach(team.getHeadCoach());
+        updateRecord(team.getTeamResults());
     }
 
-    public void addWin() {
-        wins++;
-        updateRecord();
-    }
-    public void addLoss() {
-        losses++;
-        updateRecord();
-    }
-    public void addTie() {
-        ties++;
-        updateRecord();
+    public void updateRecord(TeamResults results) {
+        record.setText(results.getWins() + " - " + results.getTies() + " - " + results.getLosses());
     }
 
     //GETTERS
@@ -102,7 +90,6 @@ public class TeamInfoAdditionalController extends BaseController {
     }
 
     public boolean equals(TeamInfoAdditionalController other) {
-
         return (countryNameAdditional.getText().equals(other.getCountryName()) &&
             rankNumber.getText().equals(other.getRank()) &&
             stadiumName.getText().equals(other.getStadiumName()) &&

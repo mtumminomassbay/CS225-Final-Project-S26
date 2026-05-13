@@ -65,19 +65,7 @@ public class Match {
         this.penalties = null;
     }
 
-    /**
-     * Simulates the match
-     * Regulation is simulated first
-     * If ties are allowed, the match can end after regulation
-     * If ties are not allowed, the match goes to overtime if tied
-     * If still tied after overtime, the match goes to penalties
-     */
-    public void simulate() {
-        // Prevent the same match from being simulated more than once
-        if (isFinished()) {
-            return;
-        }
-
+    private void simulateImpl() {
         // Simulate the two regulation halves using the shared seeded Random
         firstHalf.simulate(random);
         secondHalf.simulate(random);
@@ -100,6 +88,27 @@ public class Match {
             penalties = new PenaltyShootout(team1, team2);
             penalties.simulate(random);
         }
+    }
+
+    /**
+     * Simulates the match
+     * Regulation is simulated first
+     * If ties are allowed, the match can end after regulation
+     * If ties are not allowed, the match goes to overtime if tied
+     * If still tied after overtime, the match goes to penalties
+     */
+    public void simulate() {
+        // Prevent the same match from being simulated more than once
+        if (isFinished()) {
+            return;
+        }
+
+        simulateImpl();
+
+        int team1Score = getFirstTeamScore();
+        int team2Score = getSecondTeamScore();
+        team1.getTeamResults().addResult(team1Score, team2Score);
+        team2.getTeamResults().addResult(team2Score, team1Score);
     }
 
     public Team getFirstTeam() {

@@ -22,7 +22,7 @@ public class Team {
 
     private Group group = null;
     private String stage;
-    private String record;
+    private TeamResults teamResults;
 
     public Team(String team, int ranking, String region, String code, String iso2, String homeStadium, String headCoach, String flagPath, String color) {
         this.name = team;
@@ -34,6 +34,7 @@ public class Team {
         this.headCoach = headCoach;
         this.flagPath = flagPath;
         this.color = color;
+        reset();
     }
 
     public String getName() {return name;}
@@ -48,7 +49,7 @@ public class Team {
 
     public Group getGroup() {return group;}
     public String getStage() {return stage;}
-    public String getRecord() {return record;}
+    public TeamResults getTeamResults() { return teamResults; }
 
     public void setGroup(Group group) {
         this.group = group;
@@ -58,8 +59,8 @@ public class Team {
         this.stage = stage;
     }
 
-    public void setRecord(String record) {
-        this.record = record;
+    public void reset() {
+        teamResults = new TeamResults(this);
     }
 
     @Override
@@ -76,7 +77,6 @@ public class Team {
                 ", color=" + color + '\'' +
                 ", group='" + group.getGroupName() + '\'' +
                 ", stage=" + stage + '\''+
-                ", record=" + record + '\'' +
                 '}';
     }
 

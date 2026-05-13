@@ -1,7 +1,7 @@
 /**
  * @author Jonathan
  */
-public class GroupResults implements Comparable<GroupResults> {
+public class TeamResults implements Comparable<TeamResults> {
     private Team team;
 
     private int wins;
@@ -11,7 +11,7 @@ public class GroupResults implements Comparable<GroupResults> {
     private int goalsFor;
     private int goalsAgainst;
 
-    public GroupResults(Team team) {
+    public TeamResults(Team team) {
         this.team = team;
     }
 
@@ -73,7 +73,7 @@ public class GroupResults implements Comparable<GroupResults> {
     }
 
     @Override
-    public int compareTo(GroupResults other) {
+    public int compareTo(TeamResults other) {
         int pointCompare = Integer.compare(other.getPoints(), this.getPoints());
         if (pointCompare != 0) {
             return pointCompare;
