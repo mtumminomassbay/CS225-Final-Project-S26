@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -860,5 +861,11 @@
             </HBox>
          </top>
       </BorderPane>
+    <Button fx:id="simulationControlsToggleButton" mnemonicParsing="false" style="-fx-background-color: #1B5E3D; -fx-border-color: #E5A94D; -fx-border-radius: 10; -fx-background-radius: 10; -fx-text-fill: #E5A94D; -fx-font-size: 14; -fx-font-weight: bold; -fx-padding: 8 14 8 14;" text="Simulation Controls" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0" />
+      <AnchorPane fx:id="simulationControlsDrawer" managed="false" prefWidth="220.0" style="-fx-background-color: #0D3B2E; -fx-border-color: #E5A94D; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
+         <children>
+            <fx:include fx:id="simulationControls" source="simulation-controls.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

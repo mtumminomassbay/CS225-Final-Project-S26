@@ -46,6 +46,7 @@ public class SimulationController {
     private Timeline actionTimeline;
     private Timeline autoPlayTimeline;
     private StageMode lastStage;
+    private Runnable onSimulationChanged;
 
     @FXML
     private void initialize() {
@@ -81,6 +82,10 @@ public class SimulationController {
     public void configureForKnockoutStage() {
         refreshLabels();
         refreshButtonStates();
+    }
+
+    public void setOnSimulationChanged(Runnable callback) {
+        onSimulationChanged = callback;
     }
 
     private void advanceTournamentStage() {
@@ -132,6 +137,9 @@ public class SimulationController {
 
             actionRunning = false;
             refreshLabels();
+            if (onSimulationChanged != null) {
+                onSimulationChanged.run();
+            }
             statusLabel.setText(result);
             refreshButtonStates();
         };
@@ -211,6 +219,9 @@ public class SimulationController {
             statusLabel.setText("Tournament reset.");
             refreshButtonStates();
             configureForGroupStage();
+            if (onSimulationChanged != null) {
+                onSimulationChanged.run();
+            }
         }
     }
 

@@ -14,20 +14,19 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
 public class KnockoutPhaseController extends BaseController{
     private List<AnchorPane> matchCards;
-    @FXML
-    private Button Dashboard_button;
-    
-    @FXML
-    private Button simulateRound_Button;
 
-    @FXML
-    private Button simulateTournament_Button;
+    
+    @FXML private Pane simulationControlsDrawer;
+    @FXML private SimulationController simulationControlsController;
+    @FXML private Button simulationControlsToggleButton;
+
 
 
     // TODO: maybe use vboxes and just get the children
@@ -109,7 +108,33 @@ public class KnockoutPhaseController extends BaseController{
         );
 
         loadKnockoutMatches();
+        
+        hideSimulationControlsDrawer();
+        simulationControlsToggleButton.setText("Simulation Controls");
+        simulationControlsToggleButton.setOnAction(event -> toggleSimulationControlsDrawer());
+
+        simulationControlsController.configureForKnockoutStage();
+        simulationControlsController.setOnSimulationChanged(this::refreshKnockoutView);
     }
+
+    private void hideSimulationControlsDrawer() {
+        simulationControlsDrawer.setVisible(false);
+        simulationControlsDrawer.setManaged(false);
+    }
+
+    @FXML
+    private void toggleSimulationControlsDrawer() {
+        boolean shouldShow = !simulationControlsDrawer.isVisible();
+
+        simulationControlsDrawer.setVisible(shouldShow);
+        simulationControlsDrawer.setManaged(shouldShow);
+        simulationControlsToggleButton.setText(shouldShow ? "Hide Controls" : "Simulation Controls");
+    }
+
+    private void refreshKnockoutView() {
+        loadKnockoutMatches();
+    }
+    
 
     private void loadKnockoutMatches() {
         Bracket bracket = WorldCupTournament.getInstance().getKnockoutStage();
