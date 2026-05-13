@@ -20,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
+ * Controller for the single group screen
  * @author Lior Sapir, Joey Barton
  */
 public class SingleGroupController extends BaseController {
@@ -36,11 +37,13 @@ public class SingleGroupController extends BaseController {
     protected void onLoad() {
         groupLabel.setText(currentGroup.getGroupName());
 
+        //add team bars
         List<Team> teams = currentGroup.getTeams();
         for (Team team : teams) {
             addTeamPane(team);
         }
 
+        //add match buttons
         Iterator<Match> matches = currentGroup.getMatches().iterator();
         int rowIndex = matchGrid.getRowCount();
 
@@ -53,6 +56,7 @@ public class SingleGroupController extends BaseController {
         }
     }
 
+    //add team bar
     private void addTeamPane(Team team) {
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -68,6 +72,7 @@ public class SingleGroupController extends BaseController {
         }
     }
 
+    //add match buttons
     private void addMatchPane(int x, int y, Match match) {
         ImageView flag1 = new ImageView(match.getFirstTeam().getFlagPath());
         flag1.setPreserveRatio(true);
@@ -90,6 +95,7 @@ public class SingleGroupController extends BaseController {
         matchGrid.add(box, x, y);
     }
 
+    //load match details popup
     private void matchClicked(Match match) {
         MatchDetailsController.setMatch(match);
         try {

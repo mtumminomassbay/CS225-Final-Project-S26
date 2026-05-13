@@ -117,6 +117,7 @@ public class MatchDetailsController extends BaseController {
         }
     }
 
+    //close window
     @FXML
     private void backButton_clicked(ActionEvent e) {
         ((Stage)((Node)e.getSource()).getScene().getWindow()).close();

@@ -27,8 +27,9 @@ public class GroupPhaseController extends BaseController {
 
     @Override
     protected void onLoad(){
-        Iterator<Group> groups = worldCup.getGroupStage().getGroups().iterator();
 
+        //load group buttons and assign groups to them
+        Iterator<Group> groups = worldCup.getGroupStage().getGroups().iterator();
         for (int i = 0; i < buttonGrid.getRowCount(); ++i) {
             for (int j = 0; j < buttonGrid.getColumnCount(); ++j) {
                 addGroupButton(j, i, groups.next());
@@ -46,6 +47,7 @@ public class GroupPhaseController extends BaseController {
         }
     }
 
+    //add a group button to the specified place on the button grid
     private void addGroupButton(int x, int y, Group group) {
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -61,6 +63,7 @@ public class GroupPhaseController extends BaseController {
         }
     }
 
+    //add entries to the 3rd place qualifiers section
     private void makeThirdPlaceLeaderboard() {
         if (thirdPlaceCreated) {
             return;
@@ -69,6 +72,7 @@ public class GroupPhaseController extends BaseController {
 
         List<Team> teams = worldCup.getGroupStage().getThirdPlaceAdvancingTeams();
 
+        //set up a row on the grid for each advancing team
         for (int i = 0; i < teams.size(); ++i) {
             Label teamLabel = new Label(teams.get(i).getCode());
             ImageView flag = new ImageView(teams.get(i).getFlagPath());

@@ -33,12 +33,14 @@ public class GroupButtonController extends BaseController {
         this.group = group;
         groupNameLabel.setText(group.getGroupName());
 
+        //add labels showing teams in the group to the button
         Iterator<Team> teams = group.getTeams().iterator();
         for (int i = 1; i < grid.getRowCount(); ++i) {
             for (int j = 0; j < grid.getColumnCount(); ++j) {
                 Team currentTeam = teams.next();
                 Label label = new Label(currentTeam.getCode());
                 ImageView flag = new ImageView(currentTeam.getFlagPath());
+
                 flag.setPreserveRatio(true);
                 flag.setFitWidth(FLAG_WIDTH);
                 label.setGraphic(flag);

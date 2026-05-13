@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
+ * team bars in the single group view
  * @author Lior Sapir
  */
 public class SingleGroupTeamInfoController extends BaseController {
