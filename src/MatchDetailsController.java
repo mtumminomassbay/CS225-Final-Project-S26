@@ -142,11 +142,7 @@ public class MatchDetailsController extends BaseController {
     
             TeamInfoAdditionalController controller = loader.getController();
     
-            controller.setCountryName(team.getName());
-            controller.setFlagImage(new Image(team.getFlagPath()));
-            controller.setRank(String.valueOf(team.getRanking()));
-            controller.setStadiumName(team.getHomeStadium());
-            controller.setCoach(team.getHeadCoach());
+            controller.updateFromTeam(team);
     
             Stage stage = new Stage();
             stage.setTitle("Team Info");
