@@ -9,16 +9,16 @@
 
 <!-- Gabriel Ferreira -->
 
-<VBox prefHeight="400.0" prefWidth="200.0" spacing="7.0" style="-fx-background-color: #1b7f1d; -fx-border-color: #c8d3df; -fx-border-width: 1 0 0 1;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SimulationController">
+<VBox maxWidth="200.0" prefHeight="400.0" prefWidth="200.0" spacing="7.0" style="-fx-background-color: #f4f7fb; -fx-border-color: #c8d3df; -fx-border-width: 1 0 0 1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SimulationController">
 	<padding>
 		<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 	</padding>
 	<children>
-		<Label style="-fx-font-size: 16px; -fx-text-fill: #ffad43; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, #0a0f0d, 14, 0.45, 0, 2);" text="Simulation Controls" wrapText="true" />
-		<Label fx:id="currentStageLabel" style="-fx-text-fill: #ffffff;" styleClass="standings-team-name" stylesheets="@style-guide.css" text="Stage: Group Stage" wrapText="true" />
-		<Label fx:id="currentRoundLabel" style="-fx-text-fill: #ffffff;" styleClass="standings-team-name" stylesheets="@style-guide.css" text="Group: Group A" wrapText="true" />
-		<Label fx:id="nextMatchLabel" style="-fx-text-fill: #ffffff;" styleClass="standings-team-name" stylesheets="@style-guide.css" text="Next match: Placeholder" wrapText="true" />
-		<Label fx:id="progressLabel" style="-fx-text-fill: #ffffff;" styleClass="standings-header-text" stylesheets="@style-guide.css" text="Progress: 0 placeholder matches simulated" wrapText="true" />
+		<Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Simulation Controls" wrapText="true" />
+		<Label fx:id="currentStageLabel" text="Stage: Group Stage" wrapText="true" />
+		<Label fx:id="currentRoundLabel" text="Group: Group A" wrapText="true" />
+		<Label fx:id="nextMatchLabel" text="Next match: Placeholder" wrapText="true" />
+		<Label fx:id="progressLabel" text="Progress: 0 placeholder matches simulated" wrapText="true" />
 		<Separator />
 		<Button fx:id="simulateNextMatchButton" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Simulate Next Match" wrapText="true" />
 		<Button fx:id="simulateCurrentGroupButton" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Simulate Current Group" wrapText="true" />
@@ -29,6 +29,6 @@
 		<Button fx:id="resetTournamentButton" maxWidth="Infinity" mnemonicParsing="false" stylesheets="@style-guide.css" text="Reset Tournament" wrapText="true" />
 		<Label style="-fx-text-fill: #ffffff;" text="Speed" />
 		<ComboBox fx:id="speedComboBox" maxWidth="Infinity" />
-		<Label fx:id="statusLabel" style="-fx-font-style: italic; -fx-text-fill: #ffffff;" text="Ready." wrapText="true" />
+		<Label fx:id="statusLabel" style="-fx-font-style: italic;" text="Ready." wrapText="true" />
 	</children>
 </VBox>
