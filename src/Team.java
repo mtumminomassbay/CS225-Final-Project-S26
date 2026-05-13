@@ -74,7 +74,7 @@ public class Team {
                 ", headCoach='" + headCoach + '\'' +
                 ", flagPath=" + flagPath + '\''+
                 ", color=" + color + '\'' +
-                ", group='" + group.getGroupName() + '\'' +
+                ", group='" + group + '\'' +
                 ", stage=" + stage + '\''+
                 ", record=" + record + '\'' +
                 '}';
