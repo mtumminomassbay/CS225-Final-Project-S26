@@ -63,7 +63,7 @@ public class GroupPhaseController extends BaseController {
             teamLabel.setGraphic(flag);
             leaderboardGrid.add(teamLabel, 0, i + 1);
 
-            Label scoreLabel = new Label(teams.get(i).getGroup().getGroupResults(teams.get(i)).getPoints() + "");
+            Label scoreLabel = new Label(teams.get(i).getTeamResults().getPoints() + "");
             GridPane.setHalignment(scoreLabel, HPos.RIGHT);
             GridPane.setMargin(scoreLabel, new Insets(0, 10, 0, 0));
             leaderboardGrid.add(scoreLabel, 1, i + 1);
